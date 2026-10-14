@@ -2,43 +2,37 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Compass, Layout, Cpu, CheckCircle2 } from 'lucide-react';
 
-const STEPS = [
+const APPROACH_STEPS = [
   {
-    step: '01',
-    icon: FileText,
-    title: 'Brief & Scope Calibration',
-    desc: 'Clarification of core commercial objectives, audience psychology, deliverable formats, and production timeline.',
-    deliverable: 'Approved Creative Brief & Milestone Schedule',
+    title: 'Brief',
+    number: '01',
+    description:
+      'Clarification of details, corrections for a better result, an important step for quality work, and correct assessment of the scope of tasks. Guarantees a quality result.',
   },
   {
-    step: '02',
-    icon: Compass,
-    title: 'Pre-Production & Script',
-    desc: 'Developing narrative treatments, voiceover scripts, and conceptual moodboards that anchor the creative vision.',
-    deliverable: 'Final Script & Visual Tone Direction',
+    title: 'Pre-Production',
+    number: '02',
+    description:
+      'Stage of planning and final approval of all steps, the ability to change or add something to the active phase of work — we plan work, set deadlines, and coordinate on time.',
   },
   {
-    step: '03',
-    icon: Layout,
-    title: 'Storyboard & Styleframes',
-    desc: 'Designing key cinematic frames to establish composition, 3D lighting, materials, and typography before animation.',
-    deliverable: 'Approved Styleframes & Storyboard Deck',
+    title: 'Storyboard',
+    number: '03',
+    description:
+      'Key frames demonstrate the main visuals. Helps to create a competent composition and to clarify all the nuances of the video before the start of its production.',
   },
   {
-    step: '04',
-    icon: Cpu,
-    title: 'Production & Animation',
-    desc: 'Crafting 3D assets, camera sequences, and dynamic transitions with regular milestone video check-ins for feedback.',
-    deliverable: 'First Cut & Motion Refinement Passes',
+    title: 'Production',
+    number: '04',
+    description:
+      'Creation of the video itself according to the brief and the approved Storyboard. Demonstration of intermediate results to the client to get direct feedback.',
   },
   {
-    step: '05',
-    icon: CheckCircle2,
-    title: 'Finalizing & Sound Design',
-    desc: 'Original music synthesis, spatial sound design, precision color grading, and delivery of 4K multi-ratio masters.',
-    deliverable: 'Broadcast Masters & Social Cutdowns',
+    title: 'Finalizing',
+    number: '05',
+    description:
+      'Making final edits and making the video shine. The stage after which you will be completely satisfied. And your feel-good chemicals levels will be higher than ever.',
   },
 ];
 
@@ -46,58 +40,61 @@ export default function Process() {
   return (
     <section id="approach" className="relative py-28 md:py-36 px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#0FC8CF] block mb-3">
-            Production Methodology
+          <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#CFABFF] block mb-3">
+            Workflow & Rigor
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-white font-display tracking-tight">
-            OUR APPROACH.
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white font-display tracking-tight uppercase">
+            OUR APPROACH
           </h2>
           <p className="mt-4 text-zinc-400 text-sm md:text-base font-light">
-            A battle-tested 5-phase production workflow that guarantees creative brilliance and on-time delivery.
+            Services at <strong className="text-white">ALL</strong> stages — from the initial brief to the final master.
           </p>
         </div>
 
-        {/* 5-Phase Horizontal Timeline Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {STEPS.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={item.step}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative p-6 rounded-2xl bg-[#0c0c14] border border-white/[0.08] hover:border-white/20 transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="font-mono text-2xl font-bold text-zinc-600 group-hover:text-white transition-colors">
-                      {item.step}
-                    </span>
-                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-zinc-400 group-hover:text-[#0FC8CF] transition-colors">
-                      <Icon className="w-4 h-4" />
-                    </div>
+        {/* 5-Phase Production Hexagonal Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {APPROACH_STEPS.map((step, idx) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="relative group p-7 rounded-3xl bg-[#0d0d16] border border-white/[0.08] hover:border-[#6B1EEF]/60 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="w-10 h-10 flex items-center justify-center">
+                    <svg viewBox="0 0 100 115" className="w-full h-full">
+                      <polygon
+                        points="50 3, 97 28, 97 86, 50 112, 3 86, 3 28"
+                        fill="#1a1a28"
+                        stroke="url(#stepHexGradient)"
+                        strokeWidth="5"
+                      />
+                      <defs>
+                        <linearGradient id="stepHexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#6B1EEF" />
+                          <stop offset="100%" stopColor="#0FC8CF" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
                   </div>
-
-                  <h3 className="text-base font-bold text-white mb-2.5">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-xs text-zinc-400 leading-relaxed font-light mb-6">
-                    {item.desc}
-                  </p>
+                  <span className="font-mono text-xs text-zinc-500 font-bold">{step.number}</span>
                 </div>
 
-                <div className="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-zinc-500">
-                  <span className="text-zinc-300 block font-medium">Output:</span>
-                  <span className="text-zinc-400">{item.deliverable}</span>
-                </div>
-              </motion.div>
-            );
-          })}
+                <h3 className="text-xl font-bold text-white mb-3 font-display">{step.title}</h3>
+                <p className="text-xs text-zinc-400 font-light leading-relaxed mb-6">
+                  {step.description}
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-[#0FC8CF]">
+                Phase Verified ✓
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

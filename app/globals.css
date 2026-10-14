@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #08080c;
-  --foreground: #ededed;
+  --background: #09090e;
+  --foreground: #f4f4f6;
 }
 
 * {
@@ -13,16 +13,16 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #08080c;
-  color: #ededed;
+  background-color: #09090e;
+  color: #f4f4f6;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background-color: #08080c;
-  color: #ededed;
+  background-color: #09090e;
+  color: #f4f4f6;
   overflow-x: hidden;
   min-height: 100vh;
 }
@@ -32,44 +32,56 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #08080c;
+  background: #09090e;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f1f2e;
+  background: #1e1e2c;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2f2f45;
+  background: #2e2e42;
 }
 
-/* Studio Glass Card */
-.studio-card {
-  background: linear-gradient(180deg, rgba(22, 22, 34, 0.5) 0%, rgba(13, 13, 20, 0.8) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Smooth Infinite Marquee */
+@keyframes marqueeLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
-.studio-card:hover {
-  border-color: rgba(107, 30, 239, 0.4);
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marqueeLeft 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Studio Asymmetric Bento Card */
+.bento-card {
+  position: relative;
+  background: #11111a;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover {
+  border-color: rgba(107, 30, 239, 0.45);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(107, 30, 239, 0.15);
 }
 
 /* Clean Editorial Text Gradients */
-.text-gradient-silver {
-  background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+.text-gradient-purple {
+  background: linear-gradient(135deg, #CFABFF 0%, #6B1EEF 60%, #0FC8CF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-endorphin {
-  background: linear-gradient(135deg, #CFABFF 0%, #6B1EEF 45%, #0FC8CF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Subtle dot grid */
+/* Dot grid */
 .bg-subtle-grid {
-  background-size: 40px 40px;
-  background-image: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
