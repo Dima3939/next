@@ -15,24 +15,23 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'ENDORPHIN — Creative Digital Design & Motion Studio',
+  title: 'ENDORPHIN — Creative Production & Motion Studio',
   description:
-    'Award-winning creative design studio crafting high-octane digital experiences, 3D web interfaces, and high-conversion architectures for visionary brands.',
+    'Award-winning creative production studio directing, designing, and animating high-impact 3D commercials, product films, and motion identities for visionary brands.',
   keywords: [
-    'Design Studio',
-    'Next.js 14',
-    'Creative Agency',
-    'WebGL',
-    '3D Website',
-    'Framer Motion',
-    'Awwwards',
+    'Creative Studio',
+    '3D Commercials',
+    'Product Films',
+    'Motion Design',
+    'CGI Animation',
     'Endorphin Studio',
+    'Awwwards',
   ],
   authors: [{ name: 'Endorphin Studio' }],
   openGraph: {
-    title: 'ENDORPHIN — Creative Digital Design & Motion Studio',
+    title: 'ENDORPHIN — Creative Production & Motion Studio',
     description:
-      'Award-winning creative design studio crafting high-octane digital experiences, 3D web interfaces, and high-conversion architectures.',
+      'Directing, designing, and animating high-impact 3D commercials, product films, and motion identities.',
     type: 'website',
     locale: 'en_US',
     siteName: 'Endorphin Studio',
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#07070a',
+  themeColor: '#08080c',
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,
@@ -56,7 +55,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="bg-[#07070a] text-zinc-100 font-sans antialiased selection:bg-purple-500/30 selection:text-white min-h-screen relative">
+      <body className="bg-[#08080c] text-zinc-100 font-sans antialiased selection:bg-[#6B1EEF]/30 selection:text-white min-h-screen relative">
         {children}
       </body>
     </html>

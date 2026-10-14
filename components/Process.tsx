@@ -2,105 +2,98 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Compass, Figma, Terminal, Rocket } from 'lucide-react';
+import { FileText, Compass, Layout, Cpu, CheckCircle2 } from 'lucide-react';
 
 const STEPS = [
   {
     step: '01',
-    icon: Compass,
-    title: 'Immersion & Spatial Blueprint',
-    duration: 'Week 1',
-    description:
-      'We deconstruct your brand narrative, audit your competitive landscape, and establish the kinetic design pillars through live interactive moodboards.',
-    highlight: 'Zero guesswork. Clear aesthetic trajectory locked on Day 4.',
+    icon: FileText,
+    title: 'Brief & Scope Calibration',
+    desc: 'Clarification of core commercial objectives, audience psychology, deliverable formats, and production timeline.',
+    deliverable: 'Approved Creative Brief & Milestone Schedule',
   },
   {
     step: '02',
-    icon: Figma,
-    title: 'High-Fidelity Art Direction',
-    duration: 'Week 2–3',
-    description:
-      'We craft every screen with sub-millimeter precision in Figma, animating micro-states, dynamic typography curves, and custom 3D asset compositions.',
-    highlight: 'Full desktop and mobile responsive design system handoff.',
+    icon: Compass,
+    title: 'Pre-Production & Script',
+    desc: 'Developing narrative treatments, voiceover scripts, and conceptual moodboards that anchor the creative vision.',
+    deliverable: 'Final Script & Visual Tone Direction',
   },
   {
     step: '03',
-    icon: Terminal,
-    title: 'Next.js & Shader Production',
-    duration: 'Week 3–5',
-    description:
-      'Transforming static pixels into a living breathing digital product using Next.js App Router, Tailwind CSS, Framer Motion, and WebGL render loops.',
-    highlight: 'Guaranteed 60 FPS across Safari, Chrome, and iOS devices.',
+    icon: Layout,
+    title: 'Storyboard & Styleframes',
+    desc: 'Designing key cinematic frames to establish composition, 3D lighting, materials, and typography before animation.',
+    deliverable: 'Approved Styleframes & Storyboard Deck',
   },
   {
     step: '04',
-    icon: Rocket,
-    title: 'Vitals Calibration & Launch',
-    duration: 'Week 6',
-    description:
-      'Extreme performance audits, static export optimization, social share open graph generation, and deployment directly to edge global servers.',
-    highlight: '100% Lighthouse score and award submission readiness.',
+    icon: Cpu,
+    title: 'Production & Animation',
+    desc: 'Crafting 3D assets, camera sequences, and dynamic transitions with regular milestone video check-ins for feedback.',
+    deliverable: 'First Cut & Motion Refinement Passes',
+  },
+  {
+    step: '05',
+    icon: CheckCircle2,
+    title: 'Finalizing & Sound Design',
+    desc: 'Original music synthesis, spatial sound design, precision color grading, and delivery of 4K multi-ratio masters.',
+    deliverable: 'Broadcast Masters & Social Cutdowns',
   },
 ];
 
 export default function Process() {
   return (
-    <section id="process" className="relative py-28 md:py-36 px-6">
+    <section id="approach" className="relative py-28 md:py-36 px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>The Endorphin Blueprint</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white font-display tracking-tight">
-            METHODICAL RIGOR. ZERO COMPROMISES.
+        {/* Section Heading */}
+        <div className="text-center max-w-2xl mx-auto mb-20">
+          <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#0FC8CF] block mb-3">
+            Production Methodology
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-black text-white font-display tracking-tight">
+            OUR APPROACH.
           </h2>
           <p className="mt-4 text-zinc-400 text-sm md:text-base font-light">
-            Our agile 4-phase sprint cycle brings complex digital concepts from raw vision to viral launch in 6 weeks.
+            A battle-tested 5-phase production workflow that guarantees creative brilliance and on-time delivery.
           </p>
         </div>
 
-        {/* Timeline Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        {/* 5-Phase Horizontal Timeline Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {STEPS.map((item, index) => {
             const Icon = item.icon;
             return (
               <motion.div
                 key={item.step}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: index * 0.12 }}
-                className="relative group p-6 rounded-2xl bg-[#0c0c14]/80 border border-white/10 hover:border-purple-500/40 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative p-6 rounded-2xl bg-[#0c0c14] border border-white/[0.08] hover:border-white/20 transition-all duration-300 flex flex-col justify-between group"
               >
-                {/* Step indicator */}
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-mono text-2xl font-black text-zinc-600 group-hover:text-purple-400 transition-colors">
+                    <span className="font-mono text-2xl font-bold text-zinc-600 group-hover:text-white transition-colors">
                       {item.step}
                     </span>
-                    <span className="text-[11px] font-mono text-zinc-500 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/5">
-                      {item.duration}
-                    </span>
+                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-zinc-400 group-hover:text-[#0FC8CF] transition-colors">
+                      <Icon className="w-4 h-4" />
+                    </div>
                   </div>
 
-                  <div className="w-10 h-10 rounded-xl bg-purple-950/40 border border-purple-500/20 text-purple-300 flex items-center justify-center mb-4 group-hover:bg-purple-600/20 transition-colors">
-                    <Icon className="w-5 h-5" />
-                  </div>
-
-                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-base font-bold text-white mb-2.5">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs text-zinc-400 leading-relaxed mb-6 font-light">
-                    {item.description}
+                  <p className="text-xs text-zinc-400 leading-relaxed font-light mb-6">
+                    {item.desc}
                   </p>
                 </div>
 
-                {/* Highlight banner at bottom */}
-                <div className="pt-4 border-t border-white/5 text-[11px] font-mono text-zinc-400">
-                  <span className="text-brand-neon">Key Outcome:</span> {item.highlight}
+                <div className="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-zinc-500">
+                  <span className="text-zinc-300 block font-medium">Output:</span>
+                  <span className="text-zinc-400">{item.deliverable}</span>
                 </div>
               </motion.div>
             );
