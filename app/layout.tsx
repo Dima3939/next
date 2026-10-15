@@ -15,31 +15,31 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'ENDORPHIN — Creative Production & Motion Studio',
+  title: 'MONOLITH — Creative Engineering & Interactive Motion Studio',
   description:
-    'Award-winning creative production studio directing, designing, and animating high-impact 3D commercials, product films, and motion identities for visionary brands.',
+    'Award-winning independent digital studio operating at the intersection of architectural typography, 3D WebGL experiences, and high-performance Next.js motion.',
   keywords: [
+    'MONOLITH',
     'Creative Studio',
-    '3D Commercials',
-    'Product Films',
-    'Motion Design',
-    'CGI Animation',
-    'Endorphin Studio',
-    'Awwwards',
+    '3D WebGL',
+    'Next.js 14',
+    'Framer Motion',
+    'Interactive Agency',
+    'Awwwards SOTD',
   ],
-  authors: [{ name: 'Endorphin Studio' }],
+  authors: [{ name: 'MONOLITH Studio' }],
   openGraph: {
-    title: 'ENDORPHIN — Creative Production & Motion Studio',
+    title: 'MONOLITH — Creative Engineering & Interactive Motion Studio',
     description:
-      'Directing, designing, and animating high-impact 3D commercials, product films, and motion identities.',
+      'Architectural typography, 3D WebGL experiences, and high-performance Next.js motion.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'Endorphin Studio',
+    siteName: 'MONOLITH Studio',
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#08080c',
+  themeColor: '#07070a',
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,
@@ -55,7 +55,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="bg-[#08080c] text-zinc-100 font-sans antialiased selection:bg-[#6B1EEF]/30 selection:text-white min-h-screen relative">
+      <body className="bg-[#07070a] text-zinc-100 font-sans antialiased selection:bg-white/20 selection:text-white min-h-screen relative">
         {children}
       </body>
     </html>

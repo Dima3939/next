@@ -1,117 +1,119 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowUp, Github } from 'lucide-react';
 
 export default function Footer() {
+  const [time, setTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setTime(
+        now.toLocaleTimeString('en-GB', {
+          timeZone: 'Europe/Zurich',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false,
+        })
+      );
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="relative border-t border-white/[0.08] bg-[#06060a] pt-16 pb-12 px-6">
+    <footer className="relative border-t border-white/[0.08] bg-[#050508] pt-16 pb-12 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-16 border-b border-white/[0.06]">
-          {/* Brand Info */}
+          {/* Brand Manifesto */}
           <div className="md:col-span-4 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-6 h-6 flex items-center justify-center">
-                  <svg viewBox="0 0 100 115" className="w-full h-full">
-                    <polygon
-                      points="50 3, 97 28, 97 86, 50 112, 3 86, 3 28"
-                      fill="none"
-                      stroke="url(#footHex)"
-                      strokeWidth="7"
-                    />
-                    <circle cx="50" cy="58" r="14" fill="#0FC8CF" />
-                    <defs>
-                      <linearGradient id="footHex" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#6B1EEF" />
-                        <stop offset="100%" stopColor="#0FC8CF" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                <div className="w-5 h-6 bg-white flex items-center justify-center">
+                  <div className="w-[1.5px] h-full bg-black/40 mr-auto ml-0.5" />
                 </div>
-                <span className="font-display font-black tracking-[0.2em] text-white text-base uppercase">
-                  ENDORPHIN
+                <span className="font-display font-black tracking-[0.25em] text-white text-base uppercase">
+                  MONOLITH<span className="text-zinc-500 text-xs font-mono font-normal ml-0.5">®</span>
                 </span>
               </div>
               <p className="text-xs text-zinc-400 font-light max-w-sm leading-relaxed">
-                Endorphin is your way to make the best production and get as much success as
-                possible. We make bridges between brands and their audiences, and help expand them.
+                Independent creative engineering & motion laboratory. We build architectural
+                digital artifacts, real-time shaders, and bespoke interactive systems.
               </p>
             </div>
 
-            <div className="mt-8 text-xs font-mono text-zinc-500">
-              A professional team driven by love for their work.
+            <div className="mt-8 text-xs font-mono text-zinc-500 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Studio HQ: Zurich, CH • {time || '12:00:00'} CET</span>
             </div>
           </div>
 
-          {/* Real Products Column */}
+          {/* Directory */}
           <div className="md:col-span-3">
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-400 block mb-4">
-              Products & Services
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 block mb-4">
+              Directory
             </span>
             <ul className="space-y-2 text-xs text-zinc-400">
-              <li><a href="#services" className="hover:text-white transition-colors">Software Production</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Illustration</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">2D Animation</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Marketing Video</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Motion Graphics</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Pro Video Editing</a></li>
+              <li><a href="#work" className="hover:text-white transition-colors">Selected Work</a></li>
+              <li><a href="#capabilities" className="hover:text-white transition-colors">Studio Capabilities</a></li>
+              <li><a href="#methodology" className="hover:text-white transition-colors">Production Methodology</a></li>
+              <li><a href="#philosophy" className="hover:text-white transition-colors">Studio Philosophy</a></li>
             </ul>
           </div>
 
-          {/* Real Industries Column */}
+          {/* Recognition */}
           <div className="md:col-span-3">
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-400 block mb-4">
-              Industries
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 block mb-4">
+              Recognition
             </span>
-            <ul className="space-y-2 text-xs text-zinc-400">
-              <li><a href="#work" className="hover:text-white transition-colors">B2B</a></li>
-              <li><a href="#work" className="hover:text-white transition-colors">B2C</a></li>
-              <li><a href="#work" className="hover:text-white transition-colors">SaaS</a></li>
-              <li><a href="#work" className="hover:text-white transition-colors">Startup</a></li>
-              <li><a href="#work" className="hover:text-white transition-colors">Mobile</a></li>
-              <li><a href="#work" className="hover:text-white transition-colors">Social Media</a></li>
-              <li><a href="#work" className="hover:text-white transition-colors">SME</a></li>
+            <ul className="space-y-2 text-xs text-zinc-400 font-mono">
+              <li>Awwwards Site of the Day × 14</li>
+              <li>FWA of the Month × 4</li>
+              <li>Red Dot Best of the Best 2024</li>
+              <li>CSS Design Awards WOTD × 8</li>
             </ul>
           </div>
 
-          {/* Find Us Here */}
+          {/* Channels */}
           <div className="md:col-span-2">
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-400 block mb-4">
-              Find Us Here
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 block mb-4">
+              Network
             </span>
             <ul className="space-y-2.5 text-xs text-zinc-400">
               <li>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-                  LinkedIn
+                <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  X / Twitter
                 </a>
               </li>
               <li>
-                <a href="https://upwork.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-                  UpWork
+                <a href="https://vimeo.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  Vimeo
                 </a>
               </li>
               <li>
-                <a href="https://behance.net" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-                  Behance
+                <a href="https://awwwards.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  Awwwards
                 </a>
               </li>
               <li>
-                <a href="https://github.com/Dima3939/next" target="_blank" rel="noreferrer" className="hover:text-[#0FC8CF] transition-colors flex items-center gap-1.5">
-                  <Github className="w-3.5 h-3.5" /> GitHub
+                <a href="https://github.com/Dima3939/next" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+                  <Github className="w-3.5 h-3.5" /> GitHub Source
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom strip */}
+        {/* Bottom bar */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
-          <div>© {new Date().getFullYear()} Endorphin. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} MONOLITH Studio. Engineered for Dima3939.</div>
 
           <button
             onClick={scrollToTop}
