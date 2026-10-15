@@ -18,10 +18,10 @@ export default function Home() {
       >
         <div className="v2-grain-overlay pointer-events-none" aria-hidden="true"></div>
         
-        {/* Exact Infisical Navigation */}
+        {/* Exact Navigation */}
         <Navbar />
 
-        {/* Exact Infisical Landing Architecture */}
+        {/* Exact Landing Architecture */}
         <Hero />
         <Services />
         <Projects />

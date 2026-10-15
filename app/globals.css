@@ -72,7 +72,7 @@ body {
 }
 
 /* ==========================================================================
-   BUTTON & INTERACTIVE MICRO-ANIMATIONS (Infisical exact)
+   BUTTON & INTERACTIVE MICRO-ANIMATIONS
    ========================================================================== */
 .v2-btn {
   display: inline-flex;
@@ -189,3 +189,63 @@ a:hover > svg[viewBox="0 0 12 12"],
 }
 
 
+
+/* ==========================================================================
+   VAULT SECTION & RESPONSIVE LAYOUT (Mobile & Tablet)
+   ========================================================================== */
+#v2-vault-section {
+  background-color: var(--v2-agent-vault-bg, #0e1014) !important;
+}
+
+#v2-vault-section .v2-vault-inner {
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+
+@media (max-width: 1023px) {
+  #v2-vault-section .v2-vault-inner {
+    padding-top: 84px !important;
+    padding-bottom: 96px !important;
+  }
+  .v2-vault-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+  .v2-vault-cta {
+    margin-right: 0 !important;
+  }
+  .v2-vault-points {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #v2-vault-section .v2-vault-inner {
+    padding-top: 64px !important;
+    padding-bottom: 80px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .v2-product-block {
+    padding: 32px 16px !important;
+  }
+  .v2-product-block-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    margin-bottom: 28px !important;
+  }
+  .v2-section-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+  .v2-section-header-row > div {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}

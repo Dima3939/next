@@ -57,7 +57,7 @@ export default function TechStack() {
       });
     };
 
-    // Initialize with AWS active as shown in Infisical reference
+    // Initialize with AWS active by default
     const awsTile = Array.from(tiles).find(t => t.getAttribute('aria-label') === 'AWS');
     if (awsTile) {
       applyColor(BRAND_COLORS['AWS'], awsTile);
