@@ -9,43 +9,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#07070a',
+        background: '#09090b',
         surface: {
-          50: '#191924',
-          100: '#12121c',
-          200: '#0c0c14',
-          DEFAULT: '#09090f',
+          50: '#1c1c22',
+          100: '#141418',
+          200: '#0e0e12',
+          DEFAULT: '#111115',
         },
-        endorphin: {
-          violet: '#6B1EEF',
-          cyan: '#0FC8CF',
-          lilac: '#CFABFF',
-          dark: '#08080d',
-          card: '#101018',
+        studio: {
+          accent: '#d4ff32', // Acid Lime - iconic modern studio accent
+          ivory: '#f4f3ef',
+          muted: '#9c9991',
+          subtle: '#2a2a30',
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['var(--font-space-grotesk)', 'system-ui', '-apple-system', 'sans-serif'],
-      },
-      animation: {
-        'pulse-glow': 'pulseGlow 6s ease-in-out infinite',
-        'float-slow': 'floatSlow 8s ease-in-out infinite',
-        marquee: 'marquee 28s linear infinite',
-      },
-      keyframes: {
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
-          '50%': { opacity: '0.6', transform: 'scale(1.05)' },
-        },
-        floatSlow: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
+        sans: ['var(--font-jakarta)', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['var(--font-syne)', 'var(--font-jakarta)', 'system-ui', 'sans-serif'],
       },
     },
   },

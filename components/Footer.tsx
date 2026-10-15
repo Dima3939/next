@@ -44,13 +44,13 @@ export default function Footer() {
                 </span>
               </div>
               <p className="text-xs text-zinc-400 font-light max-w-sm leading-relaxed">
-                Independent creative engineering & motion laboratory. We build architectural
-                digital artifacts, real-time shaders, and bespoke interactive systems.
+                Independent creative engineering laboratory. We construct architectural digital
+                artifacts, real-time shaders, and bespoke interactive systems.
               </p>
             </div>
 
             <div className="mt-8 text-xs font-mono text-zinc-500 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#d4ff32] animate-pulse" />
               <span>Studio HQ: Zurich, CH • {time || '12:00:00'} CET</span>
             </div>
           </div>
@@ -60,11 +60,11 @@ export default function Footer() {
             <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 block mb-4">
               Directory
             </span>
-            <ul className="space-y-2 text-xs text-zinc-400">
-              <li><a href="#work" className="hover:text-white transition-colors">Selected Work</a></li>
-              <li><a href="#capabilities" className="hover:text-white transition-colors">Studio Capabilities</a></li>
-              <li><a href="#methodology" className="hover:text-white transition-colors">Production Methodology</a></li>
-              <li><a href="#philosophy" className="hover:text-white transition-colors">Studio Philosophy</a></li>
+            <ul className="space-y-2 text-xs text-zinc-400 font-mono">
+              <li><a href="#work" className="hover:text-white transition-colors">01 Selected Work</a></li>
+              <li><a href="#capabilities" className="hover:text-white transition-colors">02 Capabilities</a></li>
+              <li><a href="#methodology" className="hover:text-white transition-colors">03 Methodology</a></li>
+              <li><a href="#philosophy" className="hover:text-white transition-colors">04 Philosophy</a></li>
             </ul>
           </div>
 
@@ -86,7 +86,7 @@ export default function Footer() {
             <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 block mb-4">
               Network
             </span>
-            <ul className="space-y-2.5 text-xs text-zinc-400">
+            <ul className="space-y-2.5 text-xs text-zinc-400 font-mono">
               <li>
                 <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
                   X / Twitter
@@ -103,8 +103,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://github.com/Dima3939/next" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
-                  <Github className="w-3.5 h-3.5" /> GitHub Source
+                <a href="https://github.com/Dima3939/next" target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5">
+                  <Github className="w-3.5 h-3.5" /> Source Code
                 </a>
               </li>
             </ul>
@@ -113,7 +113,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
-          <div>© {new Date().getFullYear()} MONOLITH Studio. Engineered for Dima3939.</div>
+          <div>© {new Date().getFullYear()} MONOLITH Studio. Creative engineering & interactive systems. All rights reserved.</div>
 
           <button
             onClick={scrollToTop}

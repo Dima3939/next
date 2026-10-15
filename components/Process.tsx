@@ -58,7 +58,7 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-8 rounded-3xl bg-[#0c0c14] border border-white/[0.08] hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
+              className="p-8 rounded-3xl bg-[#0e0e13] border border-white/[0.08] hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-8">

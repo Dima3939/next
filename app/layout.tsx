@@ -1,17 +1,19 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Syne, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({
+const syne = Syne({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-syne',
   display: 'swap',
+  weight: ['500', '700', '800'],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-jakarta',
   display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -39,7 +41,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#07070a',
+  themeColor: '#09090b',
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,
@@ -51,11 +53,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`dark ${syne.variable} ${jakarta.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="bg-[#07070a] text-zinc-100 font-sans antialiased selection:bg-white/20 selection:text-white min-h-screen relative">
+      <body className="bg-[#09090b] text-[#f4f3ef] font-sans antialiased selection:bg-[#d4ff32] selection:text-black min-h-screen relative">
         {children}
       </body>
     </html>

@@ -40,7 +40,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative pt-36 pb-20 md:pt-48 md:pb-28 px-6 overflow-hidden">
+    <section className="relative pt-36 pb-20 md:pt-44 md:pb-28 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           variants={containerVariants}
@@ -50,7 +50,7 @@ export default function Hero() {
         >
           {/* Top Label */}
           <motion.div variants={itemVariants} className="mb-6 flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#d4ff32] animate-pulse" />
             <span className="text-xs font-mono tracking-[0.25em] text-zinc-400 uppercase">
               MONOLITH® • Creative Engineering & Motion Lab
             </span>
@@ -76,7 +76,7 @@ export default function Hero() {
               <div className="flex flex-wrap items-center gap-3">
                 <a
                   href="#work"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-zinc-200 transition-all shadow-[0_0_25px_rgba(255,255,255,0.25)]"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#d4ff32] text-black font-bold text-xs tracking-wider uppercase hover:bg-[#c3ec29] transition-all shadow-[0_0_25px_rgba(212,255,50,0.25)]"
                 >
                   <span>Explore Selected Work</span>
                   <ArrowDownRight className="w-4 h-4" />
@@ -92,15 +92,15 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Cinematic Showreel Showcase Frame with Real Image Background */}
+          {/* Cinematic Showreel Showcase Frame with Real Liquid Mercury Imagery */}
           <motion.div
             variants={itemVariants}
             className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 bg-[#0d0d14] shadow-2xl mb-16 group"
           >
-            {/* Real High-Res 3D Fluid Render Imagery */}
+            {/* Real High-Res Tactile Liquid Chrome Imagery */}
             <div className="relative aspect-[21/9] min-h-[320px] sm:min-h-[460px] w-full overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1600&auto=format&fit=crop"
                 alt="MONOLITH 3D Motion Render"
                 className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105"
               />
@@ -122,7 +122,7 @@ export default function Hero() {
                           repeatType: 'reverse',
                           delay: i * 0.1,
                         }}
-                        className="w-0.5 bg-cyan-400 rounded-full"
+                        className="w-0.5 bg-[#d4ff32] rounded-full"
                         style={{ height: `${val * 100}%` }}
                       />
                     ))}
@@ -135,7 +135,7 @@ export default function Hero() {
                   className="p-2.5 rounded-full bg-black/70 hover:bg-black backdrop-blur-md border border-white/10 text-zinc-300 hover:text-white transition-colors"
                   aria-label="Toggle Audio"
                 >
-                  {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-cyan-400" />}
+                  {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-[#d4ff32]" />}
                 </button>
               </div>
 
@@ -159,7 +159,7 @@ export default function Hero() {
               {/* Bottom Info Bar */}
               <div className="absolute bottom-4 inset-x-6 z-10 flex items-center justify-between text-xs font-mono text-zinc-400 border-t border-white/10 pt-3">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#d4ff32] animate-pulse" />
                   <span className="text-white">Studio HQ: Zurich & London</span>
                 </div>
                 <div className="hidden sm:block">Awwwards SOTD × 14 Winner</div>

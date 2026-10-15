@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #09090e;
-  --foreground: #f4f4f6;
+  --background: #09090b;
+  --foreground: #f4f3ef;
 }
 
 * {
@@ -13,33 +13,33 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #09090e;
-  color: #f4f4f6;
+  background-color: #09090b;
+  color: #f4f3ef;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background-color: #09090e;
-  color: #f4f4f6;
+  background-color: #09090b;
+  color: #f4f3ef;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Custom Scrollbar */
+/* Custom Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090e;
+  background: #09090b;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e1e2c;
+  background: #222226;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e2e42;
+  background: #33333a;
 }
 
 /* Smooth Infinite Marquee */
@@ -51,37 +51,33 @@ body {
 .animate-marquee {
   display: flex;
   width: 200%;
-  animation: marqueeLeft 30s linear infinite;
+  animation: marqueeLeft 35s linear infinite;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
 }
 
-/* Studio Asymmetric Bento Card */
-.bento-card {
+/* Architectural Studio Card */
+.studio-card {
   position: relative;
-  background: #11111a;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 20px;
+  background: #111115;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.bento-card:hover {
-  border-color: rgba(107, 30, 239, 0.45);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(107, 30, 239, 0.15);
+.studio-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
 }
 
-/* Clean Editorial Text Gradients */
-.text-gradient-purple {
-  background: linear-gradient(135deg, #CFABFF 0%, #6B1EEF 60%, #0FC8CF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Editorial typography tweaks */
+.tracking-architectural {
+  letter-spacing: -0.035em;
 }
 
-/* Dot grid */
-.bg-subtle-grid {
-  background-size: 32px 32px;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+.font-editorial {
+  font-family: var(--font-syne), var(--font-jakarta), system-ui, sans-serif;
 }

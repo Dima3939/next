@@ -54,10 +54,10 @@ export default function Metrics() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-8 rounded-3xl bg-[#0c0c14] border border-white/[0.08] hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
+              className="p-8 rounded-3xl bg-[#0e0e13] border border-white/[0.08] hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider block mb-2">
+                <span className="text-xs font-mono text-[#d4ff32] uppercase tracking-wider block mb-2">
                   {item.subtitle}
                 </span>
                 <h3 className="text-xl font-bold text-white mb-3 font-display">{item.title}</h3>
@@ -70,7 +70,7 @@ export default function Metrics() {
         </div>
 
         {/* Studio Capacity Banner */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-[#14141c] via-[#0d0d14] to-[#0a0a0f] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="p-8 sm:p-10 rounded-3xl bg-[#0e0e13] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <div className="w-8 h-10 bg-white flex items-center justify-center shrink-0">
               <div className="w-0.5 h-full bg-black/40 mr-auto ml-1" />
@@ -87,7 +87,7 @@ export default function Metrics() {
 
           <a
             href="#contact"
-            className="px-6 py-3.5 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-zinc-200 transition-colors shrink-0"
+            className="px-6 py-3.5 rounded-full bg-[#d4ff32] text-black font-bold text-xs tracking-wider uppercase hover:bg-[#c3ec29] transition-colors shrink-0 shadow-[0_0_20px_rgba(212,255,50,0.25)]"
           >
             Inquire Availability
           </a>

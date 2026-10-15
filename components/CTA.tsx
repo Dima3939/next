@@ -29,14 +29,15 @@ export default function CTA() {
   return (
     <section id="contact" className="relative py-28 md:py-36 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="relative rounded-3xl bg-[#0c0c14] border border-white/10 p-8 sm:p-12 md:p-16 overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-purple-900/10 rounded-full blur-[110px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-900/10 rounded-full blur-[110px] pointer-events-none" />
+        <div className="relative rounded-3xl bg-[#0e0e13] border border-white/10 p-8 sm:p-12 md:p-16 overflow-hidden shadow-2xl">
+          {/* Subtle Monochromatic Studio Ambient Glow */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-zinc-700/[0.08] rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#d4ff32]/[0.03] rounded-full blur-[120px] pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left info */}
             <div className="lg:col-span-5">
-              <span className="text-xs font-mono uppercase tracking-[0.25em] text-cyan-400 block mb-3">
+              <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#d4ff32] block mb-3">
                 Project Transmission
               </span>
 
@@ -56,11 +57,11 @@ export default function CTA() {
                   className="inline-flex items-center justify-between px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 text-xs font-mono text-zinc-300 hover:text-white transition-colors"
                 >
                   <span className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-cyan-400" />
+                    <Mail className="w-4 h-4 text-[#d4ff32]" />
                     studio@monolith.design
                   </span>
                   {copied ? (
-                    <span className="flex items-center gap-1 text-emerald-400">
+                    <span className="flex items-center gap-1 text-[#d4ff32]">
                       <CheckCheck className="w-3.5 h-3.5" /> Copied
                     </span>
                   ) : (
@@ -80,7 +81,7 @@ export default function CTA() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="p-8 rounded-2xl bg-white/[0.03] border border-white/15 text-center"
                 >
-                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
+                  <div className="w-12 h-12 rounded-full bg-[#d4ff32]/20 text-[#d4ff32] flex items-center justify-center mx-auto mb-4 border border-[#d4ff32]/30">
                     <Check className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2 font-display">Transmission Received</h3>
@@ -101,9 +102,9 @@ export default function CTA() {
                           key={d}
                           type="button"
                           onClick={() => setSelectedDiscipline(d)}
-                          className={`py-2 px-3 rounded-xl text-xs font-medium text-center transition-all ${
+                          className={`py-2 px-3 rounded-xl text-xs font-mono text-center transition-all ${
                             selectedDiscipline === d
-                              ? 'bg-white text-black font-semibold'
+                              ? 'bg-[#d4ff32] text-black font-bold shadow-[0_0_15px_rgba(212,255,50,0.25)]'
                               : 'bg-white/5 border border-white/5 text-zinc-400 hover:text-white'
                           }`}
                         >
@@ -126,7 +127,7 @@ export default function CTA() {
                           onClick={() => setSelectedBudget(b)}
                           className={`py-2 px-3 rounded-xl text-xs font-mono text-center transition-all ${
                             selectedBudget === b
-                              ? 'bg-white text-black font-semibold'
+                              ? 'bg-[#d4ff32] text-black font-bold shadow-[0_0_15px_rgba(212,255,50,0.25)]'
                               : 'bg-white/5 border border-white/5 text-zinc-400 hover:text-white'
                           }`}
                         >
@@ -145,7 +146,7 @@ export default function CTA() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="Your Name / Studio"
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-white/30 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#d4ff32]/50 transition-colors"
                       />
                     </div>
                     <div>
@@ -155,7 +156,7 @@ export default function CTA() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="Work Email"
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-white/30 transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#d4ff32]/50 transition-colors"
                       />
                     </div>
                   </div>
@@ -166,13 +167,13 @@ export default function CTA() {
                       value={formData.brief}
                       onChange={(e) => setFormData({ ...formData, brief: e.target.value })}
                       placeholder="Briefly describe your product vision, timeline, and goals..."
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-white/30 transition-colors resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#d4ff32]/50 transition-colors resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl bg-white text-black font-bold text-xs tracking-wider uppercase transition-all duration-300 hover:bg-zinc-200 flex items-center justify-center gap-2 group shadow-[0_0_25px_rgba(255,255,255,0.25)]"
+                    className="w-full py-4 rounded-xl bg-[#d4ff32] text-black font-bold text-xs tracking-wider uppercase transition-all duration-300 hover:bg-[#c3ec29] flex items-center justify-center gap-2 group shadow-[0_0_25px_rgba(212,255,50,0.25)]"
                   >
                     <span>Submit Project Brief</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

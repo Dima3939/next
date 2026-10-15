@@ -95,7 +95,7 @@ export default function Services() {
                   onClick={() => setActiveTab(idx)}
                   className={`p-6 sm:p-7 rounded-2xl cursor-pointer transition-all duration-300 border ${
                     isSelected
-                      ? 'bg-[#11111a] border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
+                      ? 'bg-[#111118] border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
                       : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04] hover:border-white/10'
                   }`}
                 >
@@ -104,7 +104,7 @@ export default function Services() {
                       <span className="font-mono text-xs text-zinc-500">{cap.id}</span>
                       <div
                         className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
-                          isSelected ? 'bg-white text-black' : 'bg-white/5 text-zinc-400'
+                          isSelected ? 'bg-[#d4ff32] text-black' : 'bg-white/5 text-zinc-400'
                         }`}
                       >
                         <Icon className="w-5 h-5" />
@@ -119,7 +119,7 @@ export default function Services() {
 
                     <ArrowRight
                       className={`w-4 h-4 transition-transform duration-300 shrink-0 mt-1 ${
-                        isSelected ? 'text-white translate-x-1' : 'text-zinc-600'
+                        isSelected ? 'text-[#d4ff32] translate-x-1' : 'text-zinc-600'
                       }`}
                     />
                   </div>
@@ -131,7 +131,7 @@ export default function Services() {
                       <div className="grid grid-cols-1 gap-2">
                         {cap.deliverables.map((d) => (
                           <div key={d} className="flex items-center gap-2 text-xs text-zinc-400">
-                            <Check className="w-3.5 h-3.5 text-cyan-400" />
+                            <Check className="w-3.5 h-3.5 text-[#d4ff32]" />
                             <span>{d}</span>
                           </div>
                         ))}
@@ -150,7 +150,7 @@ export default function Services() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.35 }}
-              className="rounded-3xl bg-[#0c0c14] border border-white/15 p-8 shadow-2xl relative overflow-hidden"
+              className="rounded-3xl bg-[#0e0e13] border border-white/15 p-8 shadow-2xl relative overflow-hidden"
             >
               <div className="flex items-center justify-between text-xs font-mono text-zinc-500 mb-6">
                 <span>PILLAR {CAPABILITIES[activeTab].id}</span>
@@ -171,7 +171,7 @@ export default function Services() {
                 </span>
                 {CAPABILITIES[activeTab].deliverables.map((item) => (
                   <div key={item} className="flex items-center gap-2.5 text-xs text-zinc-300">
-                    <Check className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <Check className="w-4 h-4 text-[#d4ff32] shrink-0" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -179,7 +179,7 @@ export default function Services() {
 
               <a
                 href="#contact"
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-zinc-200 transition-colors"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full bg-[#d4ff32] text-black font-bold text-xs tracking-wider uppercase hover:bg-[#c3ec29] transition-colors"
               >
                 <span>Request Scope & Timeline</span>
                 <ArrowRight className="w-3.5 h-3.5" />

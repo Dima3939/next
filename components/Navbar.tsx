@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { name: 'SELECTED WORK', href: '#work' },
+  { name: 'WORK', href: '#work' },
   { name: 'CAPABILITIES', href: '#capabilities' },
   { name: 'METHODOLOGY', href: '#methodology' },
   { name: 'PHILOSOPHY', href: '#philosophy' },
@@ -24,32 +24,31 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'py-4 bg-[#07070a]/90 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
-          : 'py-6 bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <header className="fixed top-4 sm:top-6 inset-x-0 z-50 flex justify-center pointer-events-none px-4 sm:px-6">
+      <div
+        className={`w-full max-w-5xl rounded-full px-5 sm:px-7 py-3 transition-all duration-300 flex items-center justify-between pointer-events-auto ${
+          scrolled
+            ? 'bg-[#0e0e13]/85 backdrop-blur-2xl border border-white/[0.09] shadow-[0_20px_45px_rgba(0,0,0,0.7)]'
+            : 'bg-[#0e0e13]/40 backdrop-blur-lg border border-white/[0.05]'
+        }`}
+      >
         {/* Monolith Logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="relative w-6 h-7 bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-            <div className="w-[2px] h-full bg-black/40 mr-auto ml-1" />
-            <div className="absolute -inset-1 bg-white/20 blur-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <a href="#" className="flex items-center gap-2.5 group">
+          <div className="relative w-5 h-6 bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <div className="w-[1.5px] h-full bg-black/40 mr-auto ml-1" />
           </div>
-          <span className="font-display font-black text-xl tracking-[0.22em] text-white uppercase">
-            MONOLITH<span className="text-zinc-500 text-xs font-mono font-normal ml-1">®</span>
+          <span className="font-display font-black text-sm sm:text-base tracking-[0.25em] text-white uppercase">
+            MONOLITH<span className="text-zinc-500 text-[10px] font-mono font-normal ml-1">®</span>
           </span>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/[0.08] px-4 py-1.5 rounded-full backdrop-blur-lg">
+        <nav className="hidden md:flex items-center gap-1">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-xs font-semibold tracking-wider text-zinc-400 hover:text-white px-3.5 py-1.5 rounded-full transition-colors hover:bg-white/[0.06]"
+              className="text-xs font-mono font-medium tracking-wider text-zinc-400 hover:text-white px-3.5 py-1.5 rounded-full transition-colors hover:bg-white/[0.06]"
             >
               {item.name}
             </a>
@@ -59,13 +58,13 @@ export default function Navbar() {
         {/* Right CTA */}
         <div className="hidden md:flex items-center gap-5">
           <div className="flex items-center gap-2 text-[11px] font-mono text-zinc-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Available for Q4</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d4ff32] animate-pulse" />
+            <span>Available Q4</span>
           </div>
 
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase text-black bg-white hover:bg-zinc-200 transition-all duration-300 group shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            className="inline-flex items-center gap-2 px-4.5 py-2 rounded-full text-xs font-bold tracking-wider uppercase text-black bg-[#d4ff32] hover:bg-[#c3ec29] transition-all duration-300 group shadow-[0_0_20px_rgba(212,255,50,0.25)]"
           >
             <span>Initiate Project</span>
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -75,10 +74,10 @@ export default function Navbar() {
         {/* Mobile menu button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-zinc-400 hover:text-white rounded-lg border border-white/10 bg-white/5"
+          className="md:hidden p-2 text-zinc-300 hover:text-white rounded-full border border-white/10 bg-white/5"
           aria-label="Toggle navigation"
         >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
         </button>
       </div>
 
@@ -86,10 +85,10 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#07070a]/98 border-b border-white/[0.08] backdrop-blur-2xl px-6 py-6"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="fixed top-20 inset-x-4 bg-[#0e0e13]/98 border border-white/[0.1] rounded-3xl backdrop-blur-2xl p-6 shadow-2xl pointer-events-auto md:hidden"
           >
             <div className="flex flex-col gap-4">
               {NAV_ITEMS.map((item) => (
@@ -97,16 +96,16 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-sm font-semibold tracking-wider text-zinc-300 hover:text-white py-1"
+                  className="text-sm font-mono tracking-wider text-zinc-300 hover:text-white py-1.5 border-b border-white/5"
                 >
                   {item.name}
                 </a>
               ))}
-              <div className="pt-4 border-t border-white/10">
+              <div className="pt-2">
                 <a
                   href="#contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full inline-flex items-center justify-center py-3 rounded-full text-xs font-bold tracking-wider uppercase text-black bg-white"
+                  className="w-full inline-flex items-center justify-center py-3 rounded-full text-xs font-bold tracking-wider uppercase text-black bg-[#d4ff32]"
                 >
                   Initiate Project
                 </a>

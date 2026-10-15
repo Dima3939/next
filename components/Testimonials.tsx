@@ -51,14 +51,14 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.12 }}
-              className="p-8 rounded-3xl bg-[#0c0c14] border border-white/[0.08] hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
+              className="p-8 rounded-3xl bg-[#0e0e13] border border-white/[0.08] hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="text-xs font-mono text-cyan-400 uppercase tracking-wider">
+                  <div className="text-xs font-mono text-[#d4ff32] uppercase tracking-wider">
                     Verified Outcome
                   </div>
-                  <span className="text-xs font-mono text-emerald-400 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/20">
+                  <span className="text-xs font-mono text-zinc-300 px-3 py-1 rounded-full bg-white/5 border border-white/10">
                     {item.metric}
                   </span>
                 </div>
