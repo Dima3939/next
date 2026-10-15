@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <main className="mb-auto">
       <div 
-        className="v2-page no-scrollbar::-webkit-scrollbar relative overflow-x-hidden no-scrollbar md:overflow-x-clip min-h-screen" 
-        style={{ backgroundColor: 'var(--v2-color-bg-page, #0b0d10)' }}
+        className="v2-page no-scrollbar::-webkit-scrollbar relative overflow-x-hidden no-scrollbar md:overflow-x-clip min-h-screen bg-white" 
+        style={{ backgroundColor: 'var(--v2-color-bg-page, #ffffff)' }}
       >
         <div className="v2-grain-overlay pointer-events-none" aria-hidden="true"></div>
         

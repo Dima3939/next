@@ -1,7 +1,287 @@
-import React from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
 
 export default function Navbar() {
+  const [isVaultActive, setIsVaultActive] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const vaultEl = document.getElementById('v2-vault-section');
+      if (!vaultEl) return;
+      
+      const rect = vaultEl.getBoundingClientRect();
+      // When top of vault touches navbar (56px) and bottom hasn't scrolled past
+      if (rect.top <= 56 && rect.bottom >= 56) {
+        setIsVaultActive(true);
+      } else {
+        setIsVaultActive(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div dangerouslySetInnerHTML={{ __html: "<nav class=\"fixed inset-x-0 z-50 bg-v2-bg\" style=\"top:0;height:56px;transition:background-color var(--v2-dur-base) var(--v2-ease-out), color var(--v2-dur-base) var(--v2-ease-out)\" aria-label=\"Main navigation\"><div class=\"v2-grain-overlay pointer-events-none\" aria-hidden=\"true\" style=\"opacity:0;transition:opacity var(--v2-dur-base) var(--v2-ease-out)\"></div><div class=\"pointer-events-none absolute left-0 right-0 z-20 bg-v2-border \" style=\"height:var(--v2-border-width);bottom:0\"></div><div class=\"pointer-events-none absolute bottom-0 left-0 top-0\" style=\"width:calc(max((100% - var(--v2-max-width)) / 2, 0px) + var(--v2-content-padding))\"></div><div class=\"pointer-events-none absolute bottom-0 right-0 top-0\" style=\"width:calc(max((100% - var(--v2-max-width)) / 2, 0px) + var(--v2-content-padding))\"></div><div class=\"relative mx-auto h-full\" style=\"max-width:var(--v2-max-width)\"><div class=\"flex h-full items-center justify-between\" style=\"padding:0 var(--v2-grid-padding)\"><a class=\"flex shrink-0 items-center\" aria-label=\"MONOLITH home\" href=\"/\"><span style=\"display:inline-flex;line-height:0\"><div class=\"flex items-center gap-2 font-mono text-[14px] font-bold tracking-tight text-[#ebebeb]\"><span class=\"w-2 h-2 rounded-full bg-[#c2d72a]\"></span>MONOLITH</div></span></a><nav class=\"hidden h-full items-stretch gap-5 min-[1100px]:flex xl:gap-8\" aria-label=\"Site links\"><div class=\"relative h-full\"><button type=\"button\" aria-haspopup=\"menu\" aria-expanded=\"false\" aria-controls=\"v2-nav-platform\" class=\"v2-nav-link group relative flex h-full items-center font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"color:var(--v2-nav-text);gap:4px\">Platform<svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\" style=\"transition:transform var(--v2-dur-fast) var(--v2-ease-out);transform:rotate(0deg);flex-shrink:0\"><path d=\"M2 4l3 3 3-3\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span aria-hidden=\"true\" class=\"absolute bottom-0 left-0 right-0 h-px origin-left scale-x-0 transition-transform duration-150 group-hover:scale-x-100\" style=\"background-color:var(--v2-color-accent-lime);transition-timing-function:cubic-bezier(0.23, 1, 0.32, 1)\"></span></button><div id=\"v2-nav-platform\" role=\"menu\" aria-label=\"Platform\" class=\"absolute\" style=\"top:calc(100% - 1px);left:-14px;min-width:240px;background-color:var(--v2-color-bg);border:1px solid var(--v2-color-border);padding:10px 0;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1)\"><a role=\"menuitem\" class=\"v2-nav-link group flex items-center whitespace-nowrap font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"--item-accent:var(--v2-product-secrets-ink);color:var(--v2-nav-text);padding:8px 14px;gap:10px\" href=\"/platform/secrets-management\"><svg width=\"16\" height=\"16\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\" class=\"shrink-0 transition-colors duration-150 [color:var(--v2-nav-text)] group-hover:[color:var(--item-accent)]\"><path d=\"M10 12C10 14.2091 8.20914 16 6 16C3.79086 16 2 14.2091 2 12C2 9.79086 3.79086 8 6 8C8.20914 8 10 9.79086 10 12ZM10 12H22V15\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M18 12V15\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>Next.js 14 Core</a><a role=\"menuitem\" class=\"v2-nav-link group flex items-center whitespace-nowrap font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"--item-accent:var(--v2-product-cert-ink);color:var(--v2-nav-text);padding:8px 14px;gap:10px\" href=\"/platform/certificate-management\"><svg width=\"16\" height=\"16\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\" class=\"shrink-0 transition-colors duration-150 [color:var(--v2-nav-text)] group-hover:[color:var(--item-accent)]\"><path d=\"M8.5 11.5L11.5 14.5L16.5 9.5\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M5 18L3.13036 4.91253C3.05646 4.39524 3.39389 3.91247 3.90398 3.79912L11.5661 2.09641C11.8519 2.03291 12.1481 2.03291 12.4339 2.09641L20.096 3.79912C20.6061 3.91247 20.9435 4.39524 20.8696 4.91252L19 18C18.9293 18.495 18.5 21.5 12 21.5C5.5 21.5 5.07071 18.495 5 18Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>Design Systems</a><a role=\"menuitem\" class=\"v2-nav-link group flex items-center whitespace-nowrap font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"--item-accent:var(--v2-product-pam-ink);color:var(--v2-nav-text);padding:8px 14px;gap:10px\" href=\"/platform/pam\"><svg width=\"16\" height=\"16\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\" class=\"shrink-0 transition-colors duration-150 [color:var(--v2-nav-text)] group-hover:[color:var(--item-accent)]\"><path d=\"M2 20V19C2 15.134 5.13401 12 9 12V12\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M15.8038 12.3135C16.4456 11.6088 17.5544 11.6088 18.1962 12.3135V12.3135C18.5206 12.6697 18.9868 12.8628 19.468 12.8403V12.8403C20.4201 12.7958 21.2042 13.5799 21.1597 14.532V14.532C21.1372 15.0132 21.3303 15.4794 21.6865 15.8038V15.8038C22.3912 16.4456 22.3912 17.5544 21.6865 18.1962V18.1962C21.3303 18.5206 21.1372 18.9868 21.1597 19.468V19.468C21.2042 20.4201 20.4201 21.2042 19.468 21.1597V21.1597C18.9868 21.1372 18.5206 21.3303 18.1962 21.6865V21.6865C17.5544 22.3912 16.4456 22.3912 15.8038 21.6865V21.6865C15.4794 21.3303 15.0132 21.1372 14.532 21.1597V21.1597C13.5799 21.2042 12.7958 20.4201 12.8403 19.468V19.468C12.8628 18.9868 12.6697 18.5206 12.3135 18.1962V18.1962C11.6088 17.5544 11.6088 16.4456 12.3135 15.8038V15.8038C12.6697 15.4794 12.8628 15.0132 12.8403 14.532V14.532C12.7958 13.5799 13.5799 12.7958 14.532 12.8403V12.8403C15.0132 12.8628 15.4794 12.6697 15.8038 12.3135V12.3135Z\" stroke=\"currentColor\"></path><path d=\"M15.3636 17L16.4546 18.0909L18.6364 15.9091\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M9 12C11.2091 12 13 10.2091 13 8C13 5.79086 11.2091 4 9 4C6.79086 4 5 5.79086 5 8C5 10.2091 6.79086 12 9 12Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>Edge Infrastructure</a><a role=\"menuitem\" class=\"v2-nav-link group flex items-center whitespace-nowrap font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"--item-accent:var(--v2-product-secrets-ink);color:var(--v2-nav-text);padding:8px 14px;gap:10px\" href=\"/platform/agent-vault\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\" class=\"shrink-0 transition-colors duration-150 [color:var(--v2-nav-text)] group-hover:[color:var(--item-accent)]\"><path d=\"M3 19V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19Z\" stroke=\"currentColor\"></path><path d=\"M10 15C8.34315 15 7 13.6569 7 12C7 10.3431 8.34315 9 10 9C11.6569 9 13 10.3431 13 12C13 13.6569 11.6569 15 10 15Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M18 14L18 10\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M12.5 9.5L13.5 8.5\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M7.5 9.5L6.5 8.5\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M6.5 15.5L7.5 14.5\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M13.5 15.5L12.5 14.5\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M2 8L3 8\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M2 6L3 6\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M3 16H2\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M3 18H2\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>3D WebGL Canvas</a></div></div><a class=\"v2-nav-link group relative flex h-full items-center font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"color:var(--v2-nav-text)\" href=\"/pricing\">Pricing<span aria-hidden=\"true\" class=\"absolute bottom-0 left-0 right-0 h-px origin-left scale-x-0 transition-transform duration-150 group-hover:scale-x-100\" style=\"background-color:var(--v2-color-accent-lime);transition-timing-function:cubic-bezier(0.23, 1, 0.32, 1)\"></span></a><div class=\"relative h-full\"><button type=\"button\" aria-haspopup=\"menu\" aria-expanded=\"false\" aria-controls=\"v2-nav-developers\" class=\"v2-nav-link group relative flex h-full items-center font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"color:var(--v2-nav-text);gap:4px\">Developers<svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\" style=\"transition:transform var(--v2-dur-fast) var(--v2-ease-out);transform:rotate(0deg);flex-shrink:0\"><path d=\"M2 4l3 3 3-3\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span aria-hidden=\"true\" class=\"absolute bottom-0 left-0 right-0 h-px origin-left scale-x-0 transition-transform duration-150 group-hover:scale-x-100\" style=\"background-color:var(--v2-color-accent-lime);transition-timing-function:cubic-bezier(0.23, 1, 0.32, 1)\"></span></button><div id=\"v2-nav-developers\" role=\"menu\" aria-label=\"Developers\" class=\"absolute\" style=\"top:calc(100% - 1px);left:-14px;min-width:240px;background-color:var(--v2-color-bg);border:1px solid var(--v2-color-border);padding:10px 0;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1)\"><a role=\"menuitem\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"v2-nav-link group flex items-center whitespace-nowrap font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"--item-accent:var(--v2-color-accent-green);color:var(--v2-nav-text);padding:8px 14px;gap:10px\" href=\"https://infisical.com/docs\"><svg width=\"16\" stroke-width=\"1.5\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\" class=\"shrink-0 transition-colors duration-150 [color:var(--v2-nav-text)] group-hover:[color:var(--item-accent)]\"><path d=\"M4 19V5C4 3.89543 4.89543 3 6 3H19.4C19.7314 3 20 3.26863 20 3.6V16.7143\" stroke=\"currentColor\" stroke-linecap=\"round\"></path><path d=\"M6 17L20 17\" stroke=\"currentColor\" stroke-linecap=\"round\"></path><path d=\"M6 21L20 21\" stroke=\"currentColor\" stroke-linecap=\"round\"></path><path d=\"M6 21C4.89543 21 4 20.1046 4 19C4 17.8954 4.89543 17 6 17\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M9 7L15 7\" stroke=\"currentColor\" stroke-linecap=\"round\"></path></svg>Docs</a><a role=\"menuitem\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"v2-nav-link group flex items-center whitespace-nowrap font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"--item-accent:var(--v2-color-accent-green);color:var(--v2-nav-text);padding:8px 14px;gap:10px\" href=\"https://community.infisical.com\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\" class=\"shrink-0 transition-colors duration-150 [color:var(--v2-nav-text)] group-hover:[color:var(--item-accent)]\"><path d=\"M7 18V17C7 14.2386 9.23858 12 12 12V12C14.7614 12 17 14.2386 17 17V18\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M1 18V17C1 15.3431 2.34315 14 4 14V14\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M23 18V17C23 15.3431 21.6569 14 20 14V14\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M4 14C5.10457 14 6 13.1046 6 12C6 10.8954 5.10457 10 4 10C2.89543 10 2 10.8954 2 12C2 13.1046 2.89543 14 4 14Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M20 14C21.1046 14 22 13.1046 22 12C22 10.8954 21.1046 10 20 10C18.8954 10 18 10.8954 18 12C18 13.1046 18.8954 14 20 14Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>Community</a></div></div><div class=\"relative h-full\"><button type=\"button\" aria-haspopup=\"menu\" aria-expanded=\"false\" aria-controls=\"v2-nav-resources\" class=\"v2-nav-link group relative flex h-full items-center font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"color:var(--v2-nav-text);gap:4px\">Resources<svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\" style=\"transition:transform var(--v2-dur-fast) var(--v2-ease-out);transform:rotate(0deg);flex-shrink:0\"><path d=\"M2 4l3 3 3-3\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span aria-hidden=\"true\" class=\"absolute bottom-0 left-0 right-0 h-px origin-left scale-x-0 transition-transform duration-150 group-hover:scale-x-100\" style=\"background-color:var(--v2-color-accent-lime);transition-timing-function:cubic-bezier(0.23, 1, 0.32, 1)\"></span></button><div id=\"v2-nav-resources\" role=\"menu\" aria-label=\"Resources\" class=\"absolute\" style=\"top:calc(100% - 1px);left:-14px;min-width:240px;background-color:var(--v2-color-bg);border:1px solid var(--v2-color-border);padding:10px 0;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1)\"><a role=\"menuitem\" class=\"v2-nav-link group flex items-center whitespace-nowrap font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"--item-accent:var(--v2-color-accent-green);color:var(--v2-nav-text);padding:8px 14px;gap:10px\" href=\"/blog\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\" class=\"shrink-0 transition-colors duration-150 [color:var(--v2-nav-text)] group-hover:[color:var(--item-accent)]\"><path d=\"M2.90602 17.505L5.33709 3.71766C5.5289 2.62987 6.56621 1.90354 7.654 2.09534L19.4717 4.17912C20.5595 4.37093 21.2858 5.40824 21.094 6.49603L18.6629 20.2833C18.4711 21.3711 17.4338 22.0975 16.346 21.9057L4.52834 19.8219C3.44055 19.6301 2.71421 18.5928 2.90602 17.505Z\" stroke=\"currentColor\"></path><path d=\"M8.92902 6.38184L16.8075 7.77102\" stroke=\"currentColor\" stroke-linecap=\"round\"></path><path d=\"M8.23444 10.3213L16.1129 11.7105\" stroke=\"currentColor\" stroke-linecap=\"round\"></path><path d=\"M7.53986 14.2607L12.4639 15.129\" stroke=\"currentColor\" stroke-linecap=\"round\"></path></svg>Blog</a><a role=\"menuitem\" class=\"v2-nav-link group flex items-center whitespace-nowrap font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"--item-accent:var(--v2-color-accent-green);color:var(--v2-nav-text);padding:8px 14px;gap:10px\" href=\"/videos\"><svg width=\"16\" height=\"16\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\" class=\"shrink-0 transition-colors duration-150 [color:var(--v2-nav-text)] group-hover:[color:var(--item-accent)]\"><path d=\"M21 3.6V20.4C21 20.7314 20.7314 21 20.4 21H3.6C3.26863 21 3 20.7314 3 20.4V3.6C3 3.26863 3.26863 3 3.6 3H20.4C20.7314 3 21 3.26863 21 3.6Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M9.89768 8.51296C9.49769 8.28439 9 8.57321 9 9.03391V14.9661C9 15.4268 9.49769 15.7156 9.89768 15.487L15.0883 12.5209C15.4914 12.2906 15.4914 11.7094 15.0883 11.4791L9.89768 8.51296Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>Videos</a><a role=\"menuitem\" class=\"v2-nav-link group flex items-center whitespace-nowrap font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"--item-accent:var(--v2-color-accent-green);color:var(--v2-nav-text);padding:8px 14px;gap:10px\" href=\"/webinars\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\" class=\"shrink-0 transition-colors duration-150 [color:var(--v2-nav-text)] group-hover:[color:var(--item-accent)]\"><path d=\"M22 4.6V17.4C22 17.7314 21.7314 18 21.4 18H2.6C2.26863 18 2 17.7314 2 17.4V4.6C2 4.26863 2.26863 4 2.6 4H21.4C21.7314 4 22 4.26863 22 4.6Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M8.5 21.5L12 18L15.5 21.5\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M12 2V4\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M9 12V14\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M12 10V14\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M15 8V14\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>Webinars</a><a role=\"menuitem\" class=\"v2-nav-link group flex items-center whitespace-nowrap font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"--item-accent:var(--v2-color-accent-green);color:var(--v2-nav-text);padding:8px 14px;gap:10px\" href=\"/customers\"><svg width=\"16\" height=\"16\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\" class=\"shrink-0 transition-colors duration-150 [color:var(--v2-nav-text)] group-hover:[color:var(--item-accent)]\"><path d=\"M9 21H15M9 21V16M9 21H3.6C3.26863 21 3 20.7314 3 20.4V16.6C3 16.2686 3.26863 16 3.6 16H9M15 21V9M15 21H20.4C20.7314 21 21 20.7314 21 20.4V3.6C21 3.26863 20.7314 3 20.4 3H15.6C15.2686 3 15 3.26863 15 3.6V9M15 9H9.6C9.26863 9 9 9.26863 9 9.6V16\" stroke=\"currentColor\"></path></svg>Case Studies</a><div style=\"margin-top:6px\"><div class=\"font-v2-sans\" style=\"padding:10px 14px 6px;font-size:10px;letter-spacing:0.04em;text-transform:uppercase;color:var(--v2-color-text-muted);border-top:1px solid var(--v2-color-border)\">Compare</div><a role=\"menuitem\" class=\"v2-nav-link group flex items-center whitespace-nowrap font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"--item-accent:var(--v2-color-accent-green);color:var(--v2-nav-text);padding:8px 14px;gap:10px\" href=\"/infisical-vs-hashicorp-vault\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\" class=\"shrink-0 transition-colors duration-150 [color:var(--v2-nav-text)] group-hover:[color:var(--item-accent)]\"><path d=\"M18 21C19.1046 21 20 20.1046 20 19C20 17.8954 19.1046 17 18 17C16.8954 17 16 17.8954 16 19C16 20.1046 16.8954 21 18 21Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M6 7C7.10457 7 8 6.10457 8 5C8 3.89543 7.10457 3 6 3C4.89543 3 4 3.89543 4 5C4 6.10457 4.89543 7 6 7Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M18 17V7C18 7 18 5 16 5H13\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M6 7V17C6 17 6 19 8 19H11\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M15.0005 7.50012L12.5005 5.00012L15.0005 2.50012\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M8.5 16.5L11 19L8.5 21.5\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>MONOLITH Architecture</a></div></div></div><a class=\"v2-nav-link group relative flex h-full items-center font-v2-sans text-v2-b3 transition-colors duration-150 hover:text-v2-text\" style=\"color:var(--v2-nav-text)\" href=\"/careers\">Careers<span aria-hidden=\"true\" class=\"absolute bottom-0 left-0 right-0 h-px origin-left scale-x-0 transition-transform duration-150 group-hover:scale-x-100\" style=\"background-color:var(--v2-color-accent-lime);transition-timing-function:cubic-bezier(0.23, 1, 0.32, 1)\"></span></a></nav>" }} />
+    <nav 
+      className={`fixed inset-x-0 top-0 z-50 h-[56px] transition-colors duration-200 ease-out ${
+        isVaultActive 
+          ? 'bg-[#0e1014]/95 text-white border-b border-[#1f242d]' 
+          : 'bg-white/95 text-black border-b border-[#e5e7eb]'
+      } backdrop-blur-md`}
+      aria-label="Main navigation"
+    >
+      <div className="relative mx-auto h-full max-w-[var(--v2-max-width)] px-4 sm:px-6 md:px-8">
+        <div className="flex h-full items-center justify-between">
+          
+          {/* Logo */}
+          <a 
+            href="/next" 
+            className="flex shrink-0 items-center gap-2.5 font-mono text-[15px] font-bold tracking-tight select-none"
+            aria-label="MONOLITH home"
+          >
+            <span className="w-2.5 h-2.5 rounded-full bg-[#f5f841] border border-black/20 shrink-0"></span>
+            <span className={isVaultActive ? 'text-white' : 'text-black'}>MONOLITH</span>
+          </a>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden h-full items-stretch gap-6 lg:flex xl:gap-8 text-[13px] font-medium">
+            
+            {/* Platform */}
+            <div 
+              className="relative h-full flex items-center"
+              onMouseEnter={() => setActiveDropdown('platform')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button 
+                type="button" 
+                className={`group relative flex h-full items-center gap-1 transition-colors ${
+                  isVaultActive ? 'text-[#a1a1aa] hover:text-white' : 'text-[#4b5563] hover:text-black'
+                }`}
+              >
+                Platform
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="shrink-0">
+                  <path d="M2 4l3 3 3-3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="absolute bottom-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left bg-[#f5f841]" />
+              </button>
+
+              {activeDropdown === 'platform' && (
+                <div 
+                  className={`absolute top-[55px] left-0 min-w-[260px] py-2 border shadow-lg ${
+                    isVaultActive ? 'bg-[#14171d] border-[#2b303c] text-white' : 'bg-white border-[#e5e7eb] text-black'
+                  }`}
+                >
+                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                    <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    Secrets Management
+                  </a>
+                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                    <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                    Certificate Management (PKI)
+                  </a>
+                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                    <span className="w-2 h-2 rounded-full bg-rose-500"></span>
+                    Privileged Access (PAM)
+                  </a>
+                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                    <span className="w-2 h-2 rounded-full bg-[#f5f841]"></span>
+                    Agent Vault
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Pricing */}
+            <a 
+              href="https://infisical.com/pricing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group relative flex h-full items-center transition-colors ${
+                isVaultActive ? 'text-[#a1a1aa] hover:text-white' : 'text-[#4b5563] hover:text-black'
+              }`}
+            >
+              Pricing
+              <span className="absolute bottom-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left bg-[#f5f841]" />
+            </a>
+
+            {/* Developers */}
+            <div 
+              className="relative h-full flex items-center"
+              onMouseEnter={() => setActiveDropdown('devs')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button 
+                type="button" 
+                className={`group relative flex h-full items-center gap-1 transition-colors ${
+                  isVaultActive ? 'text-[#a1a1aa] hover:text-white' : 'text-[#4b5563] hover:text-black'
+                }`}
+              >
+                Developers
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="shrink-0">
+                  <path d="M2 4l3 3 3-3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="absolute bottom-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left bg-[#f5f841]" />
+              </button>
+
+              {activeDropdown === 'devs' && (
+                <div 
+                  className={`absolute top-[55px] left-0 min-w-[220px] py-2 border shadow-lg ${
+                    isVaultActive ? 'bg-[#14171d] border-[#2b303c] text-white' : 'bg-white border-[#e5e7eb] text-black'
+                  }`}
+                >
+                  <a href="https://infisical.com/docs" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                    Documentation
+                  </a>
+                  <a href="https://community.infisical.com" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                    Community
+                  </a>
+                  <a href="https://github.com/infisical/infisical" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                    GitHub Repository
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Resources */}
+            <div 
+              className="relative h-full flex items-center"
+              onMouseEnter={() => setActiveDropdown('resources')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button 
+                type="button" 
+                className={`group relative flex h-full items-center gap-1 transition-colors ${
+                  isVaultActive ? 'text-[#a1a1aa] hover:text-white' : 'text-[#4b5563] hover:text-black'
+                }`}
+              >
+                Resources
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="shrink-0">
+                  <path d="M2 4l3 3 3-3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="absolute bottom-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left bg-[#f5f841]" />
+              </button>
+
+              {activeDropdown === 'resources' && (
+                <div 
+                  className={`absolute top-[55px] left-0 min-w-[220px] py-2 border shadow-lg ${
+                    isVaultActive ? 'bg-[#14171d] border-[#2b303c] text-white' : 'bg-white border-[#e5e7eb] text-black'
+                  }`}
+                >
+                  <a href="https://infisical.com/blog" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                    Blog & Articles
+                  </a>
+                  <a href="https://infisical.com/customers" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                    Case Studies
+                  </a>
+                  <a href="https://infisical.com/webinars" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                    Webinars & Tech Talks
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Careers */}
+            <a 
+              href="https://infisical.com/careers"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group relative flex h-full items-center transition-colors ${
+                isVaultActive ? 'text-[#a1a1aa] hover:text-white' : 'text-[#4b5563] hover:text-black'
+              }`}
+            >
+              Careers
+              <span className="absolute bottom-0 left-0 right-0 h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-left bg-[#f5f841]" />
+            </a>
+          </div>
+
+          {/* Right Action Items */}
+          <div className="flex items-center gap-3 text-xs font-medium">
+            
+            {/* GitHub Stars Pill */}
+            <a 
+              href="https://github.com/infisical/infisical"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 transition-colors border ${
+                isVaultActive 
+                  ? 'border-[#2b303c] hover:bg-[#1a1f26] text-white' 
+                  : 'border-[#e5e7eb] hover:bg-gray-100 text-black'
+              }`}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+              <span>29.7k</span>
+            </a>
+
+            {/* Talk to an expert */}
+            <a 
+              href="https://infisical.com/talk-to-us"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 transition-colors border ${
+                isVaultActive 
+                  ? 'border-[#2b303c] text-white hover:bg-[#1a1f26]' 
+                  : 'border-[#e5e7eb] text-black hover:bg-gray-100'
+              }`}
+            >
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                <path d="M4.5 2.5L8 6l-3.5 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Talk to an expert
+            </a>
+
+            {/* Get started for free (Primary CTA) */}
+            <a 
+              href="https://app.infisical.com/signup"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center justify-center px-3.5 py-1.5 font-medium transition-colors ${
+                isVaultActive 
+                  ? 'bg-white text-black hover:bg-neutral-200' 
+                  : 'bg-black text-white hover:bg-neutral-800'
+              }`}
+            >
+              Get started for free
+            </a>
+
+            {/* Mobile menu button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`p-1.5 lg:hidden ${isVaultActive ? 'text-white' : 'text-black'}`}
+              aria-label="Toggle navigation menu"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className={`lg:hidden border-b px-4 py-4 space-y-3 ${
+          isVaultActive ? 'bg-[#0e1014] border-[#1f242d] text-white' : 'bg-white border-[#e5e7eb] text-black'
+        }`}>
+          <a href="/next" className="block py-1 text-sm font-medium">Platform</a>
+          <a href="https://infisical.com/pricing" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Pricing</a>
+          <a href="https://infisical.com/docs" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Developers</a>
+          <a href="https://infisical.com/blog" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Resources</a>
+          <a href="https://infisical.com/careers" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Careers</a>
+          <a href="https://infisical.com/talk-to-us" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium text-emerald-600">Talk to an expert &rarr;</a>
+        </div>
+      )}
+    </nav>
   );
 }

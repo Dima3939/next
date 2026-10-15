@@ -3,16 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --v2-color-bg: #0e1014;
-  --v2-color-bg-page: #0b0d10;
-  --v2-color-border: #26272b;
-  --v2-color-frame: #323439;
-  --v2-color-tint: #1e1f22;
-  --v2-color-text: #ebebeb;
-  --v2-color-text-muted: rgba(228, 228, 231, 0.5);
-  --v2-color-text-subtle: #adaeb0;
-  --v2-color-volt: #c2d72a;
-  --v2-border-width: 1px;
+  --v2-color-bg-page: #ffffff;
+  --v2-color-surface-canvas: #ffffff;
+  --v2-color-bg: #ffffff;
+  --v2-color-text: #000000;
+  --v2-color-text-primary: #000000;
+  --v2-color-text-secondary: #52525b;
+  --v2-color-text-tertiary: #71717a;
+  --v2-color-text-accent: #059669;
+  --v2-color-border: #e4e4e7;
+  --v2-color-border-subtle: #e4e4e7;
+  --v2-color-frame: #e4e4e7;
+  --v2-color-accent-lime: #f5f841;
+  --v2-color-accent-green: #10b981;
+  --v2-color-volt: #f5f841;
+  --v2-color-void: #000000;
+  --v2-nav-text: #4b5563;
+  --v2-nav-logo-filter: none;
+  --v2-product-secrets-gradient: url('/next/images/v2/products/secrets-gradient.webp');
+  --v2-product-cert-gradient: url('/next/images/v2/products/certificates-gradient.webp');
+  --v2-product-pam-gradient: url('/next/images/v2/products/pam-gradient.webp');
+  --v2-cta-gradient: url('/next/images/gradient/CTA.webp');
+  --v2-mock-surface: #ffffff;
+  --v2-mock-border: #e4e4e7;
+  --v2-mock-text: #09090b;
+  --v2-mock-text-muted: #71717a;
+  --v2-mock-checkbox-border: #a1a1aa;
+  --v2-mock-check: #10b981;
+  --v2-mock-tag-bg: #f4f4f5;
+  --v2-agent-vault-bg: #0e1014;
+  --v2-agent-vault-text: #ffffff;
+  --v2-agent-vault-body: #a1a1aa;
 }
 
 * {
@@ -21,18 +42,18 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #0b0d10;
-  color: #ebebeb;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 body {
-  background-color: #0b0d10;
-  color: #ebebeb;
   overflow-x: hidden;
   min-height: 100vh;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 /* Minimalist Scrollbar */
@@ -40,74 +61,12 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0d10;
+  background: #f5f5f5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #26272b;
+  background: #d1d1d1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #323439;
-}
-
-/* Infisical v2 Buttons */
-.v2-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  border-radius: 8px;
-  padding: 8px 16px;
-  transition: all 0.16s ease;
-  white-space: nowrap;
-  user-select: none;
-}
-
-.v2-btn--primary {
-  background-color: #ebebeb;
-  color: #0b0d10;
-  border: 1px solid #ebebeb;
-}
-.v2-btn--primary:hover {
-  background-color: #ffffff;
-  border-color: #ffffff;
-}
-
-.v2-btn--secondary {
-  background-color: #1e1f22;
-  color: #ebebeb;
-  border: 1px solid #26272b;
-}
-.v2-btn--secondary:hover {
-  background-color: #2b2c30;
-  border-color: #323439;
-}
-
-.v2-btn--volt {
-  background-color: #c2d72a;
-  color: #0b0d10;
-  border: 1px solid #c2d72a;
-}
-.v2-btn--volt:hover {
-  background-color: #afc224;
-  border-color: #afc224;
-}
-
-/* Navigation Links */
-.v2-nav-link {
-  font-size: 0.8125rem;
-  color: #adaeb0;
-  transition: color 0.16s ease;
-}
-.v2-nav-link:hover {
-  color: #ebebeb;
-}
-
-/* Subtle Grid Background (Radial Masked) */
-.bg-dev-grid {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background: #b0b0b0;
 }

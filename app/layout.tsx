@@ -43,8 +43,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0b0d10',
-  colorScheme: 'dark',
+  themeColor: '#ffffff',
+  colorScheme: 'light',
   width: 'device-width',
   initialScale: 1,
 };
@@ -55,11 +55,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/next/favicon.ico" sizes="any" />
       </head>
-      <body className="bg-[#0b0d10] text-[#ebebeb] font-sans antialiased selection:bg-[#c2d72a] selection:text-black min-h-screen relative">
+      <body className="bg-white text-black font-sans antialiased selection:bg-[#c2d72a] selection:text-black min-h-screen relative">
         {children}
       </body>
     </html>
