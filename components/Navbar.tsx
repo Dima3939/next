@@ -9,12 +9,24 @@ export default function Navbar() {
 
   useEffect(() => {
     const readTheme = () => {
-      const current = document.documentElement.getAttribute('data-v2-theme') === 'dark' ? 'dark' : 'light';
-      setTheme(current);
+      const isDark = document.documentElement.getAttribute('data-v2-theme') === 'dark' ||
+        document.documentElement.classList.contains('dark') ||
+        (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('theme') === 'dark');
+      setTheme(isDark ? 'dark' : 'light');
     };
     readTheme();
+
+    const observer = new MutationObserver(readTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-v2-theme', 'class'],
+    });
+
     window.addEventListener('themechange', readTheme);
-    return () => window.removeEventListener('themechange', readTheme);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('themechange', readTheme);
+    };
   }, []);
 
   useEffect(() => {
@@ -36,7 +48,9 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isDarkNav = theme === 'dark' ? !isVaultActive : isVaultActive;
+  // In dark mode, the navbar is always dark.
+  // In light mode, the navbar becomes dark when scrolling over the dark Agent Vault section.
+  const isDarkNav = theme === 'dark' ? true : isVaultActive;
 
   return (
     <nav 
@@ -254,9 +268,10 @@ export default function Navbar() {
               href="#signup"
               target="_blank"
               rel="noopener noreferrer"
+              style={isDarkNav ? { color: '#000000' } : undefined}
               className={`inline-flex items-center justify-center px-3.5 py-1.5 font-medium transition-colors ${
                 isDarkNav 
-                  ? 'bg-[#f5f841] text-black hover:bg-[#e2e62e]' 
+                  ? 'bg-[#f5f841] !text-black hover:bg-[#e2e62e]' 
                   : 'bg-black text-white hover:bg-neutral-800'
               }`}
             >
