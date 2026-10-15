@@ -5,6 +5,17 @@ export default function Navbar() {
   const [isVaultActive, setIsVaultActive] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    const readTheme = () => {
+      const current = document.documentElement.getAttribute('data-v2-theme') === 'dark' ? 'dark' : 'light';
+      setTheme(current);
+    };
+    readTheme();
+    window.addEventListener('themechange', readTheme);
+    return () => window.removeEventListener('themechange', readTheme);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,11 +36,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isDarkNav = theme === 'dark' ? !isVaultActive : isVaultActive;
+
   return (
     <nav 
+      data-dark-nav={isDarkNav ? 'true' : 'false'}
       className={`fixed inset-x-0 top-0 z-50 h-[56px] transition-colors duration-200 ease-out ${
-        isVaultActive 
-          ? 'bg-[#0e1014]/95 text-white border-b border-[#1f242d]' 
+        isDarkNav 
+          ? 'bg-[#0e1014]/95 text-[#ebebeb] border-b border-[#26272b]' 
           : 'bg-white/95 text-black border-b border-[#e5e7eb]'
       } backdrop-blur-md`}
       aria-label="Main navigation"
@@ -44,7 +58,7 @@ export default function Navbar() {
             aria-label="MONOLITH home"
           >
             <span className="w-2.5 h-2.5 rounded-full bg-[#f5f841] border border-black/20 shrink-0"></span>
-            <span className={isVaultActive ? 'text-white' : 'text-black'}>MONOLITH</span>
+            <span className={isDarkNav ? 'text-[#ebebeb]' : 'text-black'}>MONOLITH</span>
           </a>
 
           {/* Desktop Navigation Links */}
@@ -59,7 +73,7 @@ export default function Navbar() {
               <button 
                 type="button" 
                 className={`group relative flex h-full items-center gap-1 transition-colors ${
-                  isVaultActive ? 'text-[#a1a1aa] hover:text-white' : 'text-[#4b5563] hover:text-black'
+                  isDarkNav ? 'text-[#a3a3a3] hover:text-[#ebebeb]' : 'text-[#4b5563] hover:text-black'
                 }`}
               >
                 Platform
@@ -72,22 +86,22 @@ export default function Navbar() {
               {activeDropdown === 'platform' && (
                 <div 
                   className={`absolute top-[55px] left-0 min-w-[260px] py-2 border shadow-lg ${
-                    isVaultActive ? 'bg-[#14171d] border-[#2b303c] text-white' : 'bg-white border-[#e5e7eb] text-black'
+                    isDarkNav ? 'bg-[#14171d] border-[#26272b] text-[#ebebeb]' : 'bg-white border-[#e5e7eb] text-black'
                   }`}
                 >
-                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                     Secrets Management
                   </a>
-                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     <span className="w-2 h-2 rounded-full bg-amber-500"></span>
                     Certificate Management (PKI)
                   </a>
-                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     <span className="w-2 h-2 rounded-full bg-rose-500"></span>
                     Privileged Access (PAM)
                   </a>
-                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="/next" className={`flex items-center gap-3 px-4 py-2.5 text-xs transition-colors ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     <span className="w-2 h-2 rounded-full bg-[#f5f841]"></span>
                     Agent Vault
                   </a>
@@ -101,7 +115,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className={`group relative flex h-full items-center transition-colors ${
-                isVaultActive ? 'text-[#a1a1aa] hover:text-white' : 'text-[#4b5563] hover:text-black'
+                isDarkNav ? 'text-[#a3a3a3] hover:text-[#ebebeb]' : 'text-[#4b5563] hover:text-black'
               }`}
             >
               Pricing
@@ -117,7 +131,7 @@ export default function Navbar() {
               <button 
                 type="button" 
                 className={`group relative flex h-full items-center gap-1 transition-colors ${
-                  isVaultActive ? 'text-[#a1a1aa] hover:text-white' : 'text-[#4b5563] hover:text-black'
+                  isDarkNav ? 'text-[#a3a3a3] hover:text-[#ebebeb]' : 'text-[#4b5563] hover:text-black'
                 }`}
               >
                 Developers
@@ -130,16 +144,16 @@ export default function Navbar() {
               {activeDropdown === 'devs' && (
                 <div 
                   className={`absolute top-[55px] left-0 min-w-[220px] py-2 border shadow-lg ${
-                    isVaultActive ? 'bg-[#14171d] border-[#2b303c] text-white' : 'bg-white border-[#e5e7eb] text-black'
+                    isDarkNav ? 'bg-[#14171d] border-[#26272b] text-[#ebebeb]' : 'bg-white border-[#e5e7eb] text-black'
                   }`}
                 >
-                  <a href="#docs" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="#docs" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     Documentation
                   </a>
-                  <a href="#community" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="#community" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     Community
                   </a>
-                  <a href="https://github.com/Dima3939/next" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="https://github.com/Dima3939/next" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     GitHub Repository
                   </a>
                 </div>
@@ -155,7 +169,7 @@ export default function Navbar() {
               <button 
                 type="button" 
                 className={`group relative flex h-full items-center gap-1 transition-colors ${
-                  isVaultActive ? 'text-[#a1a1aa] hover:text-white' : 'text-[#4b5563] hover:text-black'
+                  isDarkNav ? 'text-[#a3a3a3] hover:text-[#ebebeb]' : 'text-[#4b5563] hover:text-black'
                 }`}
               >
                 Resources
@@ -168,16 +182,16 @@ export default function Navbar() {
               {activeDropdown === 'resources' && (
                 <div 
                   className={`absolute top-[55px] left-0 min-w-[220px] py-2 border shadow-lg ${
-                    isVaultActive ? 'bg-[#14171d] border-[#2b303c] text-white' : 'bg-white border-[#e5e7eb] text-black'
+                    isDarkNav ? 'bg-[#14171d] border-[#26272b] text-[#ebebeb]' : 'bg-white border-[#e5e7eb] text-black'
                   }`}
                 >
-                  <a href="#blog" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="#blog" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     Blog & Articles
                   </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     Case Studies
                   </a>
-                  <a href="#webinar" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="#webinar" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     Webinars & Tech Talks
                   </a>
                 </div>
@@ -190,7 +204,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className={`group relative flex h-full items-center transition-colors ${
-                isVaultActive ? 'text-[#a1a1aa] hover:text-white' : 'text-[#4b5563] hover:text-black'
+                isDarkNav ? 'text-[#a3a3a3] hover:text-[#ebebeb]' : 'text-[#4b5563] hover:text-black'
               }`}
             >
               Careers
@@ -207,8 +221,8 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className={`hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 transition-colors border ${
-                isVaultActive 
-                  ? 'border-[#2b303c] hover:bg-[#1a1f26] text-white' 
+                isDarkNav 
+                  ? 'border-[#26272b] hover:bg-[#1a1f26] text-[#ebebeb]' 
                   : 'border-[#e5e7eb] hover:bg-gray-100 text-black'
               }`}
             >
@@ -224,8 +238,8 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className={`hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 transition-colors border ${
-                isVaultActive 
-                  ? 'border-[#2b303c] text-white hover:bg-[#1a1f26]' 
+                isDarkNav 
+                  ? 'border-[#26272b] text-[#ebebeb] hover:bg-[#1a1f26]' 
                   : 'border-[#e5e7eb] text-black hover:bg-gray-100'
               }`}
             >
@@ -241,8 +255,8 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex items-center justify-center px-3.5 py-1.5 font-medium transition-colors ${
-                isVaultActive 
-                  ? 'bg-white text-black hover:bg-neutral-200' 
+                isDarkNav 
+                  ? 'bg-[#f5f841] text-black hover:bg-[#e2e62e]' 
                   : 'bg-black text-white hover:bg-neutral-800'
               }`}
             >
@@ -253,7 +267,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-1.5 lg:hidden ${isVaultActive ? 'text-white' : 'text-black'}`}
+              className={`p-1.5 lg:hidden ${isDarkNav ? 'text-[#ebebeb]' : 'text-black'}`}
               aria-label="Toggle navigation menu"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -272,14 +286,14 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className={`lg:hidden border-b px-4 py-4 space-y-3 ${
-          isVaultActive ? 'bg-[#0e1014] border-[#1f242d] text-white' : 'bg-white border-[#e5e7eb] text-black'
+          isDarkNav ? 'bg-[#0e1014] border-[#26272b] text-[#ebebeb]' : 'bg-white border-[#e5e7eb] text-black'
         }`}>
           <a href="/next" className="block py-1 text-sm font-medium">Platform</a>
           <a href="#pricing" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Pricing</a>
           <a href="#docs" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Developers</a>
           <a href="#blog" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Resources</a>
           <a href="#careers" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Careers</a>
-          <a href="#talk-to-us" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium text-emerald-600">Talk to an expert &rarr;</a>
+          <a href="#talk-to-us" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium text-emerald-500">Talk to an expert &rarr;</a>
         </div>
       )}
     </nav>

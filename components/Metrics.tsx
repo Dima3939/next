@@ -61,10 +61,10 @@ export default function Metrics() {
             // Subtle transition volt-slate
             ctx.fillStyle = `rgba(90, 110, 80, ${0.6 - (r / rows) * 0.3})`;
             radius = 1.8;
-          } else {
-            // Crisp high-contrast gunmetal dots for depth
+            // Crisp high-contrast dots for depth (adaptive to dark/light)
+            const isDark = typeof document !== 'undefined' && document.documentElement.getAttribute('data-v2-theme') === 'dark';
             const alpha = Math.max(0.18, 0.52 - (r / rows) * 0.32);
-            ctx.fillStyle = `rgba(35, 40, 52, ${alpha})`;
+            ctx.fillStyle = isDark ? `rgba(215, 222, 235, ${alpha * 0.75})` : `rgba(35, 40, 52, ${alpha})`;
             radius = 1.4;
           }
 
@@ -86,7 +86,7 @@ export default function Metrics() {
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden bg-white">
+    <div className="relative w-full overflow-hidden" style={{ backgroundColor: 'var(--v2-color-bg)' }}>
       {/* Top Border */}
       <div className="pointer-events-none absolute left-0 right-0 z-20 bg-v2-border" style={{ height: 'var(--v2-border-width)', top: 0 }}></div>
 
@@ -147,7 +147,7 @@ export default function Metrics() {
               {/* Card 1 */}
               <div className="v2-label-card relative flex flex-col" style={{ padding: '40px', gap: '14px' }}>
                 <div className="flex items-center" style={{ gap: '10px' }}>
-                  <span className="inline-flex text-black">
+                  <span className="inline-flex" style={{ color: 'var(--v2-color-text-primary)' }}>
                     <svg width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" fill="none" stroke="currentColor" aria-hidden="true">
                       <path d="M8.5 4H6C4.89543 4 4 4.89543 4 6V20C4 21.1046 4.89543 22 6 22H12" strokeLinecap="round"></path>
                       <path d="M15.5 4H18C19.1046 4 20 4.89543 20 6V15" strokeLinecap="round"></path>
@@ -167,7 +167,7 @@ export default function Metrics() {
               {/* Card 2 */}
               <div className="v2-label-card relative flex flex-col" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }}>
                 <div className="flex items-center" style={{ gap: '10px' }}>
-                  <span className="inline-flex text-black">
+                  <span className="inline-flex" style={{ color: 'var(--v2-color-text-primary)' }}>
                     <svg width="20" height="20" strokeWidth="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
                       <path d="M5 18L3.13036 4.91253C3.05646 4.39524 3.39389 3.91247 3.90398 3.79912L11.5661 2.09641C11.8519 2.03291 12.1481 2.03291 12.4339 2.09641L20.096 3.79912C20.6061 3.91247 20.9435 4.39524 20.8696 4.91252L19 18C18.9293 18.495 18.5 21.5 12 21.5C5.5 21.5 5.07071 18.495 5 18Z" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
@@ -184,7 +184,7 @@ export default function Metrics() {
               {/* Card 3 */}
               <div className="v2-label-card relative flex flex-col" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }}>
                 <div className="flex items-center" style={{ gap: '10px' }}>
-                  <span className="inline-flex text-black">
+                  <span className="inline-flex" style={{ color: 'var(--v2-color-text-primary)' }}>
                     <svg width="20" height="20" strokeWidth="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
                       <path d="M6 18.01L6.01 17.9989" strokeLinecap="round" strokeLinejoin="round"></path>
                       <path d="M6 6.01L6.01 5.99889" strokeLinecap="round" strokeLinejoin="round"></path>
@@ -204,7 +204,7 @@ export default function Metrics() {
               {/* Card 4 */}
               <div className="v2-label-card relative flex flex-col" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }}>
                 <div className="flex items-center" style={{ gap: '10px' }}>
-                  <span className="inline-flex text-black">
+                  <span className="inline-flex" style={{ color: 'var(--v2-color-text-primary)' }}>
                     <svg width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" fill="none" stroke="currentColor" aria-hidden="true">
                       <path d="M10 18V15C10 13.8954 10.8954 13 12 13V13C13.1046 13 14 13.8954 14 15V18" strokeLinecap="round" strokeLinejoin="round"></path>
                       <path d="M2 8L11.7317 3.13416C11.9006 3.04971 12.0994 3.0497 12.2683 3.13416L22 8" strokeLinecap="round" strokeLinejoin="round"></path>

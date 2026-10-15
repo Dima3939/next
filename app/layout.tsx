@@ -43,6 +43,7 @@ export const metadata: Metadata = {
 };
 
 import ButtonScramble from '@/components/ButtonScramble';
+import ThemeManager from '@/components/ThemeManager';
 
 export const viewport: Viewport = {
   themeColor: '#ffffff',
@@ -57,11 +58,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable} ${jetbrainsMono.variable}`}>
+    <html 
+      lang="en" 
+      suppressHydrationWarning 
+      className={`scroll-smooth ${inter.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <link rel="icon" href="/next/favicon.ico" sizes="any" />
+        <script
+          id="v2-theme-init"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t='light';try{var p=new URLSearchParams(window.location.search);var q=p.get('theme');var s=null;try{if(q==='dark'||q==='light'){localStorage.setItem('v2-theme',q);}s=localStorage.getItem('v2-theme');}catch(err){}if(q==='dark'||q==='light'){t=q;}else if(s==='dark'){t='dark';}}catch(e){}document.documentElement.setAttribute('data-v2-theme',t);if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}else{document.documentElement.classList.remove('dark');document.documentElement.style.colorScheme='light';}})();`,
+          }}
+        />
       </head>
-      <body className="font-sans antialiased bg-white text-black selection:bg-[#f5f841] selection:text-black">
+      <body 
+        suppressHydrationWarning 
+        className="font-sans antialiased bg-[var(--v2-color-bg-page,#ffffff)] text-[var(--v2-color-text,#000000)] selection:bg-[#f5f841] selection:text-black transition-colors duration-200"
+      >
+        <ThemeManager />
         <ButtonScramble />
         {children}
       </body>
