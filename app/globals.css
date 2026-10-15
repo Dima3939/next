@@ -217,7 +217,7 @@ body[data-v2-theme="dark"] {
 }
 
 /* Ensure volt yellow buttons and badges always keep black text in dark mode */
-[data-v2-theme="dark"] a[href="#signup"],
+[data-v2-theme="dark"] nav a[href="#signup"],
 [data-v2-theme="dark"] .bg-\[\#f5f841\],
 [data-v2-theme="dark"] [data-dark-nav="true"] a[href="#signup"],
 [data-v2-theme="dark"] [data-dark-nav="false"] a[href="#signup"],
@@ -227,6 +227,15 @@ body[data-v2-theme="dark"] {
 [data-v2-theme="dark"] [style*="background-color:#f5f841"],
 [data-v2-theme="dark"] [style*="background-color: #f5f841"] {
   color: #000000 !important;
+}
+
+/* CTA Banner primary button (dark background with white text) */
+.v2-cta-banner-button,
+[data-v2-theme="dark"] .v2-cta-banner-button,
+[data-v2-theme="light"] .v2-cta-banner-button {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
 }
 
 /* Customer stories dark mode contrast & readability */

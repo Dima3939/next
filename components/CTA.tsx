@@ -28,10 +28,10 @@ export default function CTA() {
               href="#signup"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium hover:opacity-90 transition-opacity"
+              className="v2-cta-banner-button inline-flex items-center justify-center px-6 py-3 text-sm font-medium hover:opacity-90 transition-opacity !text-white"
               style={{
                 backgroundColor: 'var(--v2-cta-button-bg, #000000)',
-                color: 'var(--v2-cta-button-text, #ffffff)',
+                color: '#ffffff',
                 border: '1px solid var(--v2-cta-button-border, #000000)',
               }}
             >
