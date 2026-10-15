@@ -12,14 +12,14 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#08090a] text-[#f1f5f9] overflow-hidden selection:bg-emerald-500 selection:text-black">
+    <main className="relative min-h-screen bg-[#0b0d10] text-[#ebebeb] overflow-hidden selection:bg-[#c2d72a] selection:text-black">
       {/* Background Grid & Ambient Glows */}
       <AmbientBackground />
 
-      {/* Modern SaaS Header */}
+      {/* Infisical Header */}
       <Navbar />
 
-      {/* Page Sections (Infisical Structure) */}
+      {/* Infisical Full Page Architecture */}
       <div className="relative z-10 flex flex-col">
         <Hero />
         <Services />

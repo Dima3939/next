@@ -1,50 +1,65 @@
 'use client';
 
 import React from 'react';
-import { Layers, Zap, Shield, Cpu, Code, Globe } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-const STACK_ITEMS = [
-  { name: 'Next.js 14', category: 'App Router & Edge SSR', desc: 'Sub-second page switches with zero hydration lag' },
-  { name: 'TypeScript', category: 'Type Safety', desc: 'Enterprise-grade stability and strict compile checks' },
-  { name: 'Three.js / WebGL', category: '3D & GPU Runtime', desc: 'Hardware-accelerated geometry and procedural buffers' },
-  { name: 'Custom GLSL', category: 'Shader Shading Language', desc: 'Direct GPU fragment compute and refraction physics' },
-  { name: 'Tailwind CSS', category: 'Atomic Styling', desc: 'Zero runtime CSS overhead and optimal bundle size' },
-  { name: 'Framer Motion', category: 'Kinetic Physics', desc: 'Hardware-accelerated gesture and scroll choreographies' },
-  { name: 'Web Audio API', category: 'Spatial Sound', desc: 'Binaural synthesizer and low-latency interaction audio' },
-  { name: 'Vercel Edge', category: 'Global CDN Routing', desc: 'Sub-50ms latency response worldwide via Edge Network' },
+const INTEGRATIONS = [
+  { name: 'Next.js 14', type: 'Framework', desc: 'App Router, Server Components & Static Site Generation' },
+  { name: 'TypeScript', type: 'Language', desc: 'End-to-end strict types and API contracts' },
+  { name: 'Three.js / WebGL', type: '3D Runtime', desc: 'Hardware-accelerated shader pipelines and geometry buffers' },
+  { name: 'Custom GLSL', type: 'GPU Compute', desc: 'Custom vertex & fragment shading algorithms' },
+  { name: 'Tailwind CSS', type: 'Styling', desc: 'Zero runtime overhead and optimized utility tokens' },
+  { name: 'Framer Motion', type: 'Animation', desc: 'GPU compositor spring physics and gesture controllers' },
+  { name: 'Web Audio API', type: 'Audio Engine', desc: 'Binaural sound synthesis and spatial haptic feedback' },
+  { name: 'Vercel Edge', type: 'Deployment', desc: 'Global edge distribution with sub-50ms latency' },
 ];
 
 export default function TechStack() {
   return (
-    <section id="stack" className="relative py-24 md:py-32 px-6 bg-[#060709] border-t border-white/[0.06]">
+    <section id="stack" className="relative py-24 md:py-32 px-6 bg-[#0e1014] border-t border-[#26272b]">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono text-xs mb-4">
-            ECOSYSTEM COMPATIBILITY
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-2.5 h-2.5 rounded-sm bg-[#c2d72a]" />
+              <span className="font-mono text-xs uppercase tracking-wider text-[#c2d72a] font-semibold">
+                ECOSYSTEM COMPATIBILITY
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-[#ebebeb]">
+              We support your stack.
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Engineered on the modern stack.
-          </h2>
-          <p className="mt-4 text-zinc-400 text-sm sm:text-base font-normal">
-            We build exclusively with industry-standard, production-proven technologies that ensure
-            maintainability, scalability, and extreme speed.
+
+          <p className="text-[#adaeb0] text-sm max-w-md font-normal leading-relaxed">
+            Build with the industry's most trusted developer tools, rendering engines, and cloud platforms.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {STACK_ITEMS.map((item) => (
+          {INTEGRATIONS.map((item) => (
             <div
               key={item.name}
-              className="p-6 rounded-xl bg-surface-100 border border-white/[0.06] hover:border-emerald-500/30 transition-all duration-200 group"
+              className="p-5 rounded-xl bg-[#12141a] border border-[#26272b] hover:border-[#3a3c42] transition-colors group flex flex-col justify-between"
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-semibold text-white group-hover:text-emerald-400 transition-colors">
-                  {item.name}
-                </span>
-                <span className="w-2 h-2 rounded-full bg-emerald-500/40 group-hover:bg-emerald-400 transition-colors" />
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-medium text-sm text-[#ebebeb] group-hover:text-[#c2d72a] transition-colors">
+                    {item.name}
+                  </span>
+                  <span className="text-[10px] font-mono text-[#707174] bg-[#1e1f22] px-2 py-0.5 rounded">
+                    {item.type}
+                  </span>
+                </div>
+                <p className="text-xs text-[#adaeb0] leading-relaxed font-normal">
+                  {item.desc}
+                </p>
               </div>
-              <div className="text-xs font-mono text-emerald-400 mb-2">{item.category}</div>
-              <p className="text-xs text-zinc-400 leading-relaxed font-normal">{item.desc}</p>
+
+              <div className="mt-4 pt-3 border-t border-[#26272b]/60 flex items-center justify-between text-[11px] text-[#707174] group-hover:text-[#ebebeb] transition-colors">
+                <span>Native Support</span>
+                <span className="text-[#4ac26b]">✓</span>
+              </div>
             </div>
           ))}
         </div>

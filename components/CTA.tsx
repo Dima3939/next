@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Check, Mail, Copy, CheckCheck, ArrowRight } from 'lucide-react';
+import { ArrowRight, Check, Mail, Copy, CheckCheck } from 'lucide-react';
 
-const DISCIPLINES = ['3D & WebGL Canvas', 'Next.js 14 App Architecture', 'Kinetic Design System', 'Flagship Product Launch'];
+const DISCIPLINES = ['3D & WebGL Canvas', 'Next.js 14 Architecture', 'Kinetic Design System', 'Flagship Product Launch'];
 const BUDGETS = ['$25k — $50k', '$50k — $100k', '$100k+'];
 
 export default function CTA() {
@@ -27,45 +26,49 @@ export default function CTA() {
   };
 
   return (
-    <section id="contact" className="relative py-28 md:py-36 px-6 bg-[#060709] border-t border-white/[0.06]">
-      <div className="max-w-6xl mx-auto">
-        <div className="relative rounded-3xl bg-surface-100 border border-white/10 p-8 sm:p-12 md:p-16 overflow-hidden shadow-2xl">
-          {/* Ambient Glow */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/[0.08] rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-500/[0.05] rounded-full blur-[140px] pointer-events-none" />
+    <section id="contact" className="relative py-24 md:py-32 px-6 bg-[#0b0d10] border-t border-[#26272b]">
+      <div className="max-w-5xl mx-auto">
+        <div className="rounded-2xl bg-[#0e1014] border border-[#26272b] p-8 sm:p-12 md:p-16 relative overflow-hidden">
+          {/* Subtle Infisical Volt glow in the corner */}
+          <div className="absolute top-0 right-0 w-72 h-72 bg-[#c2d72a]/[0.06] rounded-full blur-[120px] pointer-events-none" />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left info */}
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left Column */}
             <div className="lg:col-span-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono text-xs mb-4">
-                INITIATE PARTNERSHIP
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-2.5 h-2.5 rounded-sm bg-[#c2d72a]" />
+                <span className="font-mono text-xs uppercase tracking-wider text-[#c2d72a] font-semibold">
+                  INITIATE PARTNERSHIP
+                </span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
-                Ready to engineer your next flagship?
+              <h2 className="text-2xl sm:text-4xl font-medium tracking-tight text-[#ebebeb] mb-4">
+                Starting with MONOLITH is simple, fast, and free.
               </h2>
 
-              <p className="mt-4 text-zinc-400 text-sm sm:text-base font-normal leading-relaxed">
-                Connect directly with our lead creative technologists to review your specifications,
-                timeline, and technical milestones.
+              <p className="text-sm text-[#adaeb0] font-normal leading-relaxed mb-8">
+                Connect directly with our lead architects to review your technical specifications,
+                timeline, and release milestones.
               </p>
 
-              <div className="mt-8 pt-8 border-t border-white/[0.08] flex flex-col gap-3">
-                <span className="text-xs font-mono uppercase text-zinc-400">Direct Studio Email</span>
+              <div className="space-y-3 pt-6 border-t border-[#26272b]">
+                <span className="text-xs font-mono text-[#707174] uppercase block">
+                  Direct Inquiries
+                </span>
                 <button
                   onClick={copyEmail}
-                  className="inline-flex items-center justify-between px-4 py-3 rounded-xl bg-surface-200 border border-white/10 hover:border-emerald-500/40 text-xs font-mono text-zinc-300 hover:text-white transition-colors"
+                  className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-[#14161d] border border-[#26272b] text-xs font-mono text-[#ebebeb] hover:border-[#3a3c42] transition-colors"
                 >
                   <span className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-emerald-400" />
+                    <Mail className="w-3.5 h-3.5 text-[#c2d72a]" />
                     studio@monolith.design
                   </span>
                   {copied ? (
-                    <span className="flex items-center gap-1 text-emerald-400 font-semibold">
+                    <span className="text-[#c2d72a] flex items-center gap-1">
                       <CheckCheck className="w-3.5 h-3.5" /> Copied
                     </span>
                   ) : (
-                    <span className="text-zinc-500 hover:text-zinc-300 flex items-center gap-1">
+                    <span className="text-[#707174] hover:text-[#ebebeb] flex items-center gap-1">
                       <Copy className="w-3.5 h-3.5" /> Copy
                     </span>
                   )}
@@ -73,27 +76,22 @@ export default function CTA() {
               </div>
             </div>
 
-            {/* Right form */}
+            {/* Right Column: Form */}
             <div className="lg:col-span-7">
               {submitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="p-8 rounded-2xl bg-surface-200 border border-white/15 text-center"
-                >
-                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
-                    <Check className="w-6 h-6" />
+                <div className="p-8 rounded-xl bg-[#14161d] border border-[#26272b] text-center">
+                  <div className="w-10 h-10 rounded-full bg-[#4ac26b]/15 text-[#4ac26b] flex items-center justify-center mx-auto mb-3">
+                    <Check className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Transmission Received</h3>
-                  <p className="text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
+                  <h3 className="text-lg font-medium text-[#ebebeb] mb-2">Transmission Received</h3>
+                  <p className="text-xs text-[#adaeb0] max-w-sm mx-auto leading-relaxed">
                     Our lead creative engineer will review your specifications and reply with milestone scopes within 24 hours.
                   </p>
-                </motion.div>
+                </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* Discipline selector */}
+                <form onSubmit={handleSubmit} className="space-y-3.5">
                   <div>
-                    <label className="block text-xs font-mono text-zinc-400 mb-2 uppercase">
+                    <label className="block text-[11px] font-mono text-[#707174] mb-1.5 uppercase">
                       Core Engagement Focus
                     </label>
                     <div className="grid grid-cols-2 gap-2">
@@ -102,10 +100,10 @@ export default function CTA() {
                           key={d}
                           type="button"
                           onClick={() => setSelectedDiscipline(d)}
-                          className={`py-2 px-3 rounded-lg text-xs font-medium text-center transition-all ${
+                          className={`py-2 px-3 rounded text-xs font-mono text-center transition-all ${
                             selectedDiscipline === d
-                              ? 'bg-emerald-500 text-black font-semibold shadow-sm'
-                              : 'bg-surface-200 border border-white/5 text-zinc-400 hover:text-white'
+                              ? 'bg-[#ebebeb] text-[#0b0d10] font-semibold'
+                              : 'bg-[#14161d] border border-[#26272b] text-[#adaeb0] hover:text-[#ebebeb]'
                           }`}
                         >
                           {d}
@@ -114,9 +112,8 @@ export default function CTA() {
                     </div>
                   </div>
 
-                  {/* Budget selector */}
                   <div>
-                    <label className="block text-xs font-mono text-zinc-400 mb-2 uppercase">
+                    <label className="block text-[11px] font-mono text-[#707174] mb-1.5 uppercase">
                       Target Investment Bracket
                     </label>
                     <div className="grid grid-cols-3 gap-2">
@@ -125,10 +122,10 @@ export default function CTA() {
                           key={b}
                           type="button"
                           onClick={() => setSelectedBudget(b)}
-                          className={`py-2 px-3 rounded-lg text-xs font-mono text-center transition-all ${
+                          className={`py-2 px-3 rounded text-xs font-mono text-center transition-all ${
                             selectedBudget === b
-                              ? 'bg-emerald-500 text-black font-semibold shadow-sm'
-                              : 'bg-surface-200 border border-white/5 text-zinc-400 hover:text-white'
+                              ? 'bg-[#ebebeb] text-[#0b0d10] font-semibold'
+                              : 'bg-[#14161d] border border-[#26272b] text-[#adaeb0] hover:text-[#ebebeb]'
                           }`}
                         >
                           {b}
@@ -137,46 +134,39 @@ export default function CTA() {
                     </div>
                   </div>
 
-                  {/* Inputs */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <input
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="Your Name / Studio"
-                        className="w-full px-4 py-3 rounded-lg bg-surface-200 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500/60 transition-colors"
-                      />
-                    </div>
-                    <div>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="Work Email"
-                        className="w-full px-4 py-3 rounded-lg bg-surface-200 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500/60 transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <textarea
-                      rows={3}
-                      value={formData.brief}
-                      onChange={(e) => setFormData({ ...formData, brief: e.target.value })}
-                      placeholder="Briefly describe your project requirements, launch date, and objectives..."
-                      className="w-full px-4 py-3 rounded-lg bg-surface-200 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500/60 transition-colors resize-none"
+                    <input
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Your Name / Studio"
+                      className="w-full px-3.5 py-2.5 rounded bg-[#14161d] border border-[#26272b] text-xs text-[#ebebeb] placeholder:text-[#707174] focus:outline-none focus:border-[#3a3c42]"
+                    />
+                    <input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="Work Email"
+                      className="w-full px-3.5 py-2.5 rounded bg-[#14161d] border border-[#26272b] text-xs text-[#ebebeb] placeholder:text-[#707174] focus:outline-none focus:border-[#3a3c42]"
                     />
                   </div>
 
+                  <textarea
+                    rows={3}
+                    value={formData.brief}
+                    onChange={(e) => setFormData({ ...formData, brief: e.target.value })}
+                    placeholder="Briefly describe your product goals, desired launch date, and scope..."
+                    className="w-full px-3.5 py-2.5 rounded bg-[#14161d] border border-[#26272b] text-xs text-[#ebebeb] placeholder:text-[#707174] focus:outline-none focus:border-[#3a3c42] resize-none"
+                  />
+
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 group shadow-[0_0_25px_rgba(16,185,129,0.3)]"
+                    className="v2-btn v2-btn--primary w-full py-3 text-xs font-semibold uppercase tracking-wider"
                   >
                     <span>Submit Project Brief</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                   </button>
                 </form>
               )}

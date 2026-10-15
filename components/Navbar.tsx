@@ -1,142 +1,110 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, Github, Sparkles } from 'lucide-react';
-
-const NAV_ITEMS = [
-  { name: 'Platform', href: '#platform' },
-  { name: 'Selected Work', href: '#work' },
-  { name: 'Capabilities', href: '#capabilities' },
-  { name: 'Tech Stack', href: '#stack' },
-  { name: 'Customers', href: '#testimonials' },
-];
+import { Menu, X, ArrowRight, Github } from 'lucide-react';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <div className="fixed top-0 inset-x-0 z-50 flex flex-col">
-      {/* Top Infisical-style Announcement Banner */}
+      {/* Infisical Top Announcement Bar */}
       <a
         href="#platform"
-        className="group relative bg-[#0b0d10] border-b border-white/[0.06] text-xs text-zinc-300 py-2 px-4 text-center transition-colors hover:bg-[#101317] flex items-center justify-center gap-2"
+        className="group relative bg-[#0e1014] border-b border-[#26272b] text-[13px] text-[#ebebeb] py-2 px-4 text-center transition-colors hover:bg-[#15171d] flex items-center justify-center gap-2"
       >
-        <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono text-[10px] uppercase font-semibold">
-          <Sparkles className="w-3 h-3" /> MONOLITH 2.0
+        <span className="text-[#adaeb0]">
+          Experience Next.js 14 &amp; 3D WebGL without bundle bloat:
         </span>
-        <span className="font-medium text-zinc-300">
-          Hardware-accelerated 3D WebGL & Next.js 14 motion laboratory is live
+        <span className="font-medium text-[#ebebeb] underline underline-offset-4 decoration-[#c2d72a]">
+          live interactive showcase of MONOLITH 2.0
         </span>
-        <ArrowRight className="w-3.5 h-3.5 text-emerald-400 transition-transform group-hover:translate-x-1" />
+        <ArrowRight className="w-3.5 h-3.5 text-[#c2d72a] transition-transform group-hover:translate-x-1" />
       </a>
 
-      {/* Main Navbar */}
-      <header
-        className={`w-full transition-all duration-200 border-b ${
-          scrolled
-            ? 'bg-[#08090a]/90 backdrop-blur-xl border-white/[0.08] shadow-lg'
-            : 'bg-[#08090a]/70 backdrop-blur-md border-white/[0.04]'
-        }`}
-      >
+      {/* Main Infisical Navbar */}
+      <header className="w-full bg-[#0b0d10]/90 backdrop-blur-md border-b border-[#26272b]">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group">
-            <div className="w-7 h-7 rounded-lg bg-emerald-500 flex items-center justify-center text-black font-bold text-xs shadow-[0_0_15px_rgba(16,185,129,0.4)]">
+          {/* Brand Logo */}
+          <a href="#" className="flex items-center gap-2.5">
+            <div className="w-6 h-6 rounded bg-[#c2d72a] flex items-center justify-center text-black font-extrabold text-xs">
               M
             </div>
-            <span className="font-bold text-base tracking-tight text-white flex items-center gap-1.5">
-              MONOLITH <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-400 font-mono font-normal">STUDIO</span>
+            <span className="font-semibold text-[15px] tracking-tight text-[#ebebeb]">
+              MONOLITH
             </span>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-xs font-medium text-zinc-400 hover:text-white px-3.5 py-2 rounded-lg transition-colors hover:bg-white/[0.04]"
-              >
-                {item.name}
-              </a>
-            ))}
+          {/* Desktop Nav Links */}
+          <nav className="hidden md:flex items-center gap-6">
+            <a href="#platform" className="v2-nav-link text-[13px]">Platform</a>
+            <a href="#work" className="v2-nav-link text-[13px]">Case Studies</a>
+            <a href="#capabilities" className="v2-nav-link text-[13px]">Capabilities</a>
+            <a href="#stack" className="v2-nav-link text-[13px]">Stack</a>
+            <a href="#customers" className="v2-nav-link text-[13px]">Customers</a>
           </nav>
 
-          {/* Right CTAs */}
+          {/* Right Action Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <a
               href="https://github.com/Dima3939/next"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300 bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[13px] font-medium text-[#ebebeb] bg-[#1e1f22] border border-[#26272b] hover:bg-[#2b2c30] transition-colors"
             >
               <Github className="w-3.5 h-3.5" />
-              <span>★ 2.4k</span>
+              <span>2.4k ★</span>
             </a>
 
             <a
               href="#contact"
-              className="text-xs font-medium text-zinc-300 hover:text-white px-3.5 py-2 transition-colors"
+              className="v2-btn v2-btn--secondary text-[13px] py-1.5 px-3.5"
             >
               Talk to an expert
             </a>
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold text-black bg-emerald-500 hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]"
+              className="v2-btn v2-btn--primary text-[13px] py-1.5 px-4 font-semibold"
             >
-              <span>Initiate Project</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              Get started for free
             </a>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu trigger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-zinc-400 hover:text-white rounded-lg border border-white/10 bg-white/5"
+            className="md:hidden p-2 text-[#adaeb0] hover:text-white rounded-md border border-[#26272b] bg-[#1e1f22]"
             aria-label="Toggle navigation"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile Dropdown */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-[#08090a] border-b border-white/10 px-6 py-6"
+              className="md:hidden bg-[#0b0d10] border-b border-[#26272b] px-6 py-6"
             >
-              <div className="flex flex-col gap-3">
-                {NAV_ITEMS.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-sm font-medium text-zinc-300 hover:text-white py-1.5"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-                <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
+                <a href="#platform" onClick={() => setMobileMenuOpen(false)} className="text-sm text-[#ebebeb]">Platform</a>
+                <a href="#work" onClick={() => setMobileMenuOpen(false)} className="text-sm text-[#ebebeb]">Case Studies</a>
+                <a href="#capabilities" onClick={() => setMobileMenuOpen(false)} className="text-sm text-[#ebebeb]">Capabilities</a>
+                <a href="#stack" onClick={() => setMobileMenuOpen(false)} className="text-sm text-[#ebebeb]">Stack</a>
+                <a href="#customers" onClick={() => setMobileMenuOpen(false)} className="text-sm text-[#ebebeb]">Customers</a>
+
+                <div className="pt-4 border-t border-[#26272b] flex flex-col gap-2.5">
                   <a
                     href="#contact"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="w-full text-center py-2.5 rounded-lg text-xs font-semibold text-black bg-emerald-500"
+                    className="v2-btn v2-btn--primary w-full text-center"
                   >
-                    Initiate Project
+                    Get started for free
                   </a>
                 </div>
               </div>

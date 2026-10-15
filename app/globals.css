@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #08090a;
-  --foreground: #f1f5f9;
+  --v2-color-bg: #0e1014;
+  --v2-color-bg-page: #0b0d10;
+  --v2-color-border: #26272b;
+  --v2-color-frame: #323439;
+  --v2-color-tint: #1e1f22;
+  --v2-color-text: #ebebeb;
+  --v2-color-text-muted: rgba(228, 228, 231, 0.5);
+  --v2-color-text-subtle: #adaeb0;
+  --v2-color-volt: #c2d72a;
+  --v2-border-width: 1px;
 }
 
 * {
@@ -13,16 +21,16 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #08090a;
-  color: #f1f5f9;
+  background-color: #0b0d10;
+  color: #ebebeb;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background-color: #08090a;
-  color: #f1f5f9;
+  background-color: #0b0d10;
+  color: #ebebeb;
   overflow-x: hidden;
   min-height: 100vh;
 }
@@ -32,48 +40,74 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #08090a;
+  background: #0b0d10;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e222b;
+  background: #26272b;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2a303c;
+  background: #323439;
 }
 
-/* Smooth Infinite Marquee */
-@keyframes marqueeLeft {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+/* Infisical v2 Buttons */
+.v2-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 0.16s ease;
+  white-space: nowrap;
+  user-select: none;
 }
 
-.animate-marquee {
-  display: flex;
-  width: 200%;
-  animation: marqueeLeft 35s linear infinite;
+.v2-btn--primary {
+  background-color: #ebebeb;
+  color: #0b0d10;
+  border: 1px solid #ebebeb;
+}
+.v2-btn--primary:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+.v2-btn--secondary {
+  background-color: #1e1f22;
+  color: #ebebeb;
+  border: 1px solid #26272b;
+}
+.v2-btn--secondary:hover {
+  background-color: #2b2c30;
+  border-color: #323439;
 }
 
-/* Infisical-style Glass & Card borders */
-.infisical-card {
-  background: #0d0e12;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.v2-btn--volt {
+  background-color: #c2d72a;
+  color: #0b0d10;
+  border: 1px solid #c2d72a;
+}
+.v2-btn--volt:hover {
+  background-color: #afc224;
+  border-color: #afc224;
 }
 
-.infisical-card:hover {
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+/* Navigation Links */
+.v2-nav-link {
+  font-size: 0.8125rem;
+  color: #adaeb0;
+  transition: color 0.16s ease;
+}
+.v2-nav-link:hover {
+  color: #ebebeb;
 }
 
 /* Subtle Grid Background (Radial Masked) */
 .bg-dev-grid {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 32px 32px;
 }

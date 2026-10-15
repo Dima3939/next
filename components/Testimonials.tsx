@@ -1,82 +1,113 @@
 'use client';
 
 import React from 'react';
-import { Star } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 
-const ENDORSEMENTS = [
+const STORIES = [
   {
-    quote:
-      'MONOLITH is a rare digital studio that can both deliver breathtaking 60 FPS 3D WebGL and increase commercial conversion. Our Series A roadshow response was electric.',
-    name: 'Elena Rostova',
-    title: 'Founder & CEO',
-    company: 'Neura AI Corp',
-    outcome: '$28M Series A Secured',
+    quote: 'MONOLITH is a rare digital studio that can both increase commercial conversion and deliver 60 FPS WebGL.',
+    author: 'Adrien Carreira',
+    title: 'Head of Infrastructure',
+    company: 'Hugging Face Ecosystem',
   },
   {
-    quote:
-      'Most agencies talk about "emotion" but hand over sluggish codebases. MONOLITH engineered a pure Next.js 14 architecture with zero hydration lag. They operate on an elite level.',
-    name: 'Marcus Vance',
-    title: 'VP of Product',
-    company: 'Valence Protocol',
-    outcome: '$1.4B Volume Handled',
+    quote: 'What impressed us most was they delivered custom GLSL shaders with sub-millimeter component exploded views on time.',
+    author: 'Rocky Olsen',
+    title: 'Principal SRE Engineer',
+    company: 'Lucid Software Partner',
   },
   {
-    quote:
-      'The attention to typography, micro-interactions, and spatial audio is on an Apple tier. Our timepiece pre-order conversion jumped from 2.1% to 8.4% post-launch.',
-    name: 'Julian Thorne',
-    title: 'Creative Director',
-    company: 'Maison Kinesis Geneva',
-    outcome: '+340% Conversion Boost',
+    quote: 'MONOLITH removed a lot of the day-to-day overhead around Next.js App Router optimization and Core Web Vitals.',
+    author: 'Ben Paradis',
+    title: 'Principal Security & Web Engineer',
+    company: 'Writer Brand Lab',
   },
+  {
+    quote: 'With MONOLITH, you get the aesthetic benefit along with uncompromising developer experience — it’s a no-brainer.',
+    author: 'Shashank Goyal',
+    title: 'Founding Engineer',
+    company: 'OpenRouter Core',
+  },
+];
+
+const COMMUNITY_TWEETS = [
+  'I deleted all our bloated frontend CSS frameworks and moved everything to MONOLITH Next.js 14. Wish I did it sooner. 60 FPS locked.',
+  'MONOLITH has been a great way for our engineering team to launch our 3D product configurator without melting mobile browsers.',
+  'Finally got around to inspecting the MONOLITH shader pipeline and I have no idea how we lived without it. Highly recommend.',
+  'The sub-second page transitions and Web Audio haptics on our new release are unreal. Best agency we ever partnered with.',
+  'Our pre-order conversions jumped from 2.1% to 8.4% within 14 days of launching the new MONOLITH canvas.',
+  'Clean TypeScript, zero vendor lock-in, and instant static edge export. Everything a CTO could dream of.',
 ];
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-28 md:py-36 px-6 bg-[#08090a] border-t border-white/[0.06]">
+    <section id="customers" className="relative py-24 md:py-32 px-6 bg-[#0e1014] border-t border-[#26272b]">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono text-xs mb-4">
-            CUSTOMER ENDORSEMENTS
+        {/* Enterprise Stories Header */}
+        <div className="mb-14 max-w-3xl">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2.5 h-2.5 rounded-sm bg-[#c2d72a]" />
+            <span className="font-mono text-xs uppercase tracking-wider text-[#c2d72a] font-semibold">
+              CUSTOMER OUTCOMES
+            </span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight">
-            Loved by founders and engineering leaders.
+
+          <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-[#ebebeb] mb-4">
+            MONOLITH customers are happy customers.
           </h2>
-          <p className="mt-4 text-zinc-400 text-sm sm:text-base font-normal">
-            See how visionary technology teams leverage MONOLITH to accelerate their market momentum.
+
+          <p className="text-base text-[#adaeb0] font-normal leading-relaxed">
+            See how forward-thinking founders and engineering leads elevate their product launches.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {ENDORSEMENTS.map((item) => (
+        {/* 4 Customer Story Cards (Infisical Style) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          {STORIES.map((s) => (
             <div
-              key={item.name}
-              className="p-8 rounded-2xl bg-surface-100 border border-white/[0.06] hover:border-emerald-500/30 transition-all duration-300 flex flex-col justify-between shadow-xl"
+              key={s.author}
+              className="p-6 rounded-xl bg-[#12141a] border border-[#26272b] hover:border-[#3a3c42] transition-colors flex flex-col justify-between"
             >
               <div>
-                {/* 5 Stars */}
-                <div className="flex items-center gap-1 text-emerald-400 mb-6">
+                <div className="flex items-center gap-1 text-[#c2d72a] mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-emerald-400 text-emerald-400" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#c2d72a]" />
                   ))}
-                  <span className="ml-2 font-mono text-xs text-emerald-400/80 font-semibold">{item.outcome}</span>
                 </div>
 
-                <p className="text-sm text-zinc-300 font-normal leading-relaxed mb-8">
-                  "{item.quote}"
+                <p className="text-xs sm:text-sm text-[#ebebeb] font-normal leading-relaxed mb-6">
+                  "{s.quote}"
                 </p>
               </div>
 
-              <div className="pt-6 border-t border-white/10 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center font-bold text-emerald-400 text-xs">
-                  {item.name.split(' ').map((n) => n[0]).join('')}
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-white">{item.name}</div>
-                  <div className="text-xs text-zinc-400">
-                    {item.title} • <span className="text-zinc-200">{item.company}</span>
-                  </div>
-                </div>
+              <div className="pt-4 border-t border-[#26272b]/60">
+                <div className="text-xs font-semibold text-[#ebebeb]">{s.author}</div>
+                <div className="text-[11px] text-[#707174]">{s.title}</div>
+                <div className="text-[11px] text-[#adaeb0] font-mono mt-0.5">{s.company}</div>
               </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Wall of Love Header (Infisical Section) */}
+        <div className="mb-10 text-center max-w-2xl mx-auto">
+          <h3 className="text-2xl font-medium text-[#ebebeb] tracking-tight mb-2">
+            The only creative engineering studio loved by developers.
+          </h3>
+          <p className="text-xs text-[#adaeb0]">Unfiltered feedback from engineers who ship with us</p>
+        </div>
+
+        {/* Wall of Tweets Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {COMMUNITY_TWEETS.map((tweet, i) => (
+            <div
+              key={i}
+              className="p-4 rounded-lg bg-[#14161d] border border-[#26272b] text-xs text-[#adaeb0] leading-relaxed flex items-start gap-3"
+            >
+              <div className="w-6 h-6 rounded-full bg-[#1e1f22] text-[#c2d72a] flex items-center justify-center font-mono text-[10px] shrink-0 font-bold">
+                ✓
+              </div>
+              <p>{tweet}</p>
             </div>
           ))}
         </div>
