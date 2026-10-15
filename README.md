@@ -1,44 +1,47 @@
-# ENDORPHIN — Creative Digital Design & Motion Studio
+# MONOLITH
+
+Security Infrastructure for Developers & Agents.
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2-black?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-11.11-FF0055?logo=framer)](https://www.framer.com/motion/)
-[![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Deployed-22c55e?logo=github)](https://dima3939.github.io/next/)
+[![Deployment](https://img.shields.io/badge/Demo-Live-brightgreen)](https://dima3939.github.io/next/)
 
-> **High-octane digital dopamine for visionary brands.**  
-> A premium dark UI showcase landing page for the Endorphin design studio built with clean **Next.js 14 App Router**, **Tailwind CSS**, and **Framer Motion**, optimized for 60 FPS performance and GitHub Pages static hosting.
+All-in-one platform to securely manage application secrets, certificates, and privileged access across cloud, on-premises, and agent infrastructure.
 
----
-
-## 🌟 Key Features & Aesthetics
-
-- **Architectural Purity**: Real Next.js 14 App Router (`app/layout.tsx`, `app/page.tsx`, modular client components with `'use client'`). Produces real static builds with `_next` chunks.
-- **Awwwards-Grade Dark Aesthetic**: Obsidian black `#07070a`, glowing mesh gradients, ambient light orbs, custom glassmorphism borders, and neon accents.
-- **Fluid Motion Design (Framer Motion)**:
-  - Ambient glowing background mesh with animated multi-layer gradient orbs.
-  - Staggered entrance in the Hero section (`staggerChildren`).
-  - Staggered project showcase grid with interactive category filtering.
-  - Micro-interactions: Mouse hover 3D tilt, case preview modal dialogs, and glowing borders.
-  - Viewport-triggered scroll animations (`whileInView`).
-- **Interactive Elements**:
-  - Live Zurich Studio Clock.
-  - Project inquiry budget selector and quick email copy pill.
-  - Interactive service capability deep-dive tabs.
-  - High-impact verified metrics & client testimonials.
+[Explore Live Demo →](https://dima3939.github.io/next/)
 
 ---
 
-## 🚀 Tech Stack
+## Overview
 
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router, Static Export)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + PostCSS
-- **Animations**: [Framer Motion 11](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Deployment**: Static HTML/CSS/JS export (`output: 'export'`) configured for [GitHub Pages](https://pages.github.com/).
+MONOLITH centralizes identity and credential management across developer workflows and automated agents:
+
+- **Secrets Management**: Synchronize, rotate, and audit application credentials across development, staging, and production environments with role-based access control.
+- **Agent Vault**: Scoped access and placeholder brokering that attaches credentials at the proxy layer so automated tools never handle raw secrets directly.
+- **Certificate Management (PKI)**: Automated TLS/SSL certificate issuance, health monitoring, and zero-downtime renewal.
+- **Privileged Access Management (PAM)**: Just-in-time access granting, session recording, and automatic expiration.
+- **Theme Support**: Integrated dark and light themes with system synchronization and persistent preference storage.
 
 ---
 
-## 🛠 Local Development
+## Tech Stack
+
+- **Framework**: Next.js 14 (App Router, static export)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS, PostCSS
+- **Deployment**: GitHub Pages (`output: 'export'`)
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18.17 or later
+- npm 9+ or pnpm / yarn
+
+### Installation
 
 ```bash
 # Clone the repository
@@ -48,34 +51,34 @@ cd next
 # Install dependencies
 npm install
 
-# Start local dev server (http://localhost:3000)
+# Start development server
 npm run dev
 ```
 
+Open [http://localhost:3000/next](http://localhost:3000/next) in your browser.
+
 ---
 
-## 📦 Static Export & Deployment
+## Build & Deployment
 
-### 1. Build Static Output
+### Production Build
+
 ```bash
 npm run build
 ```
-This generates the `out/` folder containing `index.html`, `_next/`, and `.nojekyll` configured with `basePath: '/next'`.
 
-### 2. Automatic GitHub Pages Deployment (Recommended)
-This repository contains a pre-configured GitHub Actions workflow: `.github/workflows/deploy.yml`.
+Generates optimized static assets in the `out/` directory configured with `basePath: '/next'`.
 
-1. Push this repository to GitHub:
-   ```bash
-   git push -u origin main
-   ```
-2. In your GitHub repository settings:
-   - Go to **Settings** -> **Pages**
-   - Under **Build and deployment** -> **Source**, select **GitHub Actions**.
-   - Your site will automatically build and publish at `https://dima3939.github.io/next/`.
+### GitHub Pages Deployment
 
-### 3. Alternative: Deploy via `gh-pages` branch
 ```bash
 npm run deploy
 ```
-This builds the site and pushes the contents of `out/` to the `gh-pages` branch. Then set your GitHub Pages source to deploy from the `gh-pages` branch.
+
+Builds the application and publishes the `out/` directory to the `gh-pages` branch.
+
+---
+
+## License
+
+MIT

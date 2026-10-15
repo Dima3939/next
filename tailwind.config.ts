@@ -23,7 +23,7 @@ const config: Config = {
           muted: 'rgba(228, 228, 231, 0.5)',
           subtle: '#adaeb0',
           faint: '#707174',
-          volt: '#c2d72a', // Infisical's signature electric volt/lime
+          volt: '#c2d72a',
           voltHover: '#afc224',
           green: '#4ac26b',
           amber: '#d29922',

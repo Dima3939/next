@@ -1,7 +1,8 @@
 {
-  "name": "endorphin-studio",
+  "name": "monolith-platform",
   "version": "1.0.0",
   "private": true,
+  "description": "MONOLITH - Security infrastructure for developers and agents",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
