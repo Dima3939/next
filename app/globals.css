@@ -133,6 +133,8 @@ a svg[viewBox="0 0 12 12"] {
 }
 
 a[class*="transition-opacity"]:hover svg,
+a:hover > svg[viewBox="0 0 12 12"],
+.v2-feature-card a:hover svg,
 .group:hover .group-hover\:translate-x-\[2px\] {
   transform: translateX(4px) !important;
 }

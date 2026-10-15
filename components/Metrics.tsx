@@ -124,7 +124,7 @@ export default function Metrics() {
 
             {/* CTA Button */}
             <div className="v2-product-block-cta" style={{ flexShrink: 0, marginRight: 'calc((100% - 6 * var(--v2-gutter)) / 14)' }}>
-              <a className="v2-btn v2-btn--md v2-btn--primary" href="https://infisical.com/docs/internals/security">
+              <a className="v2-btn v2-btn--md v2-btn--primary" href="#docs">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <path d="M4.5 2.5L8 6l-3.5 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"></path>
                 </svg>
@@ -145,7 +145,7 @@ export default function Metrics() {
             <div className="v2-feature-row grid" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', border: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }}>
               
               {/* Card 1 */}
-              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px' }} href="https://infisical.com/docs/self-hosting/guides/production-hardening#standards-compliance">
+              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px' }} href="#docs">
                 <div className="flex items-center" style={{ gap: '10px' }}>
                   <span className="inline-flex text-black">
                     <svg width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" fill="none" stroke="currentColor" aria-hidden="true">
@@ -165,7 +165,7 @@ export default function Metrics() {
               </a>
 
               {/* Card 2 */}
-              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="https://infisical.com/docs/internals/security">
+              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="#docs">
                 <div className="flex items-center" style={{ gap: '10px' }}>
                   <span className="inline-flex text-black">
                     <svg width="20" height="20" strokeWidth="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
@@ -182,7 +182,7 @@ export default function Metrics() {
               </a>
 
               {/* Card 3 */}
-              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="https://infisical.com/docs/internals/security#infrastructure-and-high-availability-infisical-cloud">
+              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="#docs">
                 <div className="flex items-center" style={{ gap: '10px' }}>
                   <span className="inline-flex text-black">
                     <svg width="20" height="20" strokeWidth="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
@@ -202,7 +202,7 @@ export default function Metrics() {
               </a>
 
               {/* Card 4 */}
-              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="https://infisical.com/docs/self-hosting/overview">
+              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="#docs">
                 <div className="flex items-center" style={{ gap: '10px' }}>
                   <span className="inline-flex text-black">
                     <svg width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" fill="none" stroke="currentColor" aria-hidden="true">

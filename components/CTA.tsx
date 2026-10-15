@@ -22,7 +22,7 @@ export default function CTA() {
           </h2>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a 
-              href="https://app.infisical.com/signup"
+              href="#signup"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-black text-white px-6 py-3 text-sm font-medium hover:bg-neutral-800 transition-colors"
@@ -30,7 +30,7 @@ export default function CTA() {
               Get started for free
             </a>
             <a 
-              href="https://infisical.com/talk-to-us"
+              href="#talk-to-us"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center text-black px-6 py-3 text-sm font-medium hover:opacity-75 transition-opacity gap-1.5"

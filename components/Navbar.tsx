@@ -97,7 +97,7 @@ export default function Navbar() {
 
             {/* Pricing */}
             <a 
-              href="https://infisical.com/pricing"
+              href="#pricing"
               target="_blank"
               rel="noopener noreferrer"
               className={`group relative flex h-full items-center transition-colors ${
@@ -133,13 +133,13 @@ export default function Navbar() {
                     isVaultActive ? 'bg-[#14171d] border-[#2b303c] text-white' : 'bg-white border-[#e5e7eb] text-black'
                   }`}
                 >
-                  <a href="https://infisical.com/docs" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="#docs" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     Documentation
                   </a>
-                  <a href="https://community.infisical.com" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="#community" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     Community
                   </a>
-                  <a href="https://github.com/infisical/infisical" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="https://github.com/Dima3939/next" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     GitHub Repository
                   </a>
                 </div>
@@ -171,13 +171,13 @@ export default function Navbar() {
                     isVaultActive ? 'bg-[#14171d] border-[#2b303c] text-white' : 'bg-white border-[#e5e7eb] text-black'
                   }`}
                 >
-                  <a href="https://infisical.com/blog" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="#blog" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     Blog & Articles
                   </a>
-                  <a href="https://infisical.com/customers" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     Case Studies
                   </a>
-                  <a href="https://infisical.com/webinars" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
+                  <a href="#webinar" target="_blank" rel="noopener noreferrer" className={`block px-4 py-2 text-xs transition-colors ${isVaultActive ? 'hover:bg-white/10' : 'hover:bg-neutral-100'}`}>
                     Webinars & Tech Talks
                   </a>
                 </div>
@@ -186,7 +186,7 @@ export default function Navbar() {
 
             {/* Careers */}
             <a 
-              href="https://infisical.com/careers"
+              href="#careers"
               target="_blank"
               rel="noopener noreferrer"
               className={`group relative flex h-full items-center transition-colors ${
@@ -203,7 +203,7 @@ export default function Navbar() {
             
             {/* GitHub Stars Pill */}
             <a 
-              href="https://github.com/infisical/infisical"
+              href="https://github.com/Dima3939/next"
               target="_blank"
               rel="noopener noreferrer"
               className={`hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 transition-colors border ${
@@ -220,7 +220,7 @@ export default function Navbar() {
 
             {/* Talk to an expert */}
             <a 
-              href="https://infisical.com/talk-to-us"
+              href="#talk-to-us"
               target="_blank"
               rel="noopener noreferrer"
               className={`hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 transition-colors border ${
@@ -237,7 +237,7 @@ export default function Navbar() {
 
             {/* Get started for free (Primary CTA) */}
             <a 
-              href="https://app.infisical.com/signup"
+              href="#signup"
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex items-center justify-center px-3.5 py-1.5 font-medium transition-colors ${
@@ -275,11 +275,11 @@ export default function Navbar() {
           isVaultActive ? 'bg-[#0e1014] border-[#1f242d] text-white' : 'bg-white border-[#e5e7eb] text-black'
         }`}>
           <a href="/next" className="block py-1 text-sm font-medium">Platform</a>
-          <a href="https://infisical.com/pricing" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Pricing</a>
-          <a href="https://infisical.com/docs" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Developers</a>
-          <a href="https://infisical.com/blog" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Resources</a>
-          <a href="https://infisical.com/careers" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Careers</a>
-          <a href="https://infisical.com/talk-to-us" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium text-emerald-600">Talk to an expert &rarr;</a>
+          <a href="#pricing" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Pricing</a>
+          <a href="#docs" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Developers</a>
+          <a href="#blog" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Resources</a>
+          <a href="#careers" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium">Careers</a>
+          <a href="#talk-to-us" target="_blank" rel="noopener noreferrer" className="block py-1 text-sm font-medium text-emerald-600">Talk to an expert &rarr;</a>
         </div>
       )}
     </nav>
