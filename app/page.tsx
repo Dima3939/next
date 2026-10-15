@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import AmbientBackground from '@/components/AmbientBackground';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Projects from '@/components/Projects';
@@ -12,15 +11,17 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#0b0d10] text-[#ebebeb] overflow-hidden selection:bg-[#c2d72a] selection:text-black">
-      {/* Background Grid & Ambient Glows */}
-      <AmbientBackground />
+    <main className="mb-auto">
+      <div 
+        className="v2-page no-scrollbar::-webkit-scrollbar relative overflow-x-hidden no-scrollbar md:overflow-x-clip min-h-screen" 
+        style={{ backgroundColor: 'var(--v2-color-bg-page, #0b0d10)' }}
+      >
+        <div className="v2-grain-overlay pointer-events-none" aria-hidden="true"></div>
+        
+        {/* Exact Infisical Navigation */}
+        <Navbar />
 
-      {/* Infisical Header */}
-      <Navbar />
-
-      {/* Infisical Full Page Architecture */}
-      <div className="relative z-10 flex flex-col">
+        {/* Exact Infisical Landing Architecture */}
         <Hero />
         <Services />
         <Projects />

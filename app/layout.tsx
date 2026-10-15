@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import './infisical_exact.css';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#08090a',
+  themeColor: '#0b0d10',
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,
@@ -58,7 +59,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="bg-[#08090a] text-[#f1f5f9] font-sans antialiased selection:bg-emerald-500 selection:text-black min-h-screen relative">
+      <body className="bg-[#0b0d10] text-[#ebebeb] font-sans antialiased selection:bg-[#c2d72a] selection:text-black min-h-screen relative">
         {children}
       </body>
     </html>
