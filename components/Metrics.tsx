@@ -1,7 +1,218 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useRef } from 'react';
 
 export default function Metrics() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animId: number;
+    let t = 0;
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+    };
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    const render = () => {
+      t += 0.015;
+      const rect = canvas.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+
+      ctx.clearRect(0, 0, w, h);
+
+      const cols = Math.floor(w / 14);
+      const rows = 26;
+      const spacingX = w / cols;
+      const spacingY = h / (rows + 6);
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const x = c * spacingX + spacingX / 2;
+          
+          // Sine wave modulation
+          const nx = c / cols;
+          const wave1 = Math.sin(nx * 4.5 + t) * 28;
+          const wave2 = Math.cos(nx * 2.2 - t * 0.7) * 16;
+          const waveY = (h * 0.35) + (r * spacingY * 0.7) + wave1 + wave2;
+
+          const distFromCrest = Math.abs(waveY - (h * 0.38 + wave1 + wave2));
+          
+          // Color based on crest
+          if (r < 3 && distFromCrest < 24) {
+            // Yellow / volt highlight dots near the wave crest
+            ctx.fillStyle = `rgba(245, 248, 65, ${0.75 - r * 0.2})`;
+          } else {
+            // Subtle gray dots for the rest
+            ctx.fillStyle = `rgba(180, 185, 195, ${0.28 - (r / rows) * 0.18})`;
+          }
+
+          ctx.fillRect(x - 1.2, waveY - 1.2, 2.4, 2.4);
+        }
+      }
+
+      animId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
   return (
-    <div dangerouslySetInnerHTML={{ __html: "Built for massive scale.<br/>We power over <span style=\"position:relative;display:inline-block;padding:0.06em 0.18em;margin:0 0.02em;color:var(--v2-color-void);white-space:nowrap\"><span aria-hidden=\"true\" style=\"position:absolute;inset:0;background:var(--v2-color-volt);z-index:0\"></span><span style=\"position:relative;z-index:1\">10 million</span></span> daily interactions with zero downtime.</h2></div><div class=\"v2-product-block-cta\" style=\"flex-shrink:0;margin-right:calc((100% - 6 * var(--v2-gutter)) / 14)\"><a class=\"v2-btn v2-btn--md v2-btn--primary\" href=\"https://infisical.com/docs/internals/security\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" class=\"\" aria-hidden=\"true\"><path d=\"M4.5 2.5L8 6l-3.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>Learn more</a></div></div><div style=\"position:relative;margin-top:var(--v2-space-7);margin-left:calc((100% - 6 * var(--v2-gutter)) / 14);margin-right:calc((100% - 6 * var(--v2-gutter)) / 14);height:clamp(240px, 34vh, 400px);overflow:hidden\"><div aria-hidden=\"true\" style=\"position:absolute;inset:0;overflow:hidden\"><canvas style=\"width:100%;height:100%;display:block\"></canvas></div></div><div style=\"margin-top:var(--v2-space-8);margin-left:calc((100% - 6 * var(--v2-gutter)) / 14);margin-right:calc((100% - 6 * var(--v2-gutter)) / 14)\"><div class=\"v2-feature-row grid\" style=\"grid-template-columns:repeat(4, minmax(0, 1fr));border:var(--v2-border-width) solid var(--v2-color-border-subtle)\"><a class=\"v2-label-card relative flex flex-col\" style=\"padding:40px;gap:14px\" href=\"https://infisical.com/docs/self-hosting/guides/production-hardening#standards-compliance\"><div class=\"flex items-center\" style=\"gap:10px\"><span class=\"inline-flex\" style=\"color:var(--v2-color-text-primary);transition:color 180ms ease\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" stroke-width=\"2\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\"><path d=\"M8.5 4H6C4.89543 4 4 4.89543 4 6V20C4 21.1046 4.89543 22 6 22H12\" stroke=\"currentColor\" stroke-linecap=\"round\"></path><path d=\"M15.5 4H18C19.1046 4 20 4.89543 20 6V15\" stroke=\"currentColor\" stroke-linecap=\"round\"></path><path d=\"M8 6.4V4.5C8 4.22386 8.22386 4 8.5 4C8.77614 4 9.00422 3.77604 9.05152 3.50398C9.19968 2.65171 9.77399 1 12 1C14.226 1 14.8003 2.65171 14.9485 3.50398C14.9958 3.77604 15.2239 4 15.5 4C15.7761 4 16 4.22386 16 4.5V6.4C16 6.73137 15.7314 7 15.4 7H8.6C8.26863 7 8 6.73137 8 6.4Z\" stroke=\"currentColor\" stroke-linecap=\"round\"></path><path d=\"M15.5 20.5L17.5 22.5L22.5 17.5\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span style=\"position:relative;display:inline-block\"><span aria-hidden=\"true\" style=\"position:absolute;top:-0.06em;bottom:-0.06em;left:-0.18em;right:-0.18em;background:var(--v2-color-volt);opacity:0;transition:opacity 180ms ease;pointer-events:none;z-index:0\"></span><span class=\"font-v2-sans\" style=\"position:relative;z-index:1;font-size:var(--v2-text-h3);line-height:var(--v2-lh-heading);font-weight:var(--v2-weight-medium);letter-spacing:-0.01em;color:var(--v2-color-text-primary);text-decoration:underline;text-decoration-color:var(--v2-color-border);text-decoration-thickness:1px;text-underline-offset:3px;transition:color 180ms ease, text-decoration-color 180ms ease\">Compliant by design</span></span></div><p class=\"font-v2-sans text-v2-b2\" style=\"color:var(--v2-color-text-secondary);margin:0\">SOC 2, HIPAA, and FIPS 140-3 compliant.</p></a><a class=\"v2-label-card relative flex flex-col\" style=\"padding:40px;gap:14px;border-left:var(--v2-border-width) solid var(--v2-color-border-subtle)\" href=\"https://infisical.com/docs/internals/security\"><div class=\"flex items-center\" style=\"gap:10px\"><span class=\"inline-flex\" style=\"color:var(--v2-color-text-primary);transition:color 180ms ease\"><svg width=\"20\" height=\"20\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\"><path d=\"M5 18L3.13036 4.91253C3.05646 4.39524 3.39389 3.91247 3.90398 3.79912L11.5661 2.09641C11.8519 2.03291 12.1481 2.03291 12.4339 2.09641L20.096 3.79912C20.6061 3.91247 20.9435 4.39524 20.8696 4.91252L19 18C18.9293 18.495 18.5 21.5 12 21.5C5.5 21.5 5.07071 18.495 5 18Z\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span style=\"position:relative;display:inline-block\"><span aria-hidden=\"true\" style=\"position:absolute;top:-0.06em;bottom:-0.06em;left:-0.18em;right:-0.18em;background:var(--v2-color-volt);opacity:0;transition:opacity 180ms ease;pointer-events:none;z-index:0\"></span><span class=\"font-v2-sans\" style=\"position:relative;z-index:1;font-size:var(--v2-text-h3);line-height:var(--v2-lh-heading);font-weight:var(--v2-weight-medium);letter-spacing:-0.01em;color:var(--v2-color-text-primary);text-decoration:underline;text-decoration-color:var(--v2-color-border);text-decoration-thickness:1px;text-underline-offset:3px;transition:color 180ms ease, text-decoration-color 180ms ease\">Secure by default</span></span></div><p class=\"font-v2-sans text-v2-b2\" style=\"color:var(--v2-color-text-secondary);margin:0\">AES-256-GCM with strict access controls.</p></a><a class=\"v2-label-card relative flex flex-col\" style=\"padding:40px;gap:14px;border-left:var(--v2-border-width) solid var(--v2-color-border-subtle)\" href=\"https://infisical.com/docs/internals/security#infrastructure-&amp;-high-availability-infisical-cloud\"><div class=\"flex items-center\" style=\"gap:10px\"><span class=\"inline-flex\" style=\"color:var(--v2-color-text-primary);transition:color 180ms ease\"><svg width=\"20\" height=\"20\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\"><path d=\"M6 18.01L6.01 17.9989\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M6 6.01L6.01 5.99889\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M2 9.4V2.6C2 2.26863 2.26863 2 2.6 2H21.4C21.7314 2 22 2.26863 22 2.6V9.4C22 9.73137 21.7314 10 21.4 10H2.6C2.26863 10 2 9.73137 2 9.4Z\" stroke=\"currentColor\"></path><path d=\"M2 21.4V14.6C2 14.2686 2.26863 14 2.6 14H21.4C21.7314 14 22 14.2686 22 14.6V21.4C22 21.7314 21.7314 22 21.4 22H2.6C2.26863 22 2 21.7314 2 21.4Z\" stroke=\"currentColor\"></path></svg></span><span style=\"position:relative;display:inline-block\"><span aria-hidden=\"true\" style=\"position:absolute;top:-0.06em;bottom:-0.06em;left:-0.18em;right:-0.18em;background:var(--v2-color-volt);opacity:0;transition:opacity 180ms ease;pointer-events:none;z-index:0\"></span><span class=\"font-v2-sans\" style=\"position:relative;z-index:1;font-size:var(--v2-text-h3);line-height:var(--v2-lh-heading);font-weight:var(--v2-weight-medium);letter-spacing:-0.01em;color:var(--v2-color-text-primary);text-decoration:underline;text-decoration-color:var(--v2-color-border);text-decoration-thickness:1px;text-underline-offset:3px;transition:color 180ms ease, text-decoration-color 180ms ease\">Reliable at scale</span></span></div><p class=\"font-v2-sans text-v2-b2\" style=\"color:var(--v2-color-text-secondary);margin:0\">99.99% uptime backed by support SLAs.</p></a><a class=\"v2-label-card relative flex flex-col\" style=\"padding:40px;gap:14px;border-left:var(--v2-border-width) solid var(--v2-color-border-subtle)\" href=\"https://infisical.com/docs/self-hosting/overview\"><div class=\"flex items-center\" style=\"gap:10px\"><span class=\"inline-flex\" style=\"color:var(--v2-color-text-primary);transition:color 180ms ease\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" stroke-width=\"2\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"currentColor\" aria-hidden=\"true\"><path d=\"M10 18V15C10 13.8954 10.8954 13 12 13V13C13.1046 13 14 13.8954 14 15V18\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M2 8L11.7317 3.13416C11.9006 3.04971 12.0994 3.0497 12.2683 3.13416L22 8\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M20 11V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V11\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span style=\"position:relative;display:inline-block\"><span aria-hidden=\"true\" style=\"position:absolute;top:-0.06em;bottom:-0.06em;left:-0.18em;right:-0.18em;background:var(--v2-color-volt);opacity:0;transition:opacity 180ms ease;pointer-events:none;z-index:0\"></span><span class=\"font-v2-sans\" style=\"position:relative;z-index:1;font-size:var(--v2-text-h3);line-height:var(--v2-lh-heading);font-weight:var(--v2-weight-medium);letter-spacing:-0.01em;color:var(--v2-color-text-primary);text-decoration:underline;text-decoration-color:var(--v2-color-border);text-decoration-thickness:1px;text-underline-offset:3px;transition:color 180ms ease, text-decoration-color 180ms ease\">Self-host or cloud</span></span></div><p class=\"font-v2-sans text-v2-b2\" style=\"color:var(--v2-color-text-secondary);margin:0\">Run it yourself or use Infisical Cloud.</p></a></div></div></div></div></div><div class=\"relative w-full overflow-hidden bg-v2-bg\" style=\"height:var(--v2-sectionbreak-py)\"><div class=\"pointer-events-none absolute left-0 right-0 z-20 bg-v2-border \" style=\"height:var(--v2-border-width);top:0\"></div><div class=\"pointer-events-none absolute left-0 right-0 z-20 bg-v2-border \" style=\"height:var(--v2-border-width);top:40px\"></div><div class=\"relative mx-auto h-full\" style=\"max-width:var(--v2-max-width)\"><div class=\"absolute bottom-0 left-0 right-0 flex items-center\" style=\"top:40px;padding-left:var(--v2-grid-padding)\"><div class=\"mr-5 shrink-0 bg-v2-accent-green\" style=\"width:1.7px;height:13.5px\"></div><span class=\"font-v2-mono uppercase\" style=\"font-size:var(--v2-text-b4);line-height:var(--v2-lh-heading);color:var(--v2-color-text);opacity:0.64;font-weight:var(--v2-weight-medium);letter-spacing:0.02em\">Customer Stories</span></div></div></div><div class=\"relative w-full overflow-hidden bg-v2-bg\"><div class=\"pointer-events-none absolute left-0 right-0 z-20 bg-v2-border \" style=\"height:var(--v2-border-width);top:0\"></div><div class=\"relative mx-auto \" style=\"max-width:var(--v2-max-width)\"><div style=\"padding:0 var(--v2-grid-padding);padding-top:var(--v2-space-6)\"><div class=\"v2-section-header-row flex items-center justify-between\" style=\"padding-top:var(--v2-space-9);padding-bottom:var(--v2-space-7)\"><div style=\"max-width:72%;margin-left:calc((100% - 6 * var(--v2-gutter)) / 14)\"><h2 class=\"font-v2-sans text-v2-h2 text-v2-text\" style=\"font-weight:var(--v2-weight-medium);letter-spacing:-0.02em\">" }} />
+    <div className="relative w-full overflow-hidden bg-white">
+      {/* Top Border */}
+      <div className="pointer-events-none absolute left-0 right-0 z-20 bg-v2-border" style={{ height: 'var(--v2-border-width)', top: 0 }}></div>
+
+      <div className="relative mx-auto" style={{ maxWidth: 'var(--v2-max-width)' }}>
+        <div style={{ padding: '0 var(--v2-grid-padding)', paddingTop: 'var(--v2-space-6)' }}>
+          
+          {/* Header Row */}
+          <div className="v2-section-header-row flex items-center justify-between" style={{ paddingTop: 'var(--v2-space-9)', paddingBottom: 'var(--v2-space-7)' }}>
+            <div style={{ maxWidth: '72%', marginLeft: 'calc((100% - 6 * var(--v2-gutter)) / 14)' }}>
+              
+              {/* Badge */}
+              <div className="flex items-center gap-2 mb-3">
+                <span className="inline-flex text-[#6b7280]">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                    <path d="M9 12h6m-3-3v6"></path>
+                  </svg>
+                </span>
+                <span className="font-v2-mono uppercase" style={{ fontSize: 'var(--v2-text-b4)', color: 'var(--v2-color-text-tertiary)', letterSpacing: '0.02em' }}>
+                  Enterprise Ready
+                </span>
+              </div>
+
+              {/* Title */}
+              <h2 className="font-v2-sans text-v2-h2 text-v2-text" style={{ fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.02em' }}>
+                Everyone has secrets.<br />
+                We secure{' '}
+                <span style={{ position: 'relative', display: 'inline-block', padding: '0.06em 0.18em', margin: '0 0.02em', color: 'var(--v2-color-void)', whiteSpace: 'nowrap' }}>
+                  <span aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'var(--v2-color-volt)', zIndex: 0 }}></span>
+                  <span style={{ position: 'relative', zIndex: 1 }}>10 billion</span>
+                </span>{' '}
+                every day.
+              </h2>
+            </div>
+
+            {/* CTA Button */}
+            <div className="v2-product-block-cta" style={{ flexShrink: 0, marginRight: 'calc((100% - 6 * var(--v2-gutter)) / 14)' }}>
+              <a className="v2-btn v2-btn--md v2-btn--primary" href="https://infisical.com/docs/internals/security">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M4.5 2.5L8 6l-3.5 3.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"></path>
+                </svg>
+                Learn more
+              </a>
+            </div>
+          </div>
+
+          {/* Dot Matrix Wave Canvas */}
+          <div style={{ position: 'relative', marginTop: 'var(--v2-space-7)', marginLeft: 'calc((100% - 6 * var(--v2-gutter)) / 14)', marginRight: 'calc((100% - 6 * var(--v2-gutter)) / 14)', height: 'clamp(240px, 34vh, 400px)', overflow: 'hidden' }}>
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+              <canvas ref={canvasRef} style={{ width: '100%', height: '100%', display: 'block' }}></canvas>
+            </div>
+          </div>
+
+          {/* 4 Feature Cards */}
+          <div style={{ marginTop: 'var(--v2-space-8)', marginLeft: 'calc((100% - 6 * var(--v2-gutter)) / 14)', marginRight: 'calc((100% - 6 * var(--v2-gutter)) / 14)' }}>
+            <div className="v2-feature-row grid" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', border: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }}>
+              
+              {/* Card 1 */}
+              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px' }} href="https://infisical.com/docs/self-hosting/guides/production-hardening#standards-compliance">
+                <div className="flex items-center" style={{ gap: '10px' }}>
+                  <span className="inline-flex text-black">
+                    <svg width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path d="M8.5 4H6C4.89543 4 4 4.89543 4 6V20C4 21.1046 4.89543 22 6 22H12" strokeLinecap="round"></path>
+                      <path d="M15.5 4H18C19.1046 4 20 4.89543 20 6V15" strokeLinecap="round"></path>
+                      <path d="M8 6.4V4.5C8 4.22386 8.22386 4 8.5 4C8.77614 4 9.00422 3.77604 9.05152 3.50398C9.19968 2.65171 9.77399 1 12 1C14.226 1 14.8003 2.65171 14.9485 3.50398C14.9958 3.77604 15.2239 4 15.5 4C15.7761 4 16 4.22386 16 4.5V6.4C16 6.73137 15.7314 7 15.4 7H8.6C8.26863 7 8 6.73137 8 6.4Z" strokeLinecap="round"></path>
+                      <path d="M15.5 20.5L17.5 22.5L22.5 17.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span className="font-v2-sans underline underline-offset-4 decoration-neutral-300 group-hover:decoration-black" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
+                    Compliant by design
+                  </span>
+                </div>
+                <p className="font-v2-sans text-v2-b2" style={{ color: 'var(--v2-color-text-secondary)', margin: 0 }}>
+                  SOC 2, HIPAA, and FIPS 140-3 compliant.
+                </p>
+              </a>
+
+              {/* Card 2 */}
+              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="https://infisical.com/docs/internals/security">
+                <div className="flex items-center" style={{ gap: '10px' }}>
+                  <span className="inline-flex text-black">
+                    <svg width="20" height="20" strokeWidth="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path d="M5 18L3.13036 4.91253C3.05646 4.39524 3.39389 3.91247 3.90398 3.79912L11.5661 2.09641C11.8519 2.03291 12.1481 2.03291 12.4339 2.09641L20.096 3.79912C20.6061 3.91247 20.9435 4.39524 20.8696 4.91252L19 18C18.9293 18.495 18.5 21.5 12 21.5C5.5 21.5 5.07071 18.495 5 18Z" strokeLinecap="round" strokeLinejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span className="font-v2-sans underline underline-offset-4 decoration-neutral-300 group-hover:decoration-black" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
+                    Secure by default
+                  </span>
+                </div>
+                <p className="font-v2-sans text-v2-b2" style={{ color: 'var(--v2-color-text-secondary)', margin: 0 }}>
+                  AES-256-GCM with strict access controls.
+                </p>
+              </a>
+
+              {/* Card 3 */}
+              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="https://infisical.com/docs/internals/security#infrastructure-and-high-availability-infisical-cloud">
+                <div className="flex items-center" style={{ gap: '10px' }}>
+                  <span className="inline-flex text-black">
+                    <svg width="20" height="20" strokeWidth="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path d="M6 18.01L6.01 17.9989" strokeLinecap="round" strokeLinejoin="round"></path>
+                      <path d="M6 6.01L6.01 5.99889" strokeLinecap="round" strokeLinejoin="round"></path>
+                      <path d="M2 9.4V2.6C2 2.26863 2.26863 2 2.6 2H21.4C21.7314 2 22 2.26863 22 2.6V9.4C22 9.73137 21.7314 10 21.4 10H2.6C2.26863 10 2 9.73137 2 9.4Z"></path>
+                      <path d="M2 21.4V14.6C2 14.2686 2.26863 14 2.6 14H21.4C21.7314 14 22 14.2686 22 14.6V21.4C22 21.7314 21.7314 22 21.4 22H2.6C2.26863 22 2 21.7314 2 21.4Z"></path>
+                    </svg>
+                  </span>
+                  <span className="font-v2-sans underline underline-offset-4 decoration-neutral-300 group-hover:decoration-black" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
+                    Reliable at scale
+                  </span>
+                </div>
+                <p className="font-v2-sans text-v2-b2" style={{ color: 'var(--v2-color-text-secondary)', margin: 0 }}>
+                  99.99% uptime backed by support SLAs.
+                </p>
+              </a>
+
+              {/* Card 4 */}
+              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="https://infisical.com/docs/self-hosting/overview">
+                <div className="flex items-center" style={{ gap: '10px' }}>
+                  <span className="inline-flex text-black">
+                    <svg width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path d="M10 18V15C10 13.8954 10.8954 13 12 13V13C13.1046 13 14 13.8954 14 15V18" strokeLinecap="round" strokeLinejoin="round"></path>
+                      <path d="M2 8L11.7317 3.13416C11.9006 3.04971 12.0994 3.0497 12.2683 3.13416L22 8" strokeLinecap="round" strokeLinejoin="round"></path>
+                      <path d="M20 11V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V11" strokeLinecap="round" strokeLinejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span className="font-v2-sans underline underline-offset-4 decoration-neutral-300 group-hover:decoration-black" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
+                    Self-host or cloud
+                  </span>
+                </div>
+                <p className="font-v2-sans text-v2-b2" style={{ color: 'var(--v2-color-text-secondary)', margin: 0 }}>
+                  Run it yourself or use MONOLITH Cloud.
+                </p>
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   );
 }

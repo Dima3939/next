@@ -18,24 +18,24 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'MONOLITH | The Modern Creative Engineering Platform',
+  title: 'MONOLITH | Security Infrastructure for Developers and Agents',
   description:
-    'All-in-one digital laboratory to design, engineer, and deploy high-performance Next.js 14 applications, 3D WebGL experiences, and kinetic brand systems.',
+    'All-in-one platform to securely manage application secrets, certificates, and privileged access across cloud, on-prem, and AI infrastructure.',
   keywords: [
     'MONOLITH',
-    'Creative Engineering',
-    'Next.js 14',
-    'WebGL',
-    'Three.js',
-    'Framer Motion',
-    'Interactive Studio',
-    'DevTools Design',
+    'Secrets Management',
+    'Agent Vault',
+    'Certificate Management',
+    'PKI',
+    'Privileged Access Management',
+    'PAM',
+    'Developer Security',
   ],
-  authors: [{ name: 'MONOLITH Studio' }],
+  authors: [{ name: 'MONOLITH' }],
   openGraph: {
-    title: 'MONOLITH | The Modern Creative Engineering Platform',
+    title: 'MONOLITH | Security Infrastructure for Developers and Agents',
     description:
-      'All-in-one digital laboratory for high-performance Next.js 14 applications, 3D WebGL experiences, and kinetic brand systems.',
+      'All-in-one platform to securely manage application secrets, certificates, and privileged access across cloud, on-prem, and AI infrastructure.',
     type: 'website',
     locale: 'en_US',
     siteName: 'MONOLITH Platform',
@@ -59,7 +59,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/next/favicon.ico" sizes="any" />
       </head>
-      <body className="bg-white text-black font-sans antialiased selection:bg-[#c2d72a] selection:text-black min-h-screen relative">
+      <body className="font-sans antialiased bg-white text-black selection:bg-[#f5f841] selection:text-black">
         {children}
       </body>
     </html>
