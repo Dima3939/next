@@ -70,3 +70,70 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #b0b0b0;
 }
+
+/* ==========================================================================
+   BUTTON & INTERACTIVE MICRO-ANIMATIONS (Infisical exact)
+   ========================================================================== */
+.v2-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              color 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.2s ease !important;
+}
+
+.v2-btn svg {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.v2-btn:hover svg {
+  transform: translateX(4px) !important;
+}
+
+.v2-btn:active {
+  transform: scale(0.97) !important;
+}
+
+.v2-btn--primary:hover {
+  background-color: #27272a !important;
+  border-color: #27272a !important;
+}
+
+.v2-btn--secondary:hover {
+  background-color: #f4f4f5 !important;
+  border-color: #d4d4d8 !important;
+}
+
+.v2-announcement-pill {
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease !important;
+}
+
+.v2-announcement-pill:hover {
+  transform: translateY(-1px) !important;
+}
+
+.v2-announcement-pill .v2-announcement-pill-arrow {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.v2-announcement-pill:hover .v2-announcement-pill-arrow {
+  transform: translateX(4px) !important;
+}
+
+/* Feature link hover animations */
+a[class*="transition-opacity"] svg,
+a svg[viewBox="0 0 12 12"] {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+a[class*="transition-opacity"]:hover svg,
+.group:hover .group-hover\:translate-x-\[2px\] {
+  transform: translateX(4px) !important;
+}
+
