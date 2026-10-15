@@ -12,7 +12,7 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#09090b] text-[#f4f3ef] overflow-hidden selection:bg-[#d4ff32] selection:text-black">
+    <main className="relative min-h-screen bg-[#08080a] text-[#f5f5f7] overflow-hidden selection:bg-[#0038ff] selection:text-white">
       {/* Background Ambient Depth */}
       <AmbientBackground />
 

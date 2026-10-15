@@ -6,25 +6,25 @@ import { motion } from 'framer-motion';
 const PRINCIPLES = [
   {
     title: 'Architectural Typographic Craft',
-    subtitle: 'Editorial Precision',
+    subtitle: 'EDITORIAL PRECISION',
     description:
       'We obsess over kerning, responsive leading, and structural rhythm. Every pixel is placed with intentional architectural restraint.',
   },
   {
     title: 'Engineered for Conversion',
-    subtitle: 'Measurable Growth',
+    subtitle: 'MEASURABLE VELOCITY',
     description:
       'A beautiful website that fails to convert is useless art. We align hypnotic visual pacing with behavioral psychology to drive venture investment and SaaS signups.',
   },
   {
     title: '60 FPS Hardware Performance',
-    subtitle: 'Zero Compromises',
+    subtitle: 'HARDWARE VELOCITY',
     description:
       'Hardware-accelerated CSS transforms and pre-baked WebGL shaders guarantee silky-smooth interaction feedback across desktop and mobile devices.',
   },
   {
     title: 'Direct Senior Partnership',
-    subtitle: 'Zero Account Bloat',
+    subtitle: 'ZERO ACCOUNT BLOAT',
     description:
       'You collaborate directly with the lead creative technologist and art director writing the code, ensuring rapid iteration loops and pristine execution.',
   },
@@ -32,11 +32,11 @@ const PRINCIPLES = [
 
 export default function Metrics() {
   return (
-    <section id="philosophy" className="relative py-28 md:py-36 px-6 border-y border-white/[0.08] bg-[#07070a]">
+    <section id="philosophy" className="relative py-28 md:py-36 px-6 border-y border-white/[0.08] bg-[#060608]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 max-w-3xl">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-400 block mb-3">
-            Studio Philosophy
+          <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#0038ff] block mb-3 font-semibold">
+            [ 04 // STUDIO PHILOSOPHY ]
           </span>
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white font-display tracking-tight uppercase">
             WHAT DEFINES OUR WORK.
@@ -54,11 +54,11 @@ export default function Metrics() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-8 rounded-3xl bg-[#0e0e13] border border-white/[0.08] hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
+              className="p-8 rounded-3xl bg-[#0c0c10] border border-white/[0.08] hover:border-[#0038ff]/40 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <span className="text-xs font-mono text-[#d4ff32] uppercase tracking-wider block mb-2">
-                  {item.subtitle}
+                <span className="text-xs font-mono text-[#0038ff] uppercase tracking-wider block mb-2 font-semibold">
+                  [{item.subtitle}]
                 </span>
                 <h3 className="text-xl font-bold text-white mb-3 font-display">{item.title}</h3>
                 <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
@@ -70,14 +70,14 @@ export default function Metrics() {
         </div>
 
         {/* Studio Capacity Banner */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-[#0e0e13] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="p-8 sm:p-10 rounded-3xl bg-[#0c0c10] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <div className="w-8 h-10 bg-white flex items-center justify-center shrink-0">
               <div className="w-0.5 h-full bg-black/40 mr-auto ml-1" />
             </div>
             <div>
               <h4 className="text-xl sm:text-2xl font-bold text-white font-display">
-                Strict Quality Limit
+                Quarterly Intake Capacity
               </h4>
               <p className="text-xs sm:text-sm text-zinc-400 font-light mt-0.5">
                 We accept only 2 client engagements per quarter to maintain uncompromising perfection.
@@ -87,9 +87,9 @@ export default function Metrics() {
 
           <a
             href="#contact"
-            className="px-6 py-3.5 rounded-full bg-[#d4ff32] text-black font-bold text-xs tracking-wider uppercase hover:bg-[#c3ec29] transition-colors shrink-0 shadow-[0_0_20px_rgba(212,255,50,0.25)]"
+            className="px-6 py-3.5 rounded-full bg-[#0038ff] text-white font-mono font-bold text-xs tracking-wider uppercase hover:bg-[#002edb] transition-colors shrink-0 shadow-[0_0_20px_rgba(0,56,255,0.35)]"
           >
-            Inquire Availability
+            Inquire Intake
           </a>
         </div>
       </div>

@@ -67,11 +67,11 @@ export default function Services() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section id="capabilities" className="relative py-28 md:py-36 px-6 bg-[#07070a]">
+    <section id="capabilities" className="relative py-28 md:py-36 px-6 bg-[#060608]">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl mb-16">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-400 block mb-3">
-            Core Disciplines
+          <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#0038ff] block mb-3 font-semibold">
+            [ 02 // STUDIO DISCIPLINES ]
           </span>
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white font-display tracking-tight uppercase">
             STUDIO CAPABILITIES.
@@ -95,16 +95,16 @@ export default function Services() {
                   onClick={() => setActiveTab(idx)}
                   className={`p-6 sm:p-7 rounded-2xl cursor-pointer transition-all duration-300 border ${
                     isSelected
-                      ? 'bg-[#111118] border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
+                      ? 'bg-[#0f0f14] border-[#0038ff]/50 shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
                       : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04] hover:border-white/10'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <span className="font-mono text-xs text-zinc-500">{cap.id}</span>
+                      <span className="font-mono text-xs text-zinc-500 font-semibold">({cap.id})</span>
                       <div
                         className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
-                          isSelected ? 'bg-[#d4ff32] text-black' : 'bg-white/5 text-zinc-400'
+                          isSelected ? 'bg-[#0038ff] text-white' : 'bg-white/5 text-zinc-400'
                         }`}
                       >
                         <Icon className="w-5 h-5" />
@@ -119,7 +119,7 @@ export default function Services() {
 
                     <ArrowRight
                       className={`w-4 h-4 transition-transform duration-300 shrink-0 mt-1 ${
-                        isSelected ? 'text-[#d4ff32] translate-x-1' : 'text-zinc-600'
+                        isSelected ? 'text-[#0038ff] translate-x-1' : 'text-zinc-600'
                       }`}
                     />
                   </div>
@@ -131,7 +131,7 @@ export default function Services() {
                       <div className="grid grid-cols-1 gap-2">
                         {cap.deliverables.map((d) => (
                           <div key={d} className="flex items-center gap-2 text-xs text-zinc-400">
-                            <Check className="w-3.5 h-3.5 text-[#d4ff32]" />
+                            <Check className="w-3.5 h-3.5 text-[#0038ff]" />
                             <span>{d}</span>
                           </div>
                         ))}
@@ -150,11 +150,11 @@ export default function Services() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.35 }}
-              className="rounded-3xl bg-[#0e0e13] border border-white/15 p-8 shadow-2xl relative overflow-hidden"
+              className="rounded-3xl bg-[#0c0c10] border border-white/15 p-8 shadow-2xl relative overflow-hidden"
             >
-              <div className="flex items-center justify-between text-xs font-mono text-zinc-500 mb-6">
-                <span>PILLAR {CAPABILITIES[activeTab].id}</span>
-                <span className="text-white uppercase tracking-wider">PRODUCTION SPEC</span>
+              <div className="flex items-center justify-between text-xs font-mono text-zinc-500 mb-6 border-b border-white/[0.08] pb-3">
+                <span className="text-[#0038ff] font-semibold">DISCIPLINE ({CAPABILITIES[activeTab].id})</span>
+                <span className="text-white uppercase tracking-wider">SWISS SPEC SHEET</span>
               </div>
 
               <h4 className="text-2xl font-bold text-white font-display mb-3">
@@ -167,11 +167,11 @@ export default function Services() {
 
               <div className="space-y-3 mb-8">
                 <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 block mb-2">
-                  Key Deliverables:
+                  Key Scope Deliverables:
                 </span>
                 {CAPABILITIES[activeTab].deliverables.map((item) => (
                   <div key={item} className="flex items-center gap-2.5 text-xs text-zinc-300">
-                    <Check className="w-4 h-4 text-[#d4ff32] shrink-0" />
+                    <Check className="w-4 h-4 text-[#0038ff] shrink-0" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -179,7 +179,7 @@ export default function Services() {
 
               <a
                 href="#contact"
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full bg-[#d4ff32] text-black font-bold text-xs tracking-wider uppercase hover:bg-[#c3ec29] transition-colors"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full bg-[#0038ff] text-white font-mono font-bold text-xs tracking-wider uppercase hover:bg-[#002edb] transition-colors shadow-[0_0_20px_rgba(0,56,255,0.3)]"
               >
                 <span>Request Scope & Timeline</span>
                 <ArrowRight className="w-3.5 h-3.5" />

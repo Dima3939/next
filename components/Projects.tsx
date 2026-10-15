@@ -6,6 +6,7 @@ import { ArrowUpRight, Play, X, Clock, CheckCircle } from 'lucide-react';
 
 interface Project {
   id: string;
+  idx: string;
   title: string;
   client: string;
   category: string;
@@ -21,7 +22,8 @@ interface Project {
 const MONOLITH_PROJECTS: Project[] = [
   {
     id: 'polestar-kinetic',
-    title: 'Polestar Kinetic — Pure Aerodynamics Reveal',
+    idx: '01',
+    title: 'Polestar Kinetic — Aerodynamics Reveal',
     client: 'Polestar Automotive',
     category: 'Automotive & Space',
     year: '2024',
@@ -35,7 +37,8 @@ const MONOLITH_PROJECTS: Project[] = [
   },
   {
     id: 'kinesis-tourbillon',
-    title: 'Kinesis — Haute Horlogerie 3D Experience',
+    idx: '02',
+    title: 'Kinesis — Haute Horlogerie Experience',
     client: 'Maison Kinesis Geneva',
     category: '3D & WebGL',
     year: '2024',
@@ -49,6 +52,7 @@ const MONOLITH_PROJECTS: Project[] = [
   },
   {
     id: 'neura-core',
+    idx: '03',
     title: 'Neura OS — Autonomous Agent Canvas',
     client: 'Neura AI Corp',
     category: 'Spatial UI',
@@ -63,6 +67,7 @@ const MONOLITH_PROJECTS: Project[] = [
   },
   {
     id: 'nothing-sound',
+    idx: '04',
     title: 'Nothing Sound (3) — Transparent Mechanics',
     client: 'Nothing Technology Ltd',
     category: 'Product Films',
@@ -77,6 +82,7 @@ const MONOLITH_PROJECTS: Project[] = [
   },
   {
     id: 'monolith-protocol',
+    idx: '05',
     title: 'Monolith Protocol — Institutional Liquidity Hub',
     client: 'Monolith Foundation',
     category: 'Spatial UI',
@@ -91,6 +97,7 @@ const MONOLITH_PROJECTS: Project[] = [
   },
   {
     id: 'orbital-dynamics',
+    idx: '06',
     title: 'Orbital Dynamics — Mission Telemetry Cockpit',
     client: 'Orbital Space Systems',
     category: 'Automotive & Space',
@@ -105,6 +112,7 @@ const MONOLITH_PROJECTS: Project[] = [
   },
   {
     id: 'stripe-manifesto',
+    idx: '07',
     title: 'Stripe Press — The Architecture of Ideas',
     client: 'Stripe Inc.',
     category: 'Brand Systems',
@@ -119,6 +127,7 @@ const MONOLITH_PROJECTS: Project[] = [
   },
   {
     id: 'aether-pavilion',
+    idx: '08',
     title: 'Aether Pavilion — Generative Spatial Acoustics',
     client: 'Aether Architecture',
     category: '3D & WebGL',
@@ -150,8 +159,8 @@ export default function Projects() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-white/[0.08] pb-8">
           <div>
-            <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-400 block mb-3">
-              Selected Works (2023 — 2024)
+            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#0038ff] block mb-3 font-semibold">
+              [ 01 // ARCHIVE OF SELECTED WORKS ]
             </span>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white font-display tracking-tight uppercase">
               PROVEN MASTERPIECES.
@@ -159,7 +168,7 @@ export default function Projects() {
           </div>
 
           <p className="text-zinc-400 text-sm md:text-base max-w-md font-light leading-relaxed">
-            Every release is an artisanal collision of architectural typography, real-time shaders,
+            Every release is an artisanal collision of Swiss typography, real-time shaders,
             and uncompromising commercial engineering.
           </p>
         </div>
@@ -174,7 +183,7 @@ export default function Projects() {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-5 py-2.5 rounded-full text-xs font-mono tracking-wider transition-all duration-300 uppercase ${
                   isActive
-                    ? 'bg-[#d4ff32] text-black font-bold shadow-[0_0_20px_rgba(212,255,50,0.3)]'
+                    ? 'bg-[#0038ff] text-white font-bold shadow-[0_0_20px_rgba(0,56,255,0.35)]'
                     : 'bg-white/[0.03] text-zinc-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.06]'
                 }`}
               >
@@ -202,7 +211,7 @@ export default function Projects() {
                     isWide ? 'md:col-span-2' : 'md:col-span-1'
                   }`}
                 >
-                  <div className="bento-card relative h-[380px] sm:h-[440px] flex flex-col justify-between p-6 sm:p-8 overflow-hidden rounded-2xl border border-white/[0.08] group-hover:border-white/30 transition-all duration-500 shadow-2xl">
+                  <div className="bento-card relative h-[380px] sm:h-[440px] flex flex-col justify-between p-6 sm:p-8 overflow-hidden rounded-2xl border border-white/[0.08] group-hover:border-[#0038ff]/60 transition-all duration-500 shadow-2xl">
                     {/* Real High-Res Background Image with Smooth Hover Zoom */}
                     <img
                       src={item.image}
@@ -211,23 +220,24 @@ export default function Projects() {
                     />
 
                     {/* Multi-Stop Cinematic Vignette Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/30 group-hover:via-black/40 transition-colors duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/35 group-hover:via-black/45 transition-colors duration-500" />
 
                     {/* Top Tag & Runtime */}
                     <div className="relative z-10 flex items-center justify-between text-xs font-mono">
-                      <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-white uppercase tracking-wider">
-                        {item.category}
+                      <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-white uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="text-[#0038ff] font-bold">[{item.idx}]</span>
+                        <span>{item.category}</span>
                       </span>
-                      <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-zinc-300">
-                        <Clock className="w-3.5 h-3.5 text-[#d4ff32]" />
+                      <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-zinc-300">
+                        <Clock className="w-3.5 h-3.5 text-[#0038ff]" />
                         {item.duration}
                       </span>
                     </div>
 
                     {/* Center Play Button on hover */}
                     <div className="relative z-10 my-auto flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-14 h-14 rounded-full bg-[#d4ff32] text-black flex items-center justify-center shadow-[0_0_30px_rgba(212,255,50,0.4)] transition-transform duration-300 group-hover:scale-110">
-                        <Play className="w-5 h-5 fill-black ml-0.5" />
+                      <div className="w-14 h-14 rounded-full bg-[#0038ff] text-white flex items-center justify-center shadow-[0_0_30px_rgba(0,56,255,0.5)] transition-transform duration-300 group-hover:scale-110">
+                        <Play className="w-5 h-5 fill-white ml-0.5" />
                       </div>
                     </div>
 
@@ -240,10 +250,10 @@ export default function Projects() {
                       </div>
 
                       <div className="flex items-start justify-between gap-4 mb-2">
-                        <h3 className="text-xl sm:text-2xl font-black text-white font-display group-hover:text-[#d4ff32] transition-colors leading-snug">
+                        <h3 className="text-xl sm:text-2xl font-black text-white font-display group-hover:text-white transition-colors leading-snug">
                           {item.title}
                         </h3>
-                        <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center shrink-0 group-hover:bg-[#d4ff32] group-hover:text-black transition-colors">
+                        <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center shrink-0 group-hover:bg-[#0038ff] group-hover:border-[#0038ff] group-hover:text-white transition-colors">
                           <ArrowUpRight className="w-4 h-4" />
                         </div>
                       </div>
@@ -253,8 +263,8 @@ export default function Projects() {
                       </p>
 
                       <div className="flex items-center justify-between pt-3 border-t border-white/10 text-xs font-semibold text-zinc-300 group-hover:text-white transition-colors">
-                        <span className="uppercase tracking-wider">Inspect Case Study</span>
-                        <span className="text-[#d4ff32] font-mono text-[11px]">View breakdown →</span>
+                        <span className="uppercase tracking-wider font-mono text-[11px]">Inspect Specification</span>
+                        <span className="text-[#0038ff] font-mono text-[11px] group-hover:underline">View Case Study →</span>
                       </div>
                     </div>
                   </div>
@@ -280,7 +290,7 @@ export default function Projects() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 15 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl bg-[#0e0e13] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+              className="relative w-full max-w-3xl bg-[#0c0c10] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
             >
               <button
                 onClick={() => setSelectedProject(null)}
@@ -299,14 +309,14 @@ export default function Projects() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 z-10">
-                  <span className="text-xs font-mono uppercase bg-black/70 px-3 py-1 rounded-full border border-white/10 text-white">
+                  <span className="text-xs font-mono uppercase bg-black/75 px-3 py-1 rounded-full border border-white/10 text-white">
                     {selectedProject.client} • {selectedProject.year}
                   </span>
                 </div>
               </div>
 
-              <div className="text-xs font-mono text-[#d4ff32] mb-2 uppercase">
-                {selectedProject.category} • Runtime: {selectedProject.duration}
+              <div className="text-xs font-mono text-[#0038ff] mb-2 uppercase font-semibold">
+                [ CASE {selectedProject.idx} ] • {selectedProject.category} • RUNTIME: {selectedProject.duration}
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-black text-white font-display mb-4">
@@ -333,7 +343,7 @@ export default function Projects() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {selectedProject.deliverables.map((d) => (
                     <div key={d} className="flex items-center gap-2 text-xs text-zinc-200">
-                      <CheckCircle className="w-4 h-4 text-[#d4ff32] shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-[#0038ff] shrink-0" />
                       <span>{d}</span>
                     </div>
                   ))}
@@ -342,11 +352,11 @@ export default function Projects() {
 
               <div className="flex items-center justify-between pt-6 border-t border-white/10">
                 <span className="text-xs font-mono text-zinc-500">
-                  Archived by MONOLITH Studio
+                  Archived by MONOLITH Studio // Zurich
                 </span>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="px-6 py-2.5 rounded-full bg-[#d4ff32] text-black font-bold text-xs tracking-wider uppercase hover:bg-[#c3ec29] transition-colors"
+                  className="px-6 py-2.5 rounded-full bg-[#0038ff] text-white font-mono font-bold text-xs tracking-wider uppercase hover:bg-[#002edb] transition-colors"
                 >
                   Close Case View
                 </button>

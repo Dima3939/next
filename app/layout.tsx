@@ -6,7 +6,7 @@ const syne = Syne({
   subsets: ['latin'],
   variable: '--font-syne',
   display: 'swap',
-  weight: ['500', '700', '800'],
+  weight: ['600', '700', '800'],
 });
 
 const jakarta = Plus_Jakarta_Sans({
@@ -17,13 +17,14 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'MONOLITH — Creative Engineering & Interactive Motion Studio',
+  title: 'MONOLITH® — Swiss Creative Engineering & Interactive Systems',
   description:
-    'Award-winning independent digital studio operating at the intersection of architectural typography, 3D WebGL experiences, and high-performance Next.js motion.',
+    'Independent digital studio operating at the intersection of Swiss International typography, real-time GLSL shaders, and high-performance Next.js motion.',
   keywords: [
     'MONOLITH',
+    'Swiss Design',
     'Creative Studio',
-    '3D WebGL',
+    'Bureau Borsche Style',
     'Next.js 14',
     'Framer Motion',
     'Interactive Agency',
@@ -31,9 +32,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'MONOLITH Studio' }],
   openGraph: {
-    title: 'MONOLITH — Creative Engineering & Interactive Motion Studio',
+    title: 'MONOLITH® — Swiss Creative Engineering & Interactive Systems',
     description:
-      'Architectural typography, 3D WebGL experiences, and high-performance Next.js motion.',
+      'Swiss International typography, real-time GLSL shaders, and high-performance Next.js motion.',
     type: 'website',
     locale: 'en_US',
     siteName: 'MONOLITH Studio',
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#09090b',
+  themeColor: '#08080a',
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,
@@ -57,7 +58,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="bg-[#09090b] text-[#f4f3ef] font-sans antialiased selection:bg-[#d4ff32] selection:text-black min-h-screen relative">
+      <body className="bg-[#08080a] text-[#f5f5f7] font-sans antialiased selection:bg-[#0038ff] selection:text-white min-h-screen relative">
         {children}
       </body>
     </html>

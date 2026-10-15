@@ -35,8 +35,8 @@ export default function Testimonials() {
     <section className="relative py-28 md:py-36 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-400 block mb-3">
-            Client Reputation
+          <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#0038ff] block mb-3 font-semibold">
+            [ 05 // CLIENT ENDORSEMENTS ]
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white font-display tracking-tight uppercase">
             WHAT VISIONARY LEADERS SAY.
@@ -51,12 +51,12 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.12 }}
-              className="p-8 rounded-3xl bg-[#0e0e13] border border-white/[0.08] hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
+              className="p-8 rounded-3xl bg-[#0c0c10] border border-white/[0.08] hover:border-[#0038ff]/40 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="text-xs font-mono text-[#d4ff32] uppercase tracking-wider">
-                    Verified Outcome
+                  <div className="text-xs font-mono text-[#0038ff] uppercase tracking-wider font-semibold">
+                    [ VERIFIED OUTCOME ]
                   </div>
                   <span className="text-xs font-mono text-zinc-300 px-3 py-1 rounded-full bg-white/5 border border-white/10">
                     {item.metric}

@@ -9,23 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#09090b',
+        obsidian: '#08080a',
         surface: {
-          50: '#1c1c22',
-          100: '#141418',
-          200: '#0e0e12',
-          DEFAULT: '#111115',
+          50: '#1a1a22',
+          100: '#14141a',
+          200: '#0f0f14',
+          DEFAULT: '#0f0f13',
         },
-        studio: {
-          accent: '#d4ff32', // Acid Lime - iconic modern studio accent
-          ivory: '#f4f3ef',
-          muted: '#9c9991',
-          subtle: '#2a2a30',
+        swiss: {
+          blue: '#0038ff', // International Klein Blue - Bureau Borsche / Studio Temp signature
+          blueHover: '#002edb',
+          titanium: '#f5f5f7',
+          muted: '#8e8e96',
+          border: 'rgba(255, 255, 255, 0.08)',
+          subtle: '#18181f',
         },
       },
       fontFamily: {
         sans: ['var(--font-jakarta)', 'system-ui', '-apple-system', 'sans-serif'],
         display: ['var(--font-syne)', 'var(--font-jakarta)', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+      },
+      letterSpacing: {
+        tightest: '-0.04em',
+        architectural: '-0.03em',
       },
     },
   },

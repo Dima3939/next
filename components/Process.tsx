@@ -7,28 +7,28 @@ const BLUEPRINT_STEPS = [
   {
     number: '01',
     title: 'Immersion & Spatial Blueprint',
-    duration: 'Week 1',
+    duration: 'Sprint 01',
     desc: 'Auditing your product architecture, narrative goals, and competitor landscape. We establish the kinetic design pillars through live interactive styleboards.',
     output: 'Approved Narrative Brief & Interaction Spec',
   },
   {
     number: '02',
     title: 'High-Fidelity Styleframes',
-    duration: 'Week 2–3',
+    duration: 'Sprint 02',
     desc: 'Designing key cinematic states in Figma and Blender with sub-millimeter precision. Establishing lighting, material shaders, and typography systems.',
     output: 'Interactive Styleframes & 3D R&D Deck',
   },
   {
     number: '03',
     title: 'Next.js & Shader Production',
-    duration: 'Week 3–5',
+    duration: 'Sprint 03',
     desc: 'Transforming static concepts into a living digital product using Next.js 14 App Router, Three.js shaders, Tailwind CSS, and Framer Motion.',
     output: '60 FPS Interactive Staging Environment',
   },
   {
     number: '04',
     title: 'Calibration & Global Launch',
-    duration: 'Week 6',
+    duration: 'Sprint 04',
     desc: 'Rigorous 100/100 Core Web Vitals audit, static export optimization, international CDN routing, and submission to global design awards.',
     output: 'Production Release & Awwwards Submission',
   },
@@ -39,14 +39,14 @@ export default function Process() {
     <section id="methodology" className="relative py-28 md:py-36 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-zinc-400 block mb-3">
-            Production Cycle
+          <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#0038ff] block mb-3 font-semibold">
+            [ 03 // PRODUCTION METHODOLOGY ]
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-white font-display tracking-tight uppercase">
-            THE MONOLITH BLUEPRINT.
+            THE SWISS BLUEPRINT.
           </h2>
           <p className="mt-4 text-zinc-400 text-sm md:text-base font-light">
-            Methodical rigor. A 6-week sprint cycle bringing complex digital concepts from raw vision to viral launch.
+            Methodical rigor. A 4-sprint production pipeline taking complex digital concepts from raw vision to viral launch.
           </p>
         </div>
 
@@ -58,14 +58,14 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-8 rounded-3xl bg-[#0e0e13] border border-white/[0.08] hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
+              className="p-8 rounded-3xl bg-[#0c0c10] border border-white/[0.08] hover:border-[#0038ff]/40 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-8">
-                  <span className="font-mono text-3xl font-black text-zinc-600">
+                  <span className="font-mono text-3xl font-black text-zinc-700">
                     {step.number}
                   </span>
-                  <span className="text-[11px] font-mono text-zinc-400 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                  <span className="text-[11px] font-mono text-zinc-300 px-3 py-1 rounded-full bg-white/5 border border-white/10">
                     {step.duration}
                   </span>
                 </div>

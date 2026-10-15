@@ -48,45 +48,48 @@ export default function Hero() {
           animate="visible"
           className="flex flex-col"
         >
-          {/* Top Label */}
-          <motion.div variants={itemVariants} className="mb-6 flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-[#d4ff32] animate-pulse" />
-            <span className="text-xs font-mono tracking-[0.25em] text-zinc-400 uppercase">
-              MONOLITH® • Creative Engineering & Motion Lab
-            </span>
+          {/* Swiss Header Spec Bar */}
+          <motion.div variants={itemVariants} className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.08] pb-4">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-[#0038ff] animate-pulse" />
+              <span className="text-xs font-mono tracking-[0.22em] text-zinc-300 uppercase">
+                [ MONOLITH LAB // ZURICH — BERLIN ]
+              </span>
+            </div>
+
+            <div className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider hidden sm:block">
+              LAT: 47.3769° N • LON: 8.5417° E • ARCHIVE 2024
+            </div>
           </motion.div>
 
-          {/* Bold Editorial Headline */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
-            <h1 className="lg:col-span-8 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.02] text-white font-display uppercase">
-              WE SHAPE DIGITAL{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-600">
-                ARTIFACTS
-              </span>{' '}
+          {/* Stark Swiss International Headline */}
+          <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14">
+            <h1 className="lg:col-span-8 text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[0.98] text-white font-display uppercase">
+              WE ENGINEER DIGITAL{' '}
+              <span className="text-zinc-500">ARTIFACTS</span>{' '}
               THAT DEFY CONVENTION.
             </h1>
 
             <div className="lg:col-span-4 flex flex-col justify-end">
               <p className="text-sm sm:text-base text-zinc-400 font-light leading-relaxed mb-6">
-                Independent studio operating at the intersection of architectural typography,
-                real-time 3D shaders, and high-velocity Next.js 14 motion. We construct interactive
-                worlds for ambitious brands worldwide.
+                Independent creative engineering practice. We fuse rigorous Swiss typographic systems,
+                real-time WebGL shaders, and high-velocity Next.js 14 architecture for ambitious global brands.
               </p>
 
               <div className="flex flex-wrap items-center gap-3">
                 <a
                   href="#work"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#d4ff32] text-black font-bold text-xs tracking-wider uppercase hover:bg-[#c3ec29] transition-all shadow-[0_0_25px_rgba(212,255,50,0.25)]"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#0038ff] text-white font-mono font-bold text-xs tracking-wider uppercase hover:bg-[#002edb] transition-all shadow-[0_0_25px_rgba(0,56,255,0.35)]"
                 >
-                  <span>Explore Selected Work</span>
+                  <span>Explore Archive</span>
                   <ArrowDownRight className="w-4 h-4" />
                 </a>
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] text-white text-xs font-semibold tracking-wider uppercase transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/15 bg-white/[0.03] hover:bg-white/[0.08] text-white text-xs font-mono tracking-wider uppercase transition-all"
                 >
-                  <span>Initiate Inquiry</span>
+                  <span>Direct Inquiry</span>
                 </a>
               </div>
             </div>
@@ -95,13 +98,13 @@ export default function Hero() {
           {/* Cinematic Showreel Showcase Frame with Real Liquid Mercury Imagery */}
           <motion.div
             variants={itemVariants}
-            className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 bg-[#0d0d14] shadow-2xl mb-16 group"
+            className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 bg-[#0c0c10] shadow-2xl mb-16 group"
           >
             {/* Real High-Res Tactile Liquid Chrome Imagery */}
-            <div className="relative aspect-[21/9] min-h-[320px] sm:min-h-[460px] w-full overflow-hidden">
+            <div className="relative aspect-[21/9] min-h-[320px] sm:min-h-[480px] w-full overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1600&auto=format&fit=crop"
-                alt="MONOLITH 3D Motion Render"
+                alt="MONOLITH Showreel Render"
                 className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105"
               />
 
@@ -110,7 +113,7 @@ export default function Hero() {
 
               {/* Top Meta Strip */}
               <div className="absolute top-6 inset-x-6 z-10 flex items-center justify-between text-xs font-mono text-zinc-300">
-                <div className="flex items-center gap-3 bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10">
+                <div className="flex items-center gap-3 bg-black/75 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10">
                   <div className="flex items-end gap-1 h-3">
                     {[0.6, 1, 0.4, 0.8, 0.5, 0.9, 0.3].map((val, i) => (
                       <motion.span
@@ -122,7 +125,7 @@ export default function Hero() {
                           repeatType: 'reverse',
                           delay: i * 0.1,
                         }}
-                        className="w-0.5 bg-[#d4ff32] rounded-full"
+                        className="w-0.5 bg-[#0038ff] rounded-full"
                         style={{ height: `${val * 100}%` }}
                       />
                     ))}
@@ -132,10 +135,10 @@ export default function Hero() {
 
                 <button
                   onClick={() => setIsMuted(!isMuted)}
-                  className="p-2.5 rounded-full bg-black/70 hover:bg-black backdrop-blur-md border border-white/10 text-zinc-300 hover:text-white transition-colors"
+                  className="p-2.5 rounded-full bg-black/75 hover:bg-black backdrop-blur-md border border-white/10 text-zinc-300 hover:text-white transition-colors"
                   aria-label="Toggle Audio"
                 >
-                  {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-[#d4ff32]" />}
+                  {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-[#0038ff]" />}
                 </button>
               </div>
 
@@ -159,8 +162,8 @@ export default function Hero() {
               {/* Bottom Info Bar */}
               <div className="absolute bottom-4 inset-x-6 z-10 flex items-center justify-between text-xs font-mono text-zinc-400 border-t border-white/10 pt-3">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#d4ff32] animate-pulse" />
-                  <span className="text-white">Studio HQ: Zurich & London</span>
+                  <span className="w-2 h-2 rounded-full bg-[#0038ff] animate-pulse" />
+                  <span className="text-white">Studio HQ: Zurich & Berlin</span>
                 </div>
                 <div className="hidden sm:block">Awwwards SOTD × 14 Winner</div>
               </div>
@@ -170,7 +173,7 @@ export default function Hero() {
       </div>
 
       {/* Infinite Brand Marquee Ticker */}
-      <div className="w-full border-y border-white/[0.08] bg-[#07070a] py-4 overflow-hidden">
+      <div className="w-full border-y border-white/[0.08] bg-[#050508] py-4 overflow-hidden">
         <div className="animate-marquee whitespace-nowrap flex items-center">
           {[...BRANDS, ...BRANDS, ...BRANDS, ...BRANDS].map((brand, i) => (
             <span
@@ -178,7 +181,7 @@ export default function Hero() {
               className="inline-flex items-center gap-8 mx-8 text-xs sm:text-sm font-display font-bold tracking-[0.25em] text-zinc-400 hover:text-white transition-colors cursor-default"
             >
               <span>{brand}</span>
-              <span className="text-zinc-600 font-mono">•</span>
+              <span className="text-[#0038ff] font-mono">•</span>
             </span>
           ))}
         </div>

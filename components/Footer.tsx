@@ -40,25 +40,25 @@ export default function Footer() {
                   <div className="w-[1.5px] h-full bg-black/40 mr-auto ml-0.5" />
                 </div>
                 <span className="font-display font-black tracking-[0.25em] text-white text-base uppercase">
-                  MONOLITH<span className="text-zinc-500 text-xs font-mono font-normal ml-0.5">®</span>
+                  MONOLITH<span className="text-[#0038ff] ml-0.5">®</span>
                 </span>
               </div>
               <p className="text-xs text-zinc-400 font-light max-w-sm leading-relaxed">
-                Independent creative engineering laboratory. We construct architectural digital
+                Independent Swiss creative engineering laboratory. We construct architectural digital
                 artifacts, real-time shaders, and bespoke interactive systems.
               </p>
             </div>
 
-            <div className="mt-8 text-xs font-mono text-zinc-500 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#d4ff32] animate-pulse" />
-              <span>Studio HQ: Zurich, CH • {time || '12:00:00'} CET</span>
+            <div className="mt-8 text-xs font-mono text-zinc-400 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#0038ff] animate-pulse" />
+              <span>HQ: Zurich, CH • {time || '12:00:00'} CET</span>
             </div>
           </div>
 
           {/* Directory */}
           <div className="md:col-span-3">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 block mb-4">
-              Directory
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#0038ff] block mb-4 font-semibold">
+              [ DIRECTORY ]
             </span>
             <ul className="space-y-2 text-xs text-zinc-400 font-mono">
               <li><a href="#work" className="hover:text-white transition-colors">01 Selected Work</a></li>
@@ -70,8 +70,8 @@ export default function Footer() {
 
           {/* Recognition */}
           <div className="md:col-span-3">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 block mb-4">
-              Recognition
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#0038ff] block mb-4 font-semibold">
+              [ RECOGNITION ]
             </span>
             <ul className="space-y-2 text-xs text-zinc-400 font-mono">
               <li>Awwwards Site of the Day × 14</li>
@@ -83,8 +83,8 @@ export default function Footer() {
 
           {/* Channels */}
           <div className="md:col-span-2">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400 block mb-4">
-              Network
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#0038ff] block mb-4 font-semibold">
+              [ NETWORK ]
             </span>
             <ul className="space-y-2.5 text-xs text-zinc-400 font-mono">
               <li>
@@ -113,7 +113,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
-          <div>© {new Date().getFullYear()} MONOLITH Studio. Creative engineering & interactive systems. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} MONOLITH STUDIO. INDEPENDENT DIGITAL ENGINEERING &amp; INTERACTIVE DIRECTION. ALL RIGHTS RESERVED.</div>
 
           <button
             onClick={scrollToTop}
