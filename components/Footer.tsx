@@ -29,64 +29,87 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-white/[0.08] bg-[#050508] pt-16 pb-12 px-6">
+    <footer className="relative border-t border-white/[0.08] bg-[#050608] pt-16 pb-12 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-16 border-b border-white/[0.06]">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-8 pb-16 border-b border-white/[0.06]">
           {/* Brand Manifesto */}
-          <div className="md:col-span-4 flex flex-col justify-between">
+          <div className="col-span-2 md:col-span-4 flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-5 h-6 bg-white flex items-center justify-center">
-                  <div className="w-[1.5px] h-full bg-black/40 mr-auto ml-0.5" />
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="w-6 h-6 rounded-md bg-emerald-500 flex items-center justify-center text-black font-bold text-xs">
+                  M
                 </div>
-                <span className="font-display font-black tracking-[0.25em] text-white text-base uppercase">
-                  MONOLITH<span className="text-[#0038ff] ml-0.5">®</span>
+                <span className="font-bold tracking-tight text-white text-base">
+                  MONOLITH
                 </span>
               </div>
-              <p className="text-xs text-zinc-400 font-light max-w-sm leading-relaxed">
-                Independent Swiss creative engineering laboratory. We construct architectural digital
-                artifacts, real-time shaders, and bespoke interactive systems.
+              <p className="text-xs text-zinc-400 font-normal max-w-sm leading-relaxed mb-6">
+                All-in-one creative engineering laboratory. We construct high-performance Next.js 14 web
+                applications, real-time 3D WebGL canvases, and kinetic brand systems.
               </p>
             </div>
 
-            <div className="mt-8 text-xs font-mono text-zinc-400 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#0038ff] animate-pulse" />
-              <span>HQ: Zurich, CH • {time || '12:00:00'} CET</span>
+            <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>All Systems Operational • {time || '12:00:00'} Zurich</span>
             </div>
           </div>
 
-          {/* Directory */}
-          <div className="md:col-span-3">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#0038ff] block mb-4 font-semibold">
-              [ DIRECTORY ]
+          {/* Column 1: Platform */}
+          <div className="col-span-1 md:col-span-2">
+            <span className="text-xs font-semibold text-white uppercase tracking-wider block mb-4">
+              Platform
             </span>
-            <ul className="space-y-2 text-xs text-zinc-400 font-mono">
-              <li><a href="#work" className="hover:text-white transition-colors">01 Selected Work</a></li>
-              <li><a href="#capabilities" className="hover:text-white transition-colors">02 Capabilities</a></li>
-              <li><a href="#methodology" className="hover:text-white transition-colors">03 Methodology</a></li>
-              <li><a href="#philosophy" className="hover:text-white transition-colors">04 Philosophy</a></li>
+            <ul className="space-y-2 text-xs text-zinc-400">
+              <li><a href="#capabilities" className="hover:text-white transition-colors">3D &amp; WebGL Canvas</a></li>
+              <li><a href="#capabilities" className="hover:text-white transition-colors">Next.js 14 Architecture</a></li>
+              <li><a href="#capabilities" className="hover:text-white transition-colors">GLSL Shader Engine</a></li>
+              <li><a href="#capabilities" className="hover:text-white transition-colors">Spatial Audio API</a></li>
             </ul>
           </div>
 
-          {/* Recognition */}
-          <div className="md:col-span-3">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#0038ff] block mb-4 font-semibold">
-              [ RECOGNITION ]
+          {/* Column 2: Selected Work */}
+          <div className="col-span-1 md:col-span-2">
+            <span className="text-xs font-semibold text-white uppercase tracking-wider block mb-4">
+              Case Studies
             </span>
-            <ul className="space-y-2 text-xs text-zinc-400 font-mono">
-              <li>Awwwards Site of the Day × 14</li>
-              <li>FWA of the Month × 4</li>
-              <li>Red Dot Best of the Best 2024</li>
-              <li>CSS Design Awards WOTD × 8</li>
+            <ul className="space-y-2 text-xs text-zinc-400">
+              <li><a href="#work" className="hover:text-white transition-colors">Polestar Kinetic</a></li>
+              <li><a href="#work" className="hover:text-white transition-colors">Maison Kinesis Geneva</a></li>
+              <li><a href="#work" className="hover:text-white transition-colors">Neura OS AI Canvas</a></li>
+              <li><a href="#work" className="hover:text-white transition-colors">Nothing Sound Mechanics</a></li>
             </ul>
           </div>
 
-          {/* Channels */}
-          <div className="md:col-span-2">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#0038ff] block mb-4 font-semibold">
-              [ NETWORK ]
+          {/* Column 3: Ecosystem */}
+          <div className="col-span-1 md:col-span-2">
+            <span className="text-xs font-semibold text-white uppercase tracking-wider block mb-4">
+              Ecosystem
             </span>
-            <ul className="space-y-2.5 text-xs text-zinc-400 font-mono">
+            <ul className="space-y-2 text-xs text-zinc-400">
+              <li><a href="#stack" className="hover:text-white transition-colors">Next.js 14 App Router</a></li>
+              <li><a href="#stack" className="hover:text-white transition-colors">Three.js / WebGL 2.0</a></li>
+              <li><a href="#stack" className="hover:text-white transition-colors">TypeScript 5.5</a></li>
+              <li><a href="#stack" className="hover:text-white transition-colors">Tailwind CSS</a></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Network */}
+          <div className="col-span-1 md:col-span-2">
+            <span className="text-xs font-semibold text-white uppercase tracking-wider block mb-4">
+              Network
+            </span>
+            <ul className="space-y-2.5 text-xs text-zinc-400">
+              <li>
+                <a href="https://github.com/Dima3939/next" target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5">
+                  <Github className="w-3.5 h-3.5 text-emerald-400" /> GitHub Repo
+                </a>
+              </li>
+              <li>
+                <a href="https://awwwards.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  Awwwards SOTD
+                </a>
+              </li>
               <li>
                 <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
                   X / Twitter
@@ -94,17 +117,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="https://vimeo.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-                  Vimeo
-                </a>
-              </li>
-              <li>
-                <a href="https://awwwards.com" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-                  Awwwards
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/Dima3939/next" target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5">
-                  <Github className="w-3.5 h-3.5" /> Source Code
+                  Vimeo Showreel
                 </a>
               </li>
             </ul>
@@ -113,11 +126,11 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
-          <div>© {new Date().getFullYear()} MONOLITH STUDIO. INDEPENDENT DIGITAL ENGINEERING &amp; INTERACTIVE DIRECTION. ALL RIGHTS RESERVED.</div>
+          <div>© {new Date().getFullYear()} MONOLITH STUDIO. All rights reserved.</div>
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors p-2 rounded-lg bg-white/5 border border-white/5"
+            className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors p-2 rounded-lg bg-surface-100 border border-white/5"
           >
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5" />

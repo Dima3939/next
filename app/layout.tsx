@@ -1,48 +1,48 @@
 import type { Metadata, Viewport } from 'next';
-import { Syne, Plus_Jakarta_Sans } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
-const syne = Syne({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-syne',
+  variable: '--font-inter',
   display: 'swap',
-  weight: ['600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700', '800'],
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-jakarta',
+  variable: '--font-mono',
   display: 'swap',
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600'],
 });
 
 export const metadata: Metadata = {
-  title: 'MONOLITH® — Swiss Creative Engineering & Interactive Systems',
+  title: 'MONOLITH | The Modern Creative Engineering Platform',
   description:
-    'Independent digital studio operating at the intersection of Swiss International typography, real-time GLSL shaders, and high-performance Next.js motion.',
+    'All-in-one digital laboratory to design, engineer, and deploy high-performance Next.js 14 applications, 3D WebGL experiences, and kinetic brand systems.',
   keywords: [
     'MONOLITH',
-    'Swiss Design',
-    'Creative Studio',
-    'Bureau Borsche Style',
+    'Creative Engineering',
     'Next.js 14',
+    'WebGL',
+    'Three.js',
     'Framer Motion',
-    'Interactive Agency',
-    'Awwwards SOTD',
+    'Interactive Studio',
+    'DevTools Design',
   ],
   authors: [{ name: 'MONOLITH Studio' }],
   openGraph: {
-    title: 'MONOLITH® — Swiss Creative Engineering & Interactive Systems',
+    title: 'MONOLITH | The Modern Creative Engineering Platform',
     description:
-      'Swiss International typography, real-time GLSL shaders, and high-performance Next.js motion.',
+      'All-in-one digital laboratory for high-performance Next.js 14 applications, 3D WebGL experiences, and kinetic brand systems.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'MONOLITH Studio',
+    siteName: 'MONOLITH Platform',
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#08080a',
+  themeColor: '#08090a',
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,
@@ -54,11 +54,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${syne.variable} ${jakarta.variable}`}>
+    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="bg-[#08080a] text-[#f5f5f7] font-sans antialiased selection:bg-[#0038ff] selection:text-white min-h-screen relative">
+      <body className="bg-[#08090a] text-[#f1f5f9] font-sans antialiased selection:bg-emerald-500 selection:text-black min-h-screen relative">
         {children}
       </body>
     </html>

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Mail, Copy, CheckCheck, ArrowRight } from 'lucide-react';
 
-const DISCIPLINES = ['3D & WebGL Canvas', 'Next.js 14 Web App', 'Kinetic Brand Identity', 'Full Flagship Launch'];
+const DISCIPLINES = ['3D & WebGL Canvas', 'Next.js 14 App Architecture', 'Kinetic Design System', 'Flagship Product Launch'];
 const BUDGETS = ['$25k — $50k', '$50k — $100k', '$100k+'];
 
 export default function CTA() {
@@ -27,41 +27,41 @@ export default function CTA() {
   };
 
   return (
-    <section id="contact" className="relative py-28 md:py-36 px-6">
+    <section id="contact" className="relative py-28 md:py-36 px-6 bg-[#060709] border-t border-white/[0.06]">
       <div className="max-w-6xl mx-auto">
-        <div className="relative rounded-3xl bg-[#0c0c10] border border-white/10 p-8 sm:p-12 md:p-16 overflow-hidden shadow-2xl">
-          {/* Subtle Monochromatic Studio Ambient Glow */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#0038ff]/[0.05] rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-zinc-800/[0.08] rounded-full blur-[140px] pointer-events-none" />
+        <div className="relative rounded-3xl bg-surface-100 border border-white/10 p-8 sm:p-12 md:p-16 overflow-hidden shadow-2xl">
+          {/* Ambient Glow */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/[0.08] rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-500/[0.05] rounded-full blur-[140px] pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left info */}
             <div className="lg:col-span-5">
-              <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#0038ff] block mb-3 font-semibold">
-                [ 06 // TRANSMISSION INQUIRY ]
-              </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono text-xs mb-4">
+                INITIATE PARTNERSHIP
+              </div>
 
-              <h2 className="text-3xl sm:text-5xl font-black text-white font-display tracking-tight leading-tight uppercase">
-                LET’S SHAPE SOMETHING ICONIC.
+              <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+                Ready to engineer your next flagship?
               </h2>
 
-              <p className="mt-4 text-zinc-400 text-sm font-light leading-relaxed">
-                Whether you have an established architectural brief or a radical concept, we’re
-                ready to engineer it with uncompromising rigor.
+              <p className="mt-4 text-zinc-400 text-sm sm:text-base font-normal leading-relaxed">
+                Connect directly with our lead creative technologists to review your specifications,
+                timeline, and technical milestones.
               </p>
 
               <div className="mt-8 pt-8 border-t border-white/[0.08] flex flex-col gap-3">
-                <span className="text-xs font-mono uppercase text-zinc-500">Direct Studio Line</span>
+                <span className="text-xs font-mono uppercase text-zinc-400">Direct Studio Email</span>
                 <button
                   onClick={copyEmail}
-                  className="inline-flex items-center justify-between px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 text-xs font-mono text-zinc-300 hover:text-white transition-colors"
+                  className="inline-flex items-center justify-between px-4 py-3 rounded-xl bg-surface-200 border border-white/10 hover:border-emerald-500/40 text-xs font-mono text-zinc-300 hover:text-white transition-colors"
                 >
                   <span className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-[#0038ff]" />
+                    <Mail className="w-4 h-4 text-emerald-400" />
                     studio@monolith.design
                   </span>
                   {copied ? (
-                    <span className="flex items-center gap-1 text-[#0038ff] font-semibold">
+                    <span className="flex items-center gap-1 text-emerald-400 font-semibold">
                       <CheckCheck className="w-3.5 h-3.5" /> Copied
                     </span>
                   ) : (
@@ -79,12 +79,12 @@ export default function CTA() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="p-8 rounded-2xl bg-white/[0.03] border border-white/15 text-center"
+                  className="p-8 rounded-2xl bg-surface-200 border border-white/15 text-center"
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#0038ff]/20 text-[#0038ff] flex items-center justify-center mx-auto mb-4 border border-[#0038ff]/30">
+                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
                     <Check className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2 font-display">Transmission Received</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Transmission Received</h3>
                   <p className="text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
                     Our lead creative engineer will review your specifications and reply with milestone scopes within 24 hours.
                   </p>
@@ -102,10 +102,10 @@ export default function CTA() {
                           key={d}
                           type="button"
                           onClick={() => setSelectedDiscipline(d)}
-                          className={`py-2 px-3 rounded-xl text-xs font-mono text-center transition-all ${
+                          className={`py-2 px-3 rounded-lg text-xs font-medium text-center transition-all ${
                             selectedDiscipline === d
-                              ? 'bg-[#0038ff] text-white font-bold shadow-[0_0_15px_rgba(0,56,255,0.35)]'
-                              : 'bg-white/5 border border-white/5 text-zinc-400 hover:text-white'
+                              ? 'bg-emerald-500 text-black font-semibold shadow-sm'
+                              : 'bg-surface-200 border border-white/5 text-zinc-400 hover:text-white'
                           }`}
                         >
                           {d}
@@ -125,10 +125,10 @@ export default function CTA() {
                           key={b}
                           type="button"
                           onClick={() => setSelectedBudget(b)}
-                          className={`py-2 px-3 rounded-xl text-xs font-mono text-center transition-all ${
+                          className={`py-2 px-3 rounded-lg text-xs font-mono text-center transition-all ${
                             selectedBudget === b
-                              ? 'bg-[#0038ff] text-white font-bold shadow-[0_0_15px_rgba(0,56,255,0.35)]'
-                              : 'bg-white/5 border border-white/5 text-zinc-400 hover:text-white'
+                              ? 'bg-emerald-500 text-black font-semibold shadow-sm'
+                              : 'bg-surface-200 border border-white/5 text-zinc-400 hover:text-white'
                           }`}
                         >
                           {b}
@@ -146,7 +146,7 @@ export default function CTA() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="Your Name / Studio"
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#0038ff]/60 transition-colors"
+                        className="w-full px-4 py-3 rounded-lg bg-surface-200 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500/60 transition-colors"
                       />
                     </div>
                     <div>
@@ -156,7 +156,7 @@ export default function CTA() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="Work Email"
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#0038ff]/60 transition-colors"
+                        className="w-full px-4 py-3 rounded-lg bg-surface-200 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500/60 transition-colors"
                       />
                     </div>
                   </div>
@@ -166,14 +166,14 @@ export default function CTA() {
                       rows={3}
                       value={formData.brief}
                       onChange={(e) => setFormData({ ...formData, brief: e.target.value })}
-                      placeholder="Briefly describe your product vision, timeline, and goals..."
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-[#0038ff]/60 transition-colors resize-none"
+                      placeholder="Briefly describe your project requirements, launch date, and objectives..."
+                      className="w-full px-4 py-3 rounded-lg bg-surface-200 border border-white/10 text-white text-xs placeholder:text-zinc-600 focus:outline-none focus:border-emerald-500/60 transition-colors resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl bg-[#0038ff] text-white font-mono font-bold text-xs tracking-wider uppercase transition-all duration-300 hover:bg-[#002edb] flex items-center justify-center gap-2 group shadow-[0_0_25px_rgba(0,56,255,0.35)]"
+                    className="w-full py-3.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 group shadow-[0_0_25px_rgba(16,185,129,0.3)]"
                   >
                     <span>Submit Project Brief</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

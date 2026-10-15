@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowRight, Github, Sparkles } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { idx: '01', name: 'WORK', href: '#work' },
-  { idx: '02', name: 'DISCIPLINES', href: '#capabilities' },
-  { idx: '03', name: 'BLUEPRINT', href: '#methodology' },
-  { idx: '04', name: 'MANIFESTO', href: '#philosophy' },
+  { name: 'Platform', href: '#platform' },
+  { name: 'Selected Work', href: '#work' },
+  { name: 'Capabilities', href: '#capabilities' },
+  { name: 'Tech Stack', href: '#stack' },
+  { name: 'Customers', href: '#testimonials' },
 ];
 
 export default function Navbar() {
@@ -24,103 +25,125 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-4 sm:top-6 inset-x-0 z-50 flex justify-center pointer-events-none px-4 sm:px-6">
-      <div
-        className={`w-full max-w-5xl rounded-full px-5 sm:px-7 py-3 transition-all duration-300 flex items-center justify-between pointer-events-auto ${
+    <div className="fixed top-0 inset-x-0 z-50 flex flex-col">
+      {/* Top Infisical-style Announcement Banner */}
+      <a
+        href="#platform"
+        className="group relative bg-[#0b0d10] border-b border-white/[0.06] text-xs text-zinc-300 py-2 px-4 text-center transition-colors hover:bg-[#101317] flex items-center justify-center gap-2"
+      >
+        <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono text-[10px] uppercase font-semibold">
+          <Sparkles className="w-3 h-3" /> MONOLITH 2.0
+        </span>
+        <span className="font-medium text-zinc-300">
+          Hardware-accelerated 3D WebGL & Next.js 14 motion laboratory is live
+        </span>
+        <ArrowRight className="w-3.5 h-3.5 text-emerald-400 transition-transform group-hover:translate-x-1" />
+      </a>
+
+      {/* Main Navbar */}
+      <header
+        className={`w-full transition-all duration-200 border-b ${
           scrolled
-            ? 'bg-[#0c0c10]/90 backdrop-blur-2xl border border-white/[0.09] shadow-[0_20px_45px_rgba(0,0,0,0.7)]'
-            : 'bg-[#0c0c10]/50 backdrop-blur-md border border-white/[0.05]'
+            ? 'bg-[#08090a]/90 backdrop-blur-xl border-white/[0.08] shadow-lg'
+            : 'bg-[#08090a]/70 backdrop-blur-md border-white/[0.04]'
         }`}
       >
-        {/* Swiss Monolith Brandmark */}
-        <a href="#" className="flex items-center gap-2.5 group">
-          <div className="relative w-5 h-6 bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-            <div className="w-[1.5px] h-full bg-black/40 mr-auto ml-1" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-display font-black text-sm sm:text-base tracking-[0.24em] text-white uppercase leading-none">
-              MONOLITH<span className="text-[#0038ff] ml-0.5">®</span>
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-2.5 group">
+            <div className="w-7 h-7 rounded-lg bg-emerald-500 flex items-center justify-center text-black font-bold text-xs shadow-[0_0_15px_rgba(16,185,129,0.4)]">
+              M
+            </div>
+            <span className="font-bold text-base tracking-tight text-white flex items-center gap-1.5">
+              MONOLITH <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-400 font-mono font-normal">STUDIO</span>
             </span>
-            <span className="text-[9px] font-mono tracking-widest text-zinc-500 uppercase mt-0.5 hidden sm:block">
-              SWISS DIGITAL LAB
-            </span>
-          </div>
-        </a>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-xs font-mono font-medium tracking-wider text-zinc-400 hover:text-white px-3.5 py-1.5 rounded-full transition-colors hover:bg-white/[0.06] group/item flex items-center gap-1.5"
-            >
-              <span className="text-zinc-600 text-[10px] group-hover/item:text-[#0038ff] transition-colors">{item.idx}</span>
-              <span>{item.name}</span>
-            </a>
-          ))}
-        </nav>
-
-        {/* Right CTA */}
-        <div className="hidden md:flex items-center gap-5">
-          <div className="flex items-center gap-2 text-[11px] font-mono text-zinc-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0038ff] animate-pulse" />
-            <span>Q4 Available</span>
-          </div>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase text-white bg-[#0038ff] hover:bg-[#002edb] transition-all duration-300 group shadow-[0_0_25px_rgba(0,56,255,0.35)]"
-          >
-            <span>Initiate</span>
-            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-1">
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-xs font-medium text-zinc-400 hover:text-white px-3.5 py-2 rounded-lg transition-colors hover:bg-white/[0.04]"
+              >
+                {item.name}
+              </a>
+            ))}
+          </nav>
+
+          {/* Right CTAs */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="https://github.com/Dima3939/next"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-zinc-300 bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-colors"
+            >
+              <Github className="w-3.5 h-3.5" />
+              <span>★ 2.4k</span>
+            </a>
+
+            <a
+              href="#contact"
+              className="text-xs font-medium text-zinc-300 hover:text-white px-3.5 py-2 transition-colors"
+            >
+              Talk to an expert
+            </a>
+
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold text-black bg-emerald-500 hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]"
+            >
+              <span>Initiate Project</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-zinc-400 hover:text-white rounded-lg border border-white/10 bg-white/5"
+            aria-label="Toggle navigation"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
 
-        {/* Mobile menu button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-zinc-300 hover:text-white rounded-full border border-white/10 bg-white/5"
-          aria-label="Toggle navigation"
-        >
-          {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-        </button>
-      </div>
-
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="fixed top-20 inset-x-4 bg-[#0c0c10]/98 border border-white/[0.1] rounded-3xl backdrop-blur-2xl p-6 shadow-2xl pointer-events-auto md:hidden"
-          >
-            <div className="flex flex-col gap-4">
-              {NAV_ITEMS.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-sm font-mono tracking-wider text-zinc-300 hover:text-white py-1.5 border-b border-white/5 flex items-center justify-between"
-                >
-                  <span>{item.name}</span>
-                  <span className="text-xs text-[#0038ff]">{item.idx}</span>
-                </a>
-              ))}
-              <div className="pt-2">
-                <a
-                  href="#contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full inline-flex items-center justify-center py-3 rounded-full text-xs font-mono font-bold tracking-wider uppercase text-white bg-[#0038ff]"
-                >
-                  Initiate Inquiry
-                </a>
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-[#08090a] border-b border-white/10 px-6 py-6"
+            >
+              <div className="flex flex-col gap-3">
+                {NAV_ITEMS.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-sm font-medium text-zinc-300 hover:text-white py-1.5"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+                <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
+                  <a
+                    href="#contact"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full text-center py-2.5 rounded-lg text-xs font-semibold text-black bg-emerald-500"
+                  >
+                    Initiate Project
+                  </a>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+    </div>
   );
 }

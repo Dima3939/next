@@ -1,96 +1,72 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Gauge, Zap, Globe, ShieldCheck } from 'lucide-react';
 
-const PRINCIPLES = [
+const METRIC_CARDS = [
   {
-    title: 'Architectural Typographic Craft',
-    subtitle: 'EDITORIAL PRECISION',
-    description:
-      'We obsess over kerning, responsive leading, and structural rhythm. Every pixel is placed with intentional architectural restraint.',
+    icon: Gauge,
+    title: '100/100 Lighthouse Score',
+    subtitle: 'Optimized by Default',
+    desc: 'Strict performance audits guarantee zero layout shift, sub-second First Contentful Paint, and perfect accessibility.',
   },
   {
-    title: 'Engineered for Conversion',
-    subtitle: 'MEASURABLE VELOCITY',
-    description:
-      'A beautiful website that fails to convert is useless art. We align hypnotic visual pacing with behavioral psychology to drive venture investment and SaaS signups.',
+    icon: Zap,
+    title: '60 FPS Locked Compute',
+    subtitle: 'Hardware Accelerated',
+    desc: 'All animations and shaders run directly on the GPU compositor thread, eliminating CPU thread blocking entirely.',
   },
   {
-    title: '60 FPS Hardware Performance',
-    subtitle: 'HARDWARE VELOCITY',
-    description:
-      'Hardware-accelerated CSS transforms and pre-baked WebGL shaders guarantee silky-smooth interaction feedback across desktop and mobile devices.',
+    icon: Globe,
+    title: 'Sub-50ms Global Latency',
+    subtitle: 'Edge Distribution',
+    desc: 'Static asset generation deployed across global edge points of presence ensures instantaneous response times worldwide.',
   },
   {
-    title: 'Direct Senior Partnership',
-    subtitle: 'ZERO ACCOUNT BLOAT',
-    description:
-      'You collaborate directly with the lead creative technologist and art director writing the code, ensuring rapid iteration loops and pristine execution.',
+    icon: ShieldCheck,
+    title: 'Zero Vendor Lock-In',
+    subtitle: 'Clean Open Architecture',
+    desc: 'Pure Next.js 14, TypeScript, and standard Tailwind CSS codebases that your internal team can easily maintain and extend.',
   },
 ];
 
 export default function Metrics() {
   return (
-    <section id="philosophy" className="relative py-28 md:py-36 px-6 border-y border-white/[0.08] bg-[#060608]">
+    <section className="relative py-24 md:py-32 px-6 bg-[#08090a] border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16 max-w-3xl">
-          <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#0038ff] block mb-3 font-semibold">
-            [ 04 // STUDIO PHILOSOPHY ]
-          </span>
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white font-display tracking-tight uppercase">
-            WHAT DEFINES OUR WORK.
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono text-xs mb-4">
+            PERFORMANCE STANDARDS
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Engineered for scale, speed, and reliability.
           </h2>
-          <p className="mt-4 text-zinc-400 text-sm md:text-base font-light">
-            We focus on extraordinary craft and tangible business velocity — leaving generic templates out of the equation.
+          <p className="mt-4 text-zinc-400 text-sm sm:text-base font-normal">
+            We hold our production code to the highest technical rigor — no bloat, no lag, no compromises.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {PRINCIPLES.map((item, idx) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-8 rounded-3xl bg-[#0c0c10] border border-white/[0.08] hover:border-[#0038ff]/40 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono text-[#0038ff] uppercase tracking-wider block mb-2 font-semibold">
-                  [{item.subtitle}]
-                </span>
-                <h3 className="text-xl font-bold text-white mb-3 font-display">{item.title}</h3>
-                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
-                  {item.description}
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {METRIC_CARDS.map((card) => {
+            const Icon = card.icon;
+            return (
+              <div
+                key={card.title}
+                className="p-8 rounded-2xl bg-surface-100 border border-white/[0.06] hover:border-emerald-500/30 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center mb-6">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div className="text-xs font-mono text-emerald-400 mb-1">{card.subtitle}</div>
+                  <h3 className="text-lg font-bold text-white mb-3">{card.title}</h3>
+                  <p className="text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed">
+                    {card.desc}
+                  </p>
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Studio Capacity Banner */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-[#0c0c10] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-8 h-10 bg-white flex items-center justify-center shrink-0">
-              <div className="w-0.5 h-full bg-black/40 mr-auto ml-1" />
-            </div>
-            <div>
-              <h4 className="text-xl sm:text-2xl font-bold text-white font-display">
-                Quarterly Intake Capacity
-              </h4>
-              <p className="text-xs sm:text-sm text-zinc-400 font-light mt-0.5">
-                We accept only 2 client engagements per quarter to maintain uncompromising perfection.
-              </p>
-            </div>
-          </div>
-
-          <a
-            href="#contact"
-            className="px-6 py-3.5 rounded-full bg-[#0038ff] text-white font-mono font-bold text-xs tracking-wider uppercase hover:bg-[#002edb] transition-colors shrink-0 shadow-[0_0_20px_rgba(0,56,255,0.35)]"
-          >
-            Inquire Intake
-          </a>
+            );
+          })}
         </div>
       </div>
     </section>

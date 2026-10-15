@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #08080a;
-  --foreground: #f5f5f7;
+  --background: #08090a;
+  --foreground: #f1f5f9;
 }
 
 * {
@@ -13,33 +13,33 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #08080a;
-  color: #f5f5f7;
+  background-color: #08090a;
+  color: #f1f5f9;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background-color: #08080a;
-  color: #f5f5f7;
+  background-color: #08090a;
+  color: #f1f5f9;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Swiss Minimalist Scrollbar */
+/* Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #08080a;
+  background: #08090a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1c1c24;
+  background: #1e222b;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2a2a36;
+  background: #2a303c;
 }
 
 /* Smooth Infinite Marquee */
@@ -51,24 +51,29 @@ body {
 .animate-marquee {
   display: flex;
   width: 200%;
-  animation: marqueeLeft 38s linear infinite;
+  animation: marqueeLeft 35s linear infinite;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
 }
 
-/* Swiss Studio Hairline Cards */
-.swiss-card {
-  position: relative;
-  background: #0f0f13;
+/* Infisical-style Glass & Card borders */
+.infisical-card {
+  background: #0d0e12;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.swiss-card:hover {
-  border-color: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.85);
+.infisical-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
+
+/* Subtle Grid Background (Radial Masked) */
+.bg-dev-grid {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
 }

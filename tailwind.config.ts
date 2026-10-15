@@ -9,30 +9,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        obsidian: '#08080a',
+        background: '#08090a',
         surface: {
-          50: '#1a1a22',
-          100: '#14141a',
-          200: '#0f0f14',
-          DEFAULT: '#0f0f13',
-        },
-        swiss: {
-          blue: '#0038ff', // International Klein Blue - Bureau Borsche / Studio Temp signature
-          blueHover: '#002edb',
-          titanium: '#f5f5f7',
-          muted: '#8e8e96',
+          50: '#1e222b',
+          100: '#15171e',
+          200: '#0e1015',
+          DEFAULT: '#0d0e12',
+          card: '#0f1117',
           border: 'rgba(255, 255, 255, 0.08)',
-          subtle: '#18181f',
+          hover: 'rgba(255, 255, 255, 0.14)',
+        },
+        brand: {
+          emerald: '#10b981',
+          emeraldHover: '#059669',
+          emeraldLight: '#34d399',
+          glow: 'rgba(16, 185, 129, 0.2)',
         },
       },
       fontFamily: {
-        sans: ['var(--font-jakarta)', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['var(--font-syne)', 'var(--font-jakarta)', 'system-ui', 'sans-serif'],
-        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'Menlo', 'monospace'],
       },
       letterSpacing: {
-        tightest: '-0.04em',
-        architectural: '-0.03em',
+        tightest: '-0.035em',
+        tight: '-0.02em',
+      },
+      boxShadow: {
+        glow: '0 0 50px -10px rgba(16, 185, 129, 0.15)',
+        card: '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
       },
     },
   },

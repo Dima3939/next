@@ -1,38 +1,16 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 
 export default function AmbientBackground() {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {/* Primary Matte Depth - Deep Slate */}
-      <motion.div
-        animate={{
-          x: [0, 25, -20, 0],
-          y: [0, -25, 20, 0],
-        }}
-        transition={{
-          duration: 22,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute top-[-10%] left-[20%] w-[750px] h-[750px] rounded-full bg-[#0038ff]/[0.035] blur-[180px]"
-      />
+      {/* Subtle Dev Grid with Radial Mask */}
+      <div className="absolute inset-0 bg-dev-grid opacity-35 [mask-image:radial-gradient(ellipse_80%_50%_at_50%_20%,#000_60%,transparent_100%)]" />
 
-      {/* Secondary Architectural Ambient */}
-      <motion.div
-        animate={{
-          x: [0, -20, 25, 0],
-          y: [0, 25, -20, 0],
-        }}
-        transition={{
-          duration: 28,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute top-[45%] right-[10%] w-[650px] h-[650px] rounded-full bg-zinc-800/[0.06] blur-[200px]"
-      />
+      {/* Primary Hero Ambient Glow - Emerald & Cyan subtle radiance behind the console */}
+      <div className="absolute top-[-5%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-emerald-500/[0.08] blur-[140px]" />
+      <div className="absolute top-[25%] left-1/2 -translate-x-1/2 w-[600px] h-[350px] rounded-full bg-cyan-500/[0.04] blur-[160px]" />
     </div>
   );
 }
