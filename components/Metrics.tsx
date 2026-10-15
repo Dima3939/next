@@ -145,7 +145,7 @@ export default function Metrics() {
             <div className="v2-feature-row grid" style={{ gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', border: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }}>
               
               {/* Card 1 */}
-              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px' }} href="#docs">
+              <div className="v2-label-card relative flex flex-col" style={{ padding: '40px', gap: '14px' }}>
                 <div className="flex items-center" style={{ gap: '10px' }}>
                   <span className="inline-flex text-black">
                     <svg width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" fill="none" stroke="currentColor" aria-hidden="true">
@@ -155,34 +155,34 @@ export default function Metrics() {
                       <path d="M15.5 20.5L17.5 22.5L22.5 17.5" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
                   </span>
-                  <span className="font-v2-sans underline underline-offset-4 decoration-neutral-300 group-hover:decoration-black" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
+                  <span className="font-v2-sans" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
                     Compliant by design
                   </span>
                 </div>
                 <p className="font-v2-sans text-v2-b2" style={{ color: 'var(--v2-color-text-secondary)', margin: 0 }}>
                   SOC 2, HIPAA, and FIPS 140-3 compliant.
                 </p>
-              </a>
+              </div>
 
               {/* Card 2 */}
-              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="#docs">
+              <div className="v2-label-card relative flex flex-col" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }}>
                 <div className="flex items-center" style={{ gap: '10px' }}>
                   <span className="inline-flex text-black">
                     <svg width="20" height="20" strokeWidth="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
                       <path d="M5 18L3.13036 4.91253C3.05646 4.39524 3.39389 3.91247 3.90398 3.79912L11.5661 2.09641C11.8519 2.03291 12.1481 2.03291 12.4339 2.09641L20.096 3.79912C20.6061 3.91247 20.9435 4.39524 20.8696 4.91252L19 18C18.9293 18.495 18.5 21.5 12 21.5C5.5 21.5 5.07071 18.495 5 18Z" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
                   </span>
-                  <span className="font-v2-sans underline underline-offset-4 decoration-neutral-300 group-hover:decoration-black" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
+                  <span className="font-v2-sans" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
                     Secure by default
                   </span>
                 </div>
                 <p className="font-v2-sans text-v2-b2" style={{ color: 'var(--v2-color-text-secondary)', margin: 0 }}>
                   AES-256-GCM with strict access controls.
                 </p>
-              </a>
+              </div>
 
               {/* Card 3 */}
-              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="#docs">
+              <div className="v2-label-card relative flex flex-col" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }}>
                 <div className="flex items-center" style={{ gap: '10px' }}>
                   <span className="inline-flex text-black">
                     <svg width="20" height="20" strokeWidth="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
@@ -192,17 +192,17 @@ export default function Metrics() {
                       <path d="M2 21.4V14.6C2 14.2686 2.26863 14 2.6 14H21.4C21.7314 14 22 14.2686 22 14.6V21.4C22 21.7314 21.7314 22 21.4 22H2.6C2.26863 22 2 21.7314 2 21.4Z"></path>
                     </svg>
                   </span>
-                  <span className="font-v2-sans underline underline-offset-4 decoration-neutral-300 group-hover:decoration-black" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
+                  <span className="font-v2-sans" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
                     Reliable at scale
                   </span>
                 </div>
                 <p className="font-v2-sans text-v2-b2" style={{ color: 'var(--v2-color-text-secondary)', margin: 0 }}>
                   99.99% uptime backed by support SLAs.
                 </p>
-              </a>
+              </div>
 
               {/* Card 4 */}
-              <a className="v2-label-card relative flex flex-col group transition-colors hover:bg-neutral-50/50" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }} href="#docs">
+              <div className="v2-label-card relative flex flex-col" style={{ padding: '40px', gap: '14px', borderLeft: 'var(--v2-border-width) solid var(--v2-color-border-subtle)' }}>
                 <div className="flex items-center" style={{ gap: '10px' }}>
                   <span className="inline-flex text-black">
                     <svg width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" fill="none" stroke="currentColor" aria-hidden="true">
@@ -211,14 +211,14 @@ export default function Metrics() {
                       <path d="M20 11V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V11" strokeLinecap="round" strokeLinejoin="round"></path>
                     </svg>
                   </span>
-                  <span className="font-v2-sans underline underline-offset-4 decoration-neutral-300 group-hover:decoration-black" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
+                  <span className="font-v2-sans" style={{ fontSize: 'var(--v2-text-h3)', lineHeight: 'var(--v2-lh-heading)', fontWeight: 'var(--v2-weight-medium)', letterSpacing: '-0.01em', color: 'var(--v2-color-text-primary)' }}>
                     Self-host or cloud
                   </span>
                 </div>
                 <p className="font-v2-sans text-v2-b2" style={{ color: 'var(--v2-color-text-secondary)', margin: 0 }}>
                   Run it yourself or use MONOLITH Cloud.
                 </p>
-              </a>
+              </div>
 
             </div>
           </div>
