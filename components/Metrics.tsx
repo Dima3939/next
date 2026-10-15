@@ -32,33 +32,45 @@ export default function Metrics() {
 
       ctx.clearRect(0, 0, w, h);
 
-      const cols = Math.floor(w / 14);
-      const rows = 26;
+      const cols = Math.floor(w / 10);
+      const rows = 32;
       const spacingX = w / cols;
-      const spacingY = h / (rows + 6);
+      const spacingY = h / (rows + 4);
 
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const x = c * spacingX + spacingX / 2;
           
-          // Sine wave modulation
+          // Multi-frequency 3D perspective sine wave
           const nx = c / cols;
-          const wave1 = Math.sin(nx * 4.5 + t) * 28;
-          const wave2 = Math.cos(nx * 2.2 - t * 0.7) * 16;
-          const waveY = (h * 0.35) + (r * spacingY * 0.7) + wave1 + wave2;
+          const ny = r / rows;
+          const wave1 = Math.sin(nx * 5.2 + t * 1.2) * 26;
+          const wave2 = Math.cos(nx * 2.8 - t * 0.8 + ny * 2) * 16;
+          const wave3 = Math.sin((nx + ny) * 3.5 + t * 0.5) * 8;
+          const waveY = (h * 0.28) + (r * spacingY * 0.76) + wave1 + wave2 + wave3;
 
-          const distFromCrest = Math.abs(waveY - (h * 0.38 + wave1 + wave2));
+          const distFromCrest = Math.abs(waveY - (h * 0.32 + wave1 + wave2));
           
-          // Color based on crest
-          if (r < 3 && distFromCrest < 24) {
-            // Yellow / volt highlight dots near the wave crest
-            ctx.fillStyle = `rgba(245, 248, 65, ${0.75 - r * 0.2})`;
+          let radius = 1.6;
+          // Color based on crest and row depth
+          if (r < 5 && distFromCrest < 32) {
+            // Vivid Volt / Lime highlight dots near the wave crest
+            ctx.fillStyle = `rgba(185, 225, 20, ${0.9 - r * 0.12})`;
+            radius = 2.2;
+          } else if (distFromCrest < 45) {
+            // Subtle transition volt-slate
+            ctx.fillStyle = `rgba(90, 110, 80, ${0.6 - (r / rows) * 0.3})`;
+            radius = 1.8;
           } else {
-            // Subtle gray dots for the rest
-            ctx.fillStyle = `rgba(180, 185, 195, ${0.28 - (r / rows) * 0.18})`;
+            // Crisp high-contrast gunmetal dots for depth
+            const alpha = Math.max(0.18, 0.52 - (r / rows) * 0.32);
+            ctx.fillStyle = `rgba(35, 40, 52, ${alpha})`;
+            radius = 1.4;
           }
 
-          ctx.fillRect(x - 1.2, waveY - 1.2, 2.4, 2.4);
+          ctx.beginPath();
+          ctx.arc(x, waveY, radius, 0, Math.PI * 2);
+          ctx.fill();
         }
       }
 

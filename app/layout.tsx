@@ -42,6 +42,8 @@ export const metadata: Metadata = {
   },
 };
 
+import ButtonScramble from '@/components/ButtonScramble';
+
 export const viewport: Viewport = {
   themeColor: '#ffffff',
   colorScheme: 'light',
@@ -60,8 +62,10 @@ export default function RootLayout({
         <link rel="icon" href="/next/favicon.ico" sizes="any" />
       </head>
       <body className="font-sans antialiased bg-white text-black selection:bg-[#f5f841] selection:text-black">
+        <ButtonScramble />
         {children}
       </body>
     </html>
   );
 }
+
