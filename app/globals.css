@@ -34,6 +34,33 @@
   --v2-agent-vault-bg: #0e1014;
   --v2-agent-vault-text: #ffffff;
   --v2-agent-vault-body: #a1a1aa;
+  --v2-navbar-height: 56px;
+  --v2-max-width: 1440px;
+  --v2-gutter: 28px;
+  --v2-content-padding: 44px;
+  --v2-content-padding-y: 156px;
+  --v2-grid-padding: calc(var(--v2-content-padding) + var(--v2-gutter));
+  --v2-col-indent: 44px;
+  --v2-half-col: calc((min(100vw, var(--v2-max-width)) - 2 * var(--v2-grid-padding) - 6 * var(--v2-gutter)) / 14);
+  --v2-section-py: 112px;
+  --v2-sectionbreak-py: 128px;
+  --v2-text-h1: 3.5rem;
+  --v2-text-h2: 2.25rem;
+  --v2-text-h3: 1.125rem;
+  --v2-text-b1: 1.125rem;
+  --v2-text-b2: 1rem;
+  --v2-text-b3: 0.875rem;
+  --v2-text-b4: 0.75rem;
+  --v2-text-b5: 0.625rem;
+  --v2-lh-heading: 1.1;
+  --v2-lh-body: 1.5;
+  --v2-weight-medium: 500;
+  --v2-color-product-certificates-accent: #f5f841;
+  --v2-color-product-pam-accent: #f5f841;
+  --v2-color-product-secrets-accent: #f5f841;
+  --v2-color-product-certificates-ink: #000000;
+  --v2-color-product-pam-ink: #000000;
+  --v2-spacer-bg-image: url('/next/images/gradient/yui 2.png');
 }
 
 * {
@@ -198,14 +225,14 @@ a:hover > svg[viewBox="0 0 12 12"],
 }
 
 #v2-vault-section .v2-vault-inner {
-  padding-top: 140px;
-  padding-bottom: 140px;
+  padding-top: 160px !important;
+  padding-bottom: 200px !important;
 }
 
 @media (max-width: 1023px) {
   #v2-vault-section .v2-vault-inner {
-    padding-top: 84px !important;
-    padding-bottom: 96px !important;
+    padding-top: 120px !important;
+    padding-bottom: 160px !important;
   }
   .v2-vault-header {
     flex-direction: column !important;
